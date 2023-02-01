@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'bph' => [
+            'driver' => 'session',
+            'provider' => 'bphs',
+        ]
     ],
 
     /*
@@ -64,6 +72,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'bphs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Bph::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',

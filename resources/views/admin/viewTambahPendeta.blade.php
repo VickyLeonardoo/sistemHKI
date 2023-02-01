@@ -9,7 +9,7 @@
             <form method="POST" action="/simpan-pendeta">
                 @csrf
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Nama:</label>
+                  <label for="exampleFormControlInput1">Nama: </label>
                   <input type="text" name="nama" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nama">
                 </div>
                 <div class="row">
@@ -27,7 +27,7 @@
                             onblur="(this.type='text')">
                           </div>
                     </div>
-                    </div>
+                </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Status:</label>
                         <select name="status" class="form-control form-control-alternative">

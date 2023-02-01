@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 Use App\Models\Kk;
 use App\Models\Wijk;
+use App\Models\Jemaat;
+
 class KkController extends Controller
 {
     public function index(){
@@ -26,6 +28,8 @@ class KkController extends Controller
         $data = [
             'nomorKk' => Request()->nomor,
             'alamat' => Request()->alamat,
+            'kecamatan' => Request()->kecamatan,
+            'kelurahan' => Request()->kelurahan,
             'wijk_id' => Request()->wijk,
             'statusRumah' => Request()->status,
         ];
@@ -46,9 +50,12 @@ class KkController extends Controller
         $data = [
             'nomorKk' => Request()->nomor,
             'alamat' => Request()->alamat,
+            'kecamatan' => Request()->kecamatan,
+            'kelurahan' => Request()->kelurahan,
             'wijk_id' => Request()->wijk,
             'statusRumah' => Request()->status,
         ];
+
 
         Kk::where('id',$id)->update($data);
         return redirect()->route('dataKk')->withToastSuccess('Data KK Berhasil Diubah!');
@@ -58,7 +65,10 @@ class KkController extends Controller
         return view('admin.viewAnggotaKeluarga',[
             "title" => "Anggota Keluarga",
             "kk" => Kk::where('id',$id)->first(),
+            "jemaat" => Jemaat::where('kk_id',$id)->orderBy('statusKeluarga', 'asc')->get(),
         ]);
+
+
 
     }
 }

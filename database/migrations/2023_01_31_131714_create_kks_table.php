@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('nomorKk');
             $table->text('alamat');
+            $table->text('kecamatan');
+            $table->text('kelurahan');
             $table->foreignId('wijk_id');
             $table->string('statusRumah');
             $table->timestamps();

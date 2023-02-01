@@ -13,8 +13,7 @@
                         <tr>
                             <th>Nomor</th>
                             <th>Nama Wijk</th>
-                            <th>Jumlah KK</th>
-                            <th>Aksi</th>
+                            <th>Anggota Wijk</th>
                         </tr>
                     </thead>
                     <?php $i = 1 ?>
@@ -23,10 +22,10 @@
                         <tr>
                             <td>{{ $data->id}}</td>
                             <td>{{ $data->nama }}</td>
-                            <td></td>
                             <td>
                                 {{-- <a href="ubah-data-wijk-{{ $data->id }}" class="btn btn-primary"></a> --}}
                                 <!-- Button trigger modal -->
+                                <a href="/anggota-wijk" class="btn btn-gradient-info" style="color: blue">Lihat Anggota Wijk</a>
                                 <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $data->id }}">
                                     Edit
                                   </button>
@@ -38,7 +37,6 @@
                         <tr>
                             <th>Nomor</th>
                             <th>Nama Wijk</th>
-                            <th>Jumlah KK</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>

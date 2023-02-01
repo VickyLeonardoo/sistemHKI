@@ -15,7 +15,15 @@
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Alamat Lengkap</label>
                     <input type="text" name="alamat" class="form-control" id="exampleFormControlInput1" value="{{ $kk->alamat }}">
-                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Kelurahan</label>
+                    <input type="text" name="kelurahan" class="form-control" id="exampleFormControlInput1" value="{{ $kk->kelurahan }}">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Kecamatan</label>
+                    <input type="text" name="kecamatan" class="form-control" id="exampleFormControlInput1" value="{{ $kk->kecamatan }}">
+                </div>
                   <div class="form-group">
                     <label for="exampleFormControlInput1">Wijk</label>
                     <select name="wijk" class="form-control" id="">

@@ -3,46 +3,7 @@
 <div class="container-fluid py-4">
     <div class="row">
       <div class="col-12">
-        <div class="row">
-            <div class="col-md-8">
-              <div class="form-group">
-                <h6>Nomor KK: {{ $kk->nomorKk }}</h6>
-              </div>
-              <hr color="black">
-            </div>
-            <div class="col-md-4">
-                <div class="form-group d-flex justify-content-end">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-              <div class="form-group">
-                <h6>Alamat Lengkap: {{ $kk->alamat }}</h6>
-              </div>
-              <hr color="black">
-            </div>
-            <div class="col-md-4">
-                <div class="form-group ">
-                    <h6 class="d-flex ">Kelurahan: {{ $kk->kelurahan }}</h6>
-                </div>
-                <hr color="black">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-              <div class="form-group">
-                <h6>Wijk: {{ $kk->wijk->nama }}</h6>
-              </div>
-              <hr color="black">
-            </div>
-            <div class="col-md-4">
-                <h6 class="form-group">Kecamatan: {{ $kk->kecamatan }}</h6>
-            <hr color="black">
-            </div>
-        </div>
-
-        <a href="/tambah-data-anggota-kartu-keluarga-{{ $kk->id }}" class="btn btn-info">Tambah Data KK</a>
+        {{-- <a href="/tambah-data-anggota-kartu-keluarga-{{ $kk->id }}" class="btn btn-info">Tambah Data KK</a> --}}
           <div class="card-header pb-0">
           </div>
           <div class="card-body px-0 pt-0 pb-2">
@@ -81,8 +42,8 @@
                             <td>  <img src="{{ asset($data->foto) }}" alt=""  width="100%" title=""></a></td>
                             {{-- <td><img src="{{ url::to($data->foto) }}" height="30px" width="30px"></td> --}}
                             <td>
-                                <a href="/edit-anggota-keluarga-{{ $data->id }}-kk-{{ $kk->id }}" class="btn btn-primary">Edit</a>
-                                <a href="/anggota-keluarga-{{ $kk->id }}" class="btn btn-info">Anggota Keluarga</a>
+                                {{-- <a href="/edit-anggota-keluarga-{{ $data->id }}-kk-{{ $kk->id }}" class="btn btn-primary">Edit</a> --}}
+                                {{-- <a href="/anggota-keluarga-{{ $kk-/>id }}" class="btn btn-info">Anggota Keluarga</a> --}}
                             </td>
                         </tr>
                         @endforeach
