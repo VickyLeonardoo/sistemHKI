@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Kk;
 use App\Models\Jemaat;
 use App\Url;
+use Carbon\Carbon;
 
 class JemaatController extends Controller
 {
@@ -77,4 +78,26 @@ class JemaatController extends Controller
         Jemaat::where('id',$idk)->update($data);
         return Redirect('/anggota-keluarga-'.$id)->withToastSuccess('Anggota Keluarga'. ' ' .Request()->nama . ' ' .'Berhasil Diubah');
     }
+
+    public function viewUltah(){
+        $now = Carbon::now();
+
+        $weekstart = $now->startOfWeek()->format('d-M-y');
+        $weekend = $now->endOfWeek()->format('d-M-y');
+
+        $weekStartDate = $now->startOfWeek();
+        $weekEndDate = $now->endOfWeek();
+
+
+        return view('admin.viewJemaatUltah',[
+            'title' => "Ulang Tahun Jemaat",
+            'jemaat' => Jemaat::whereMonth('tglLahir', $weekStartDate->month)->whereDay('tglLahir', '<-', $weekEndDate->day)
+                         ->orWhere(function ($query) use ($weekStartDate,$weekEndDate) {
+                         $query->whereMonth('tglLahir', '=', $weekStartDate->month)
+                         ->whereDay('tglLahir', '<=', $weekEndDate->day);
+                         })->get(),
+        ]);
+    }
+
+
 }

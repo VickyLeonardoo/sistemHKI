@@ -19,12 +19,9 @@ class AuthController extends Controller
         if (Auth::guard('user')->attempt($kredensil)) {
             $user = Auth::guard('user')->user();
             if ($user->role == '1') {
-                return redirect()->intended('home');
-            }
-        }elseif (Auth::guard('bph')->attempt($kredensil)) {
-            $user = Auth::guard('bph')->user();
-            if($user->role == 1){
-                return redirect()->intended('bph');
+                return redirect()->intended('home')->withToastSuccess('Kamu Berhasil Masuk!');
+            }else if($user->role == '2'){
+                return redirect()->intended('bph')->withToastSuccess('Kamu Berhasil Masuk!');
             }
         }
         return redirect()->back()->withToastError('Login Gagal, Email atau Password Kamu Salah!');
@@ -34,6 +31,6 @@ class AuthController extends Controller
     {
         $request->session()->flush();
         Auth::logout();
-        return redirect('/login');
+        return redirect('/login')->withToastSuccess('Anda Berhasil Keluar!');
     }
 }

@@ -8,7 +8,10 @@ use App\Http\Controllers\SintuaController;
 use App\Http\Controllers\WijkController;
 use App\Http\Controllers\KkController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BphController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CetakdataController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,12 +24,12 @@ use App\Http\Controllers\AuthController;
 */
 
 //login
-Route::get('/login',[LoginController::class,'index']);
+Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::post('/proses_login',[Authcontroller::class,'prosesLogin']);
 Route::get('/logout',[AuthController::class,'logout']);
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::group(['middleware' => ['auth:user']],function(){
@@ -44,6 +47,7 @@ Route::group(['middleware' => ['auth:user']],function(){
         Route::get('/tambah-data-wijk',[WijkController::class,'viewTambah']);
         Route::post('/simpan-wijk',[WijkController::class,'simpanWijk']);
         Route::post('/ubah-wijk-{id}',[WijkController::class,'ubahWijk']);
+        Route::get('/data-wijk-anggota-wijk-{slug}',[WijkController::class,'viewAnggota']);
 
         //Sintua
         Route::get('/data-sintua',[SintuaController::class,'index'])->name('dataSintua');
@@ -59,14 +63,32 @@ Route::group(['middleware' => ['auth:user']],function(){
         Route::post('/ubah-kk-{id}',[KkController::class,'ubahKk']);
         Route::get('/anggota-keluarga-{id}',[KkController::class,'viewAnggota']);
 
-
         //Anggota Keluarga/Jemaat Gereja
         Route::get('/data-jemaat',[JemaatController::class,'index'])->name('dataJemaat');
         Route::get('/tambah-data-anggota-kartu-keluarga-{id}',[JemaatController::class,'viewTambah']);
         Route::post('/simpan-anggota-kk-{id}',[JemaatController::class,'simpanJemaat']);
         Route::get('/edit-anggota-keluarga-{idk}-kk-{id}',[JemaatController::class,'viewEdit']);
         Route::post('/ubah-anggota-{idk}-kk-{id}',[JemaatController::class,'ubahJemaat']);
+        Route::get('/ulang-tahun-jemaat',[JemaatController::class,'viewUltah']);
+
+
+        //Cetak Data
+        Route::get('/cetak-data',[CetakdataController::class,'index'])->name('cetakData');
+        Route::get('/cetak-data-jemaat',[CetakdataController::class,'exportJemaat']);
+        Route::get('/cetak-data-wijk',[CetakdataController::class,'exportWijk']);
+        Route::get('/cetak-data-sintua',[CetakdataController::class,'exportSintua']);
+        Route::get('/cetak-data-pendeta',[CetakdataController::class,'exportPendeta']);
+        Route::get('/cetak-data-kk',[CetakdataController::class,'exportKk']);
+
 
 
     });
+});
+
+Route::group(['middleware' => ['auth:user']],function(){
+    Route::group(['middleware' => ['cek_login:2']],function(){
+        Route::get('/bph',[BphController::class,'index']);
+        //Pendeta
+
     });
+});

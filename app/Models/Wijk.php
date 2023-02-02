@@ -16,6 +16,6 @@ class Wijk extends Model
     }
 
     public function kk(){
-        return $this->hasOne(Kk::class);
+        return $this->hasMany(Kk::class);
     }
 }

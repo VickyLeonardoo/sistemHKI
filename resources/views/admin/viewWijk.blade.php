@@ -25,7 +25,7 @@
                             <td>
                                 {{-- <a href="ubah-data-wijk-{{ $data->id }}" class="btn btn-primary"></a> --}}
                                 <!-- Button trigger modal -->
-                                <a href="/anggota-wijk" class="btn btn-gradient-info" style="color: blue">Lihat Anggota Wijk</a>
+                                <a href="/data-wijk-anggota-wijk-{{ $data->slug }}" class="btn btn-gradient-info" style="color: blue">Lihat Anggota Wijk</a>
                                 <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $data->id }}">
                                     Edit
                                   </button>

@@ -31,8 +31,7 @@
                 <div class="numbers">
                   <p class="text-sm mb-0 text-capitalize font-weight-bold">KK</p>
                   <h5 class="font-weight-bolder mb-0">
-                    2,300
-                    <span class="text-success text-sm font-weight-bolder">+3%</span>
+                    {{ $kk }}
                   </h5>
                 </div>
               </div>
@@ -185,9 +184,10 @@
                 <span class="mask bg-gradient-dark"></span>
                 <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
                   <h5 class="text-white font-weight-bolder mb-4 pt-2">Ulang Tahun Jemaat</h5>
-                  <p class="text-white">Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.</p>
-                  <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
-                    Read More
+              <h6 class="text-white" >{{ $ultah }}</h6>
+                  <p class="text-white">Jemaat yang berulang tahun pada minggu tanggal {{ $start }} sampai tanggal {{ $end }}</p>
+                  <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="/ulang-tahun-jemaat">
+                    Lihat Selengkapnya..
                     <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
                   </a>
                 </div>
@@ -199,10 +199,10 @@
           <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('soft/assets/img/ivancik.jpg');">
             <span class="mask bg-gradient-dark"></span>
             <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-              <h5 class="text-white font-weight-bolder mb-4 pt-2">Ulang Tahun Jemaat</h5>
-              <p class="text-white">Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.</p>
+              <h5 class="text-white font-weight-bolder mb-4 pt-2">Ulang Tahun Pernikahan</h5>
+              <p class="text-white">Jemaat yang berulang tahun pada minggu tanggal {{ $start }} sampai tanggal {{ $end }}.</p>
               <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
-                Read More
+                Lihat Selengkapnya..
                 <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
               </a>
             </div>

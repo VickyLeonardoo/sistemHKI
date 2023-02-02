@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Wijk;
-
+use App\Models\Kk;
 class WijkController extends Controller
 {
     public function index(){
@@ -21,8 +21,10 @@ class WijkController extends Controller
     }
 
     public function simpanWijk(Request $request){
+        $str = strtolower(Request()->nama);
         $data = [
             'nama' => Request()->nama,
+            'slug' => preg_replace('/\s+/', '-', $str),
         ];
 
         Wijk::create($data);
@@ -35,6 +37,18 @@ class WijkController extends Controller
         ];
         Wijk::where('id',$id)->update($data);
         return redirect()->route('dataWijk')->withToastSuccess('Wijk Berhasil Diubah!');
+    }
+
+    public function viewAnggota($slug){
+        // $wijk = Wijk::where('slug',$slug)->first()->kk;
+        // $kk = Kk::first()->wijk->nama;
+        // echo($wijk);
+
+        return view('admin.viewAnggotaWijk',[
+            "slug" => $slug,
+            "title" => "Anggota Wijk",
+            "kk"    =>  Wijk::where('slug',$slug)->first()->kk,
+        ]);
     }
 
 }
