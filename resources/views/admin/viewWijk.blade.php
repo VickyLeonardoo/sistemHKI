@@ -1,53 +1,50 @@
 @extends('partial.header')
 @section('content')
-<div class="container-fluid py-4">
-    <div class="row">
-      <div class="col-12">
-        <a href="/tambah-data-wijk" class="btn btn-info">Tambah Wijk</a>
-          <div class="card-header pb-0">
-          </div>
-          <div class="card-body px-0 pt-0 pb-2">
-            <div class="table-responsive p-0">
-                <table id="example" class="display" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Nomor</th>
-                            <th>Nama Wijk</th>
-                            <th>Anggota Wijk</th>
-                        </tr>
-                    </thead>
-                    <?php $i = 1 ?>
-                    <tbody>
-                        @foreach ($wijk as $data)
-                        <tr>
-                            <td>{{ $data->id}}</td>
-                            <td>{{ $data->nama }}</td>
-                            <td>
-                                {{-- <a href="ubah-data-wijk-{{ $data->id }}" class="btn btn-primary"></a> --}}
-                                <!-- Button trigger modal -->
-                                <a href="/data-wijk-anggota-wijk-{{ $data->slug }}" class="btn btn-gradient-info" style="color: blue">Lihat Anggota Wijk</a>
-                                <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $data->id }}">
-                                    Edit
-                                  </button>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Nomor</th>
-                            <th>Nama Wijk</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </tfoot>
-                </table>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="/tambah-data-wijk" class="btn btn-info">Tambah Wijk</a><br><br>
+                <div class="table-responsive p-0">
+                    <table id="example" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Nomor</th>
+                                <th>Nama Wijk</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <?php $i = 1 ?>
+                        <tbody>
+                            @foreach ($wijk as $data)
+                            <tr>
+                                <td>{{ $data->id}}</td>
+                                <td>{{ $data->nama }}</td>
+                                <td>
+                                    {{-- <a href="ubah-data-wijk-{{ $data->id }}" class="btn btn-primary"></a> --}}
+                                    <!-- Button trigger modal -->
+                                    <a href="/data-wijk-anggota-wijk-{{ $data->slug }}" class="btn btn-info" >Lihat Anggota Wijk</a>
+                                    <button type="button" class="btn bg-gradient-primary" data-toggle="modal" data-target="#exampleModal{{ $data->id }}">
+                                        Edit
+                                      </button>
+                                    <a href="/data-wijk-kegiatan-wijk-{{ $data->slug }}" class="btn btn-success">Kegiatan</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Nomor</th>
+                                <th>Nama Wijk</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-
+</div>
 
 
   <!-- Modal -->
@@ -57,7 +54,7 @@
       <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Edit Wijk {{ $data->nama }}</h5>
-          <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+          <button type="button" class="btn-close text-dark" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>

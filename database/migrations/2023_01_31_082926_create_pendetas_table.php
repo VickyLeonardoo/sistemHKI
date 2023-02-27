@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('tglMasuk');
             $table->text('foto')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

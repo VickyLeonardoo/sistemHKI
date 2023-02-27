@@ -11,7 +11,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BphController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CetakdataController;
-
+use App\Http\Controllers\KeuanganController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +27,6 @@ use App\Http\Controllers\CetakdataController;
 Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::post('/proses_login',[Authcontroller::class,'prosesLogin']);
 Route::get('/logout',[AuthController::class,'logout']);
-
 Route::get('/', function () {
     return view('login');
 });
@@ -39,8 +38,10 @@ Route::group(['middleware' => ['auth:user']],function(){
         Route::get('/data-pendeta',[PendetaController::class,'index'])->name('dataPendeta');
         Route::get('/tambah-data-pendeta',[PendetaController::class,'viewTambah']);
         Route::post('/simpan-pendeta',[PendetaController::class,'simpanPendeta']);
-        Route::get('/edit-data-pendeta-{id}',[PendetaController::class,'viewEdit']);
+        // Route::get('/data-{slug}',[PendetaController::class,'viewEdit']);
+        Route::get('/edit-data-{slug}',[PendetaController::class,'viewEditPendeta']);
         Route::post('/ubah-pendeta-{id}',[PendetaController::class,'ubahPendeta']);
+        Route::post('/hapus-data-pendeta-{id}',[PendetaController::class,'hapusPendeta']);
 
         //Wijk
         route::get('/data-wijk',[WijkController::class,'index'])->name('dataWijk');
@@ -54,14 +55,17 @@ Route::group(['middleware' => ['auth:user']],function(){
         route::get('/tambah-data-sintua',[SintuaController::class,'viewTambah']);
         route::post('/simpan-sintua',[SintuaController::class,'simpanSintua']);
         Route::post('/ubah-sintua-{id}',[SintuaController::class,'ubahSintua']);
+        Route::get('/data-sintua-{slug}',[SintuaController::class,'editSintua']);
+        Route::post('/hapus-data-{id}',[SintuaController::class,'hapusSintua']);
 
         //KK
         Route::get('/data-kartu-keluarga',[KkController::class,'index'])->name('dataKk');
         Route::get('/tambah-data-kartu-keluarga',[KkController::class,'viewTambah']);
         route::post('/simpan-kk',[KkController::class,'simpanKk']);
-        Route::get('/edit-data-kk-{id}',[KkController::class,'viewEdit']);
+        Route::get('/kartu-keluarga-edit-{id}',[KkController::class,'viewEdit']);
         Route::post('/ubah-kk-{id}',[KkController::class,'ubahKk']);
         Route::get('/anggota-keluarga-{id}',[KkController::class,'viewAnggota']);
+        Route::get('/anggota-kartu-keluarga-{noKk}',[KkController::class,'viewAnggotaKk']);
 
         //Anggota Keluarga/Jemaat Gereja
         Route::get('/data-jemaat',[JemaatController::class,'index'])->name('dataJemaat');
@@ -80,7 +84,16 @@ Route::group(['middleware' => ['auth:user']],function(){
         Route::get('/cetak-data-pendeta',[CetakdataController::class,'exportPendeta']);
         Route::get('/cetak-data-kk',[CetakdataController::class,'exportKk']);
 
+        //Keuangan
 
+        Route::get('/master-data-keuangan',[KeuanganController::class,'viewKeuangan']);
+        Route::get('/master-data-pendapatan',[KeuanganController::class,'viewMasterPendapatan'])->name('viewPendapatan');
+        Route::get('/tambah-data-master-pendapatan',[KeuanganController::class,'viewTambahMasterPendapatan']);
+        Route::post('/simpan-master-pendapatan',[KeuanganController::class,'simpanMasterPendapatan']);
+        Route::get('/edit-{slug}',[KeuanganController::class,'editPendapatan']);
+        Route::post('/ubah-pendapatan-{id}',[KeuanganController::class,'updatePendapatan']);
+        Route::get('/hapus-pendapatan-{id}',[KeuanganController::class,'hapusPendapatan']);
+        Route::get('/pendapatan-gereja',[KeuanganController::class,'viewPendapatanGereja']);
 
     });
 });
@@ -88,7 +101,7 @@ Route::group(['middleware' => ['auth:user']],function(){
 Route::group(['middleware' => ['auth:user']],function(){
     Route::group(['middleware' => ['cek_login:2']],function(){
         Route::get('/bph',[BphController::class,'index']);
-        //Pendeta
+
 
     });
 });

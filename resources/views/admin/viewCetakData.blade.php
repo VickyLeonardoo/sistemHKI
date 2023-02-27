@@ -1,79 +1,91 @@
 @extends('partial.header')
 @section('content')
-<div class="container-fluid py-4">
-    <div class="row mt-4">
-        <div class="col-lg-3">
-            <div class="card h-100 p-3">
-              <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('soft/assets/img/ivancik.jpg');">
-                <span class="mask bg-gradient-dark"></span>
-                <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                  <h5 class="text-white font-weight-bolder mb-4 pt-2">Cetak Data Pendeta</h5>
-                  <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="/cetak-data-pendeta">
-                    Cetak
-                    <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        <div class="col-lg-3">
-            <div class="card h-100 p-3">
-              <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('soft/assets/img/ivancik.jpg');">
-                <span class="mask bg-gradient-dark"></span>
-                <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                  <h5 class="text-white font-weight-bolder mb-4 pt-2">Cetak Data Wijk</h5>
-                  <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="/cetak-data-wijk">
-                    Cetak
-                    <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        <div class="col-lg-3">
-            <div class="card h-100 p-3">
-              <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('soft/assets/img/ivancik.jpg');">
-                <span class="mask bg-gradient-dark"></span>
-                <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                  <h5 class="text-white font-weight-bolder mb-4 pt-2">Cetak Data Sintua</h5>
-                  <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="/cetak-data-sintua">
-                    Cetak
-                    <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        <div class="col-lg-3">
-            <div class="card h-100 p-3">
-              <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('soft/assets/img/ivancik.jpg');">
-                <span class="mask bg-gradient-dark"></span>
-                <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                  <h5 class="text-white font-weight-bolder mb-4 pt-2">Cetak Data KK</h5>
-                  <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="/cetak-data-kk">
-                    Cetak
-                    <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-lg-3">
-                <div class="card h-100 p-3">
-                  <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('soft/assets/img/ivancik.jpg');">
-                    <span class="mask bg-gradient-dark"></span>
-                    <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                      <h5 class="text-white font-weight-bolder mb-4 pt-2">Cetak Data Jemaat</h5>
-                      <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="/cetak-data-jemaat">
-                        Cetak
-                        <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                      </a>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <section class="content">
+                    <div class="container-fluid">
+                      <!-- Small boxes (Stat box) -->
+                      <div class="row">
+                        <!-- ./col -->
+                        <div class="col-lg-2 col-6">
+                          <!-- small box -->
+                          <div class="small-box bg-warning">
+                            <div class="inner">
+                              {{-- <h3>{{ $wijk }}</h3> --}}
+
+                              <p>Data Jemaat</p>
+                            </div>
+                            <div class="icon">
+                              <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="/cetak-data-jemaat" class="small-box-footer">Cetak <i class="fas fa-arrow-circle-right"></i></a>
+                          </div>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                          <!-- small box -->
+                          <div class="small-box bg-primary">
+                            <div class="inner">
+                              {{-- <h3>{{ $kk }}</h3> --}}
+
+                              <p>Data Wijk</p>
+                            </div>
+                            <div class="icon">
+                              <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="/cetak-data-wijk" class="small-box-footer">Cetak Data <i class="fas fa-arrow-circle-right"></i></a>
+                          </div>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                          <!-- small box -->
+                          <div class="small-box bg-info">
+                            <div class="inner">
+                              {{-- <h3>{{ $jemaat }}</h3> --}}
+
+                              <p>Data Sintua</p>
+                            </div>
+                            <div class="icon">
+                              <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="/cetak-data-sintua" class="small-box-footer">Cetak Data <i class="fas fa-arrow-circle-right"></i></a>
+                          </div>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                          <!-- small box -->
+                          <div class="small-box bg-danger">
+                            <div class="inner">
+                              {{-- <h3>{{ $pria }}</h3> --}}
+
+                              <p>Data Pendeta</p>
+                            </div>
+                            <div class="icon">
+                              <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="/cetak-data-pendeta" class="small-box-footer">Cetak Data <i class="fas fa-arrow-circle-right"></i></a>
+                          </div>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                              <div class="inner">
+                                {{-- <h3>{{ $pria }}</h3> --}}
+
+                                <p>Data KK</p>
+                              </div>
+                              <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                              </div>
+                              <a href="/cetak-data-kk" class="small-box-footer">Cetak Data <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                          </div>
+
+                      </div>
+
                     </div>
-                  </div>
-                </div>
-              </div>
+                  </section>
+            </div>
         </div>
     </div>
-  </div>
+</div>
 @endsection

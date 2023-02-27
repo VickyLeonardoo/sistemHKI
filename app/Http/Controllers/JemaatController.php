@@ -7,13 +7,15 @@ use App\Models\Kk;
 use App\Models\Jemaat;
 use App\Url;
 use Carbon\Carbon;
-
+use App\Models\Sintua;
 class JemaatController extends Controller
 {
     public function index(){
         return view('admin.viewDataJemaat',[
             "title" => "Data Jemaat",
             "jemaat" => Jemaat::all(),
+            'sintua' => Sintua::first(),
+
         ]);
     }
 
@@ -21,6 +23,8 @@ class JemaatController extends Controller
         return view('admin.viewTambahAnggotaKk',[
             "title" => "Tambah Anggota KK",
             "kk" => KK::where('id',$id)->first(),
+            'sintua' => Sintua::first(),
+
         ]);
     }
 
@@ -59,6 +63,8 @@ class JemaatController extends Controller
             "title" => "Edit Anggota Keluarga",
             "id" => $id,
             "jemaat" => Jemaat::where('id', $idk)->first(),
+            'sintua' => Sintua::first(),
+
         ]);
     }
 
@@ -96,8 +102,12 @@ class JemaatController extends Controller
                          $query->whereMonth('tglLahir', '=', $weekStartDate->month)
                          ->whereDay('tglLahir', '<=', $weekEndDate->day);
                          })->get(),
+            'sintua' => Sintua::first(),
+
         ]);
     }
+
+
 
 
 }

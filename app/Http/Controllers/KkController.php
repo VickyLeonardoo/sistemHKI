@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 Use App\Models\Kk;
 use App\Models\Wijk;
 use App\Models\Jemaat;
-
+use App\Models\Sintua;
 class KkController extends Controller
 {
     public function index(){
         return view('admin.viewKk',[
             "title" => "Data Kartu Keluarga",
             "kk" => Kk::all(),
+            'sintua' => Sintua::first(),
+
         ]);
     }
 
@@ -20,6 +22,7 @@ class KkController extends Controller
         return view('admin.viewTambahKk',[
             "title" => "Tambah Data KK",
             "wijk" => Wijk::all(),
+            'sintua' => Sintua::first(),
 
         ]);
     }
@@ -42,7 +45,9 @@ class KkController extends Controller
         return view('admin.viewEditKk',[
             "title" => "Edit Data KK",
             "wijk" => Wijk::all(),
-            "kk" => Kk::where('id',$id)->first(),
+            "kk" => Kk::where('nomorKk',$id)->first(),
+            'sintua' => Sintua::first(),
+
         ]);
     }
 
@@ -61,14 +66,14 @@ class KkController extends Controller
         return redirect()->route('dataKk')->withToastSuccess('Data KK Berhasil Diubah!');
     }
 
-    public function viewAnggota($id){
-        return view('admin.viewAnggotaKeluarga',[
+    public function viewAnggotaKk($noKk){
+        $data = Kk::where('nomorKk', $noKk)->first();
+        return view('admin.viewAnggotaKartuKeluarga',[
             "title" => "Anggota Keluarga",
-            "kk" => Kk::where('id',$id)->first(),
-            "jemaat" => Jemaat::where('kk_id',$id)->orderBy('statusKeluarga', 'asc')->get(),
+            "kk" => Kk::where('nomorKk',$noKk)->first(),
+            "jemaat" => Jemaat::where('kk_id',$data->id)->get(),
+            'sintua' => Sintua::first(),
+
         ]);
-
-
-
     }
 }

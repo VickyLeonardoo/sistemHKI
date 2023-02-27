@@ -7,6 +7,7 @@ use App\Models\Wijk;
 use App\Models\Kk;
 use Carbon\Carbon;
 use App\Models\Jemaat;
+use App\Models\Sintua;
 class HomeController extends Controller
 {
     public function index(){
@@ -18,10 +19,10 @@ class HomeController extends Controller
         $weekStartDate = $now->startOfWeek();
         $weekEndDate = $now->endOfWeek();
         $ultah = Jemaat::whereMonth('tglLahir', $weekStartDate->month)->whereDay('tglLahir', '<-', $weekEndDate->day)
-        ->orWhere(function ($query) use ($weekStartDate,$weekEndDate) {
-            $query->whereMonth('tglLahir', '=', $weekStartDate->month)
+                ->orWhere(function ($query) use ($weekStartDate,$weekEndDate) {
+                 $query->whereMonth('tglLahir', '=', $weekStartDate->month)
                 ->whereDay('tglLahir', '<=', $weekEndDate->day);
-        })->count();
+                })->count();
 
         return view('index',[
             "title" => 'Home',
@@ -33,6 +34,8 @@ class HomeController extends Controller
             'start' => $weekstart,
             'end' => $weekend,
             'ultah' => $ultah,
+            'sintua' => Sintua::first(),
+
         ]);
     }
 }

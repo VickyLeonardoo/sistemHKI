@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('sintuas', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('slug')->unique();
             $table->foreignId('wijk_id');
             $table->date('tglMulai');
             $table->timestamps();
