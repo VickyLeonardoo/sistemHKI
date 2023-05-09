@@ -9,20 +9,21 @@
 
 
  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="asset/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{ asset('asset') }}/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="asset/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="{{ asset('asset') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="asset/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ asset('asset') }}/dist/css/adminlte.min.css">
 <body class="hold-transition sidebar-mini layout-fixed">
 
 
@@ -99,6 +100,11 @@
 </div>
 <!-- ./wrapper -->
 <script>
+ $(document).ready(function () {
+      $('select').selectize({
+          sortField: 'text'
+      });
+  });
 
     $(document).ready(function() {
         $('#example').DataTable( {
@@ -281,11 +287,11 @@ new Chart(ctx2, {
 <!-- jQuery UI 1.11.4 -->
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <!-- Bootstrap 4 -->
-<script src="asset/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('asset') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
 <!-- JQVMap -->
 <!-- AdminLTE App -->
-<script src="asset/dist/js/adminlte.js"></script>
+<script src="{{ asset('asset') }}/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 </body>

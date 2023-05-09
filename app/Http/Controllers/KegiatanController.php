@@ -3,21 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Kegiatan;
 class KegiatanController extends Controller
 {
-    public function index(Request $request)
-    {
+    public function simpanKegiatan(Request $request){
+        $data = [
+            'sintua_id' => Request()->sintua,
+            'wijk_id' => Request()->wijk,
+            'kk_id' => Request()->kk,
+            'tglKegiatan' => Request()->tglKegiatan,
+        ];
 
-        if($request->ajax()) {
+        Kegiatan::create($data);
+        return redirect()->back()->withToastSuccess('Data Kegiatan Berhasil Ditambahkan');
+    }
 
-             $data = Event::whereDate('start', '>=', $request->start)
-                       ->whereDate('end',   '<=', $request->end)
-                       ->get(['id', 'title', 'start', 'end']);
+    public function ubahKegiatan(Request $request, $id){
+        $data = [
+            'kk_id' => Request()->kk,
+            'sintua_id' => Request()->sintua,
+            'tglKegiatan' => Request()->tglKegiatan,
+        ];
 
-             return response()->json($data);
-        }
+        Kegiatan::where('id',$id)->update($data);
+        return redirect()->back()->withToastSuccess('Data Berhasil Diubah');
+    }
 
-        return view('fullcalender');
+    public function hapusKegiatan($id){
+        Kegiatan::where('id',$id)->delete();
+        return redirect()->back()->withToastSuccess('Data Kegiatan Berhasil Dihapus');
     }
 }

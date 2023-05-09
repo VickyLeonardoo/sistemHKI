@@ -61,61 +61,15 @@ class WijkController extends Controller
         ]);
     }
 
-    public function viewKegiatan(Request $request){
-
-        if($request->ajax()) {
-
-            $data = Kegiatan::whereDate('start', '>=', $request->start)
-                      ->whereDate('end',   '<=', $request->end)
-                      ->get(['id', 'title', 'start', 'end']);
-
-            return response()->json($data);
-       }
-
-       return view('admin.viewKegiatanWijk',[
-        'title' => "Kegiatan Wijk"
-
-       ]);
-        // return view('admin.viewKegiatanWijk',[
-
-        // ]);
-
+    public function viewKegiatan(Request $request, $slug){
+        $wijk = Wijk::where('slug',$slug)->first();
+        $wijkId = $wijk->id;
+        return view('admin.viewKegiatanWijk',[
+            'title' => "Kegiatan Wijk",
+            'sintua' => Sintua::all(),
+            'kk' => Kk::where('wijk_id',$wijkId)->get(),
+            'wijk_id' => $wijkId,
+            'kegiatan' => Kegiatan::where('wijk_id',$wijkId)->get(),
+        ]);
     }
-
-    public function ajax(Request $request)
-    {
-
-        switch ($request->type) {
-           case 'add':
-              $event = Kegiatan::create([
-                  'title' => $request->title,
-                  'start' => $request->start,
-                  'end' => $request->end,
-              ]);
-
-              return response()->json($event);
-             break;
-
-           case 'update':
-              $event = Kegiatan::find($request->id)->update([
-                  'title' => $request->title,
-                  'start' => $request->start,
-                  'end' => $request->end,
-              ]);
-
-              return response()->json($event);
-             break;
-
-           case 'delete':
-              $event = Kegiatan::find($request->id)->delete();
-
-              return response()->json($event);
-             break;
-
-           default:
-             # code...
-             break;
-        }
-    }
-
 }

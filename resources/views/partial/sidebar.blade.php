@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <span class="brand-text font-weight-light">Lapor Polibatam</span>
+      <span class="brand-text font-weight-light">SIM HKI</span>
     </a>
 
     <!-- Sidebar -->
@@ -9,7 +9,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="asset/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('asset') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::guard('user')->user()->name }}</a>
@@ -109,6 +109,43 @@
                     <a class="nav-link {{ request()->is('data-sintua','tambah-data-sintua') ? 'active' : ''}} " href="/data-sintua">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Pengeluaran</p>
+                    </a>
+                  </li>
+                </ul>
+            </li>
+            <li class="nav-item ">
+                <a href="#" class="nav-link ">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Surat Keterangan
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a class="nav-link {{ request()->is('surat-keterangan-jemaat') ? 'active' : '' }}" href="/surat-keterangan-jemaat">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>SK Jemaat</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {{ request()->is('surat-keterangan-Pernikahan') ? 'active' : '' }}" href="/surat-keterangan-pernikahan">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>SK Nikah</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link {{ request()->is('surat-keterangan-pindah') ? 'active' : '' }} " href="/surat-keterangan-pindah">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>SK Pindah</p>
+                    </a>
+                  </li>
+                  {{--  --}}
+                  <li class="nav-item">
+                    <a class="nav-link {{ request()->is('surat-keterangan-kematian') ? 'active' : ''}} " href="/surat-keterangan-kematian">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>SK Kematian </p>
                     </a>
                   </li>
                 </ul>

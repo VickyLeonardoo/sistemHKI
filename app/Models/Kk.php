@@ -18,4 +18,8 @@ class Kk extends Model
     public function jemaat(){
         return $this->hasMany(Jemaat::class);
     }
+
+    public function kegiatan(){
+        return $this->hasMany(Kegiatan::class);
+    }
 }

@@ -12,6 +12,11 @@ use App\Http\Controllers\BphController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CetakdataController;
 use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\KehadiranController;
+use App\Http\Controllers\SuratController;
+use App\Http\Controllers\WordController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +34,9 @@ Route::post('/proses_login',[Authcontroller::class,'prosesLogin']);
 Route::get('/logout',[AuthController::class,'logout']);
 Route::get('/', function () {
     return view('login');
+});
+Route::get('/tesword', function () {
+    return view('tesword');
 });
 
 Route::group(['middleware' => ['auth:user']],function(){
@@ -49,6 +57,12 @@ Route::group(['middleware' => ['auth:user']],function(){
         Route::post('/simpan-wijk',[WijkController::class,'simpanWijk']);
         Route::post('/ubah-wijk-{id}',[WijkController::class,'ubahWijk']);
         Route::get('/data-wijk-anggota-wijk-{slug}',[WijkController::class,'viewAnggota']);
+        Route::get('/data-wijk-kegiatan-wijk-{slug}',[WijkController::class,'viewKegiatan']);
+        Route::post('/tambah-data-kegiatan',[KegiatanController::class,'simpanKegiatan']);
+        Route::get('/data-kehadiran-tanggal-{tgl}/wijk-{slug}',[KehadiranController::class,'viewKehadiran']);
+        Route::post('/ubah-data-kegiatan-{id}',[KegiatanController::class,'ubahKegiatan']);
+        Route::post('/hapus-kegiatan-kegiatan-{id}',[KegiatanController::class,'hapusKegiatan']);
+        Route::post('/tambah-data-kehadiran',[KehadiranController::class,'simpanKehadiran']);
 
         //Sintua
         Route::get('/data-sintua',[SintuaController::class,'index'])->name('dataSintua');
@@ -95,6 +109,15 @@ Route::group(['middleware' => ['auth:user']],function(){
         Route::get('/hapus-pendapatan-{id}',[KeuanganController::class,'hapusPendapatan']);
         Route::get('/pendapatan-gereja',[KeuanganController::class,'viewPendapatanGereja']);
 
+        // Surat Keterangan
+        Route::get('/surat-keterangan-jemaat',[SuratController::class,'viewSKJemaat']);
+        Route::get('/surat-keterangan-pindah',[SuratController::class,'viewSKPindah']);
+        Route::get('/surat-keterangan-pernikahan',[SuratController::class,'viewSKNikah']);
+        Route::get('/surat-keterangan-kematian',[SuratController::class,'viewSKKematian']);
+
+
+        Route::post('/surat-keterangan-jemaat-word',[WordController::class,'wordJemaat']);
+        Route::post('/surat-keterangan-pindah-satu-keluarga',[WordController::class,'wordPindahKeluarga']);
     });
 });
 

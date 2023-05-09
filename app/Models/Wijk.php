@@ -18,4 +18,8 @@ class Wijk extends Model
     public function kk(){
         return $this->hasMany(Kk::class);
     }
+
+    public function kegiatan(){
+        return $this->hasMany(Kegiatan::class);
+    }
 }
