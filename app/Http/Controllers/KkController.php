@@ -76,4 +76,9 @@ class KkController extends Controller
 
         ]);
     }
+
+    public function hapusAnggotaKk($id, $idKk){
+        Jemaat::where('kk_id',$idKk)->where('id',$id)->delete();
+        return redirect()->back()->withToastSuccess('Data Berhasil Dihapus');
+    }
 }

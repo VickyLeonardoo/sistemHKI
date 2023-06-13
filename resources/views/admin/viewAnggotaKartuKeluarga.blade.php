@@ -80,8 +80,9 @@
                             <td>  <img src="{{ asset($data->foto) }}" alt=""  width="100%" title=""></a></td>
                             {{-- <td><img src="{{ url::to($data->foto) }}" height="30px" width="30px"></td> --}}
                             <td>
-                                <a href="/edit-anggota-keluarga-{{ $data->id }}-kk-{{ $kk->id }}" class="btn btn-primary">Edit</a>
-                                <a href="/anggota-keluarga-{{ $kk->id }}" class="btn btn-info">Anggota Keluarga</a>
+                                <a href="/edit-anggota-keluarga-{{ $data->id }}-kk-{{ $kk->id }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                <a href="/hapus-anggota-keluarga-{{ $data->id }}-kk-{{ $kk->id }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+
                             </td>
                         </tr>
                         @endforeach

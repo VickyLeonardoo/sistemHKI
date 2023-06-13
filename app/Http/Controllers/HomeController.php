@@ -24,7 +24,7 @@ class HomeController extends Controller
                 ->whereDay('tglLahir', '<=', $weekEndDate->day);
                 })->count();
 
-        return view('index',[
+        return view('admin.index',[
             "title" => 'Home',
             'wijk' => Wijk::all()->count(),
             'jemaat' => Jemaat::all()->count(),

@@ -29,6 +29,8 @@ class JemaatController extends Controller
     }
 
     public function simpanJemaat(Request $request, $id){
+        $noKk = Kk::where('id',$id)->first();
+        $getKk = $noKk->nomorKk;
 
         if($files = $request->file('image')){
                 $image_name = md5(rand(1000,10000));
@@ -55,7 +57,7 @@ class JemaatController extends Controller
         ];
 
         Jemaat::create($data);
-        return redirect('/anggota-keluarga-'.$id)->withToastSuccess('Anggota Keluarga Berhasil Ditambahkan!');
+        return redirect('/anggota-kartu-keluarga-'.$getKk)->withToastSuccess('Anggota Keluarga Berhasil Ditambahkan!');
     }
 
     public function viewEdit(Request $request, $idk, $id){
@@ -88,26 +90,17 @@ class JemaatController extends Controller
     public function viewUltah(){
         $now = Carbon::now();
 
-        $weekstart = $now->startOfWeek()->format('d-M-y');
-        $weekend = $now->endOfWeek()->format('d-M-y');
-
-        $weekStartDate = $now->startOfWeek();
-        $weekEndDate = $now->endOfWeek();
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d');
+        $weekEndDate = $now->endOfWeek()->format('Y-m-d');
 
 
         return view('admin.viewJemaatUltah',[
             'title' => "Ulang Tahun Jemaat",
-            'jemaat' => Jemaat::whereMonth('tglLahir', $weekStartDate->month)->whereDay('tglLahir', '<-', $weekEndDate->day)
-                         ->orWhere(function ($query) use ($weekStartDate,$weekEndDate) {
-                         $query->whereMonth('tglLahir', '=', $weekStartDate->month)
-                         ->whereDay('tglLahir', '<=', $weekEndDate->day);
-                         })->get(),
+            'jemaat' => Jemaat::whereRaw("MONTH(tglLahir) = MONTH(CURDATE())")
+            ->whereRaw("DAY(tglLahir) BETWEEN DAY('$weekStartDate') AND DAY('$weekEndDate')")
+            ->get(),
             'sintua' => Sintua::first(),
 
         ]);
     }
-
-
-
-
 }

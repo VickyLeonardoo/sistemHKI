@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HKI | {{$title}}</title>
+  <title>AdminLTE 3 | Dashboard</title>
+
 
 
  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -60,7 +61,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('partial.sidebar')
+  @include('bph.partials.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

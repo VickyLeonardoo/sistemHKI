@@ -1,4 +1,4 @@
-@extends('partial.header')
+@extends('bph.partials.header')
 @section('content')
 <div class="content">
     <div class="container-fluid">
@@ -13,7 +13,7 @@
                           <!-- small box -->
                           <div class="small-box bg-warning">
                             <div class="inner">
-                              <h3>{{ $wijk }}</h3>
+                              {{-- <h3>{{ $wijk }}</h3> --}}
 
                               <p>Wijk</p>
                             </div>
@@ -27,7 +27,7 @@
                           <!-- small box -->
                           <div class="small-box bg-primary">
                             <div class="inner">
-                              <h3>{{ $kk }}</h3>
+                              {{-- <h3>{{ $kk }}</h3> --}}
 
                               <p>KK</p>
                             </div>
@@ -41,7 +41,7 @@
                           <!-- small box -->
                           <div class="small-box bg-info">
                             <div class="inner">
-                              <h3>{{ $jemaat }}</h3>
+                              {{-- <h3>{{ $jemaat }}</h3> --}}
 
                               <p>Jemaat</p>
                             </div>
@@ -55,7 +55,7 @@
                           <!-- small box -->
                           <div class="small-box bg-danger">
                             <div class="inner">
-                              <h3>{{ $pria }}</h3>
+                              {{-- <h3>{{ $pria }}</h3> --}}
 
                               <p>Pria</p>
                             </div>
@@ -75,7 +75,7 @@
                           <!-- small box -->
                           <div class="small-box bg-warning">
                             <div class="inner">
-                              <h3>{{ $wanita }}</h3>
+                              {{-- <h3>{{ $wanita }}</h3> --}}
 
                               <p>Wanita</p></p>
                             </div>
@@ -147,8 +147,8 @@
                                   <span class="mask bg-gradient-dark"></span>
                                   <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
                                     <h5 class="text-white font-weight-bolder mb-4 pt-2">Ulang Tahun Jemaat</h5>
-                                <h6 class="text-white" >{{ $ultah }}</h6>
-                                    <p class="text-white">Jemaat yang berulang tahun pada minggu tanggal {{ $start }} sampai tanggal {{ $end }}</p>
+                                {{-- <h6 class="text-white" >{{ $ultah }}</h6> --}}
+                                    {{-- <p class="text-white">Jemaat yang berulang tahun pada minggu tanggal {{ $start }} sampai tanggal {{ $end }}</p> --}}
                                     <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="/ulang-tahun-jemaat">
                                       Lihat Selengkapnya..
                                       <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
@@ -161,7 +161,7 @@
                                 <span class="mask bg-gradient-dark"></span>
                                 <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
                                     <h5 class="text-white font-weight-bolder mb-4 pt-2">Ulang Tahun Pernikahan</h5>
-                                    <p class="text-white">Jemaat yang berulang tahun pada minggu tanggal {{ $start }} sampai tanggal {{ $end }}.</p>
+                                    {{-- <p class="text-white">Jemaat yang berulang tahun pada minggu tanggal {{ $start }} sampai tanggal {{ $end }}.</p> --}}
                                     <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
                                     Lihat Selengkapnya..
                                     <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>

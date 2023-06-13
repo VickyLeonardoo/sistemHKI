@@ -16,7 +16,7 @@ use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KehadiranController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\WordController;
-
+use App\Http\Controllers\SidiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +39,8 @@ Route::get('/tesword', function () {
     return view('tesword');
 });
 
+Route::get('/pendaftaran-pelajar-sidi',[SidiController::class,'viewPendaftaran'])->name('viewPendaftaranSidi');
+Route::post('simpan-pendaftaran-peserta-sidi',[SidiController::class,'simpanPendaftaran']);
 Route::group(['middleware' => ['auth:user']],function(){
     Route::group(['middleware' => ['cek_login:1']],function(){
         Route::get('/home',[HomeController::class,'index']);
@@ -80,6 +82,7 @@ Route::group(['middleware' => ['auth:user']],function(){
         Route::post('/ubah-kk-{id}',[KkController::class,'ubahKk']);
         Route::get('/anggota-keluarga-{id}',[KkController::class,'viewAnggota']);
         Route::get('/anggota-kartu-keluarga-{noKk}',[KkController::class,'viewAnggotaKk']);
+        Route::get('/hapus-anggota-keluarga-{id}-kk-{idKk}',[KkController::class,'hapusAnggotaKk']);
 
         //Anggota Keluarga/Jemaat Gereja
         Route::get('/data-jemaat',[JemaatController::class,'index'])->name('dataJemaat');
@@ -118,13 +121,23 @@ Route::group(['middleware' => ['auth:user']],function(){
 
         Route::post('/surat-keterangan-jemaat-word',[WordController::class,'wordJemaat']);
         Route::post('/surat-keterangan-pindah-satu-keluarga',[WordController::class,'wordPindahKeluarga']);
+
+        //Pembelajaran Sidi
+        Route::get('/buka-pendaftaran-pembelajaran-sidi',[SidiController::class,'viewBukaPendaftaran']);
+        Route::get('/ubah-status-pendaftaran-pelajar-sidi',[SidiController::class,'viewUbahStatusPendaftaran']);
+        Route::get('/periksa-status-pendaftaran-pelajar-sidi',[SidiController::class,'viewStatusPendaftaran']);
+        Route::get('/data-pelajar-sidi',[SidiController::class,'viewTahunDataPelajarSidi']);
+        Route::get('/pendaftar-pembelajaran-sidi',[SidiController::class,'viewPendaftar']);
+        Route::get('/validasi-pendaftar-sidi-{nik}',[SidiController::class,'viewValidasi']);
+        Route::get('/konfirmasi-pendaftaran-sidi-{nik}',[SidiController::class,'konfirmasiPendaftaran']);
+        Route::get('/tolak-pendaftaran-sidi-{nik}',[SidiController::class,'tolakPendaftaran']);
+        Route::get('/data-pelajar-sidi-tahun-{tahun}',[SidiController::class,'viewDataSidiTahun']);
     });
 });
 
 Route::group(['middleware' => ['auth:user']],function(){
     Route::group(['middleware' => ['cek_login:2']],function(){
         Route::get('/bph',[BphController::class,'index']);
-
 
     });
 });
