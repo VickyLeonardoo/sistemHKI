@@ -11,7 +11,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Sintua Bertugas</label>
-                        <select name="nama" id="select-state" placeholder="Pilih Sintua...">
+                        <select name="nama" id="selects-state" class="form-control selectpicker" data-live-search="true"  placeholder="Pilih Sintua...">
                             <option value="">Pilih Sintua...</option>
                             @foreach ($sintua as $data)
                                 <option value="{{ $data->id }}">{{ $data->wijk->nama }} - {{ $data->nama }}</option>
@@ -29,7 +29,7 @@
                     <input type="hidden" name="jenissk" value="skpindah">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Nama: </label>
-                        <select name="nama" id="select-state" placeholder="Ketik NIK...">
+                        <select name="nama" id="selects-state" class="form-control selectpicker" data-live-search="true"  placeholder="Ketik NIK...">
                             <option value="">Pilih Alamat...</option>
                             @foreach ($jemaat as $data)
                                 <option value="{{ $data->id }}">{{ $data->nik }} - {{ $data->nama }}</option>
@@ -45,7 +45,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="">Masukkan Nomor KK</label>
-                            <select name="nomorKk" id="select-state" placeholder="Ketik NIK...">
+                            <select name="nomorKk" id="selects-state" class="form-control selectpicker" data-live-search="true"  placeholder="Ketik NIK...">
                                 <option value="">Pilih Nomor KK...</option>
                                 @foreach ($kk as $item)
                                     <option value="{{ $item->id }}">{{ $item->nomorKk }} - {{ $item->alamat }}</option>

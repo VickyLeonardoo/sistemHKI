@@ -35,8 +35,8 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item ">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item {{ Route::is('admin.pendeta.*','admin.wijk.*','admin.sintua.*','admin.kk.*','admin.jemaat.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ Route::is('admin.pendeta.*','admin.wijk.*','admin.sintua.*','admin.kk.*','admin.jemaat.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -45,7 +45,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('data-pendeta', 'tambah-data-pendeta') ? 'active' : '' }}"
+                            <a class="nav-link {{ Route::is('admin.pendeta.*') ? 'active' : '' }}"
                                 href="/data-pendeta">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Pendeta</p>
@@ -53,28 +53,28 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('data-wijk', 'tambah-data-wijk', 'data-wijk-anggota-wijk-') ? 'active' : '' }} "
+                            <a class="nav-link {{ Route::is('admin.wijk.*') ? 'active' : '' }} "
                                 href="/data-wijk">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Wijk</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('data-sintua', 'tambah-data-sintua') ? 'active' : '' }} "
+                            <a class="nav-link {{ Route::is('admin.sintua.*') ? 'active' : '' }} "
                                 href="/data-sintua">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Sintua</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('data-kartu-keluarga', 'tambah-data-kartu-keluarga') ? 'active' : '' }} "
+                            <a class="nav-link {{ Route::is('admin.kk.*') ? 'active' : '' }} "
                                 href="/data-kartu-keluarga">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>KK</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('data-jemaat') ? 'active' : '' }} " href="/data-jemaat">
+                            <a class="nav-link {{ Route::is('admin.jemaat.*') ? 'active' : '' }} " href="/data-jemaat">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Jemaat</p>
                             </a>
@@ -82,15 +82,14 @@
                     </ul>
                 </li>
                 <li class="nav-item ">
-                    <a href="/cetak-data" class="nav-link ">
+                    <a href="/cetak-data" class="nav-link {{ request()->is('cetak-data') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Cetak
                         </p>
                     </a>
                 </li>
-                <li
-                    class="nav-item {{ request()->is('pendaftar-pembelajaran-sidi', 'data-pelajar-sidi','buka-pendaftaran-pembelajaran-sidi') ? 'menu-open' : '' }} ">
+                <li class="nav-item {{ request()->is('pendaftar-pembelajaran-sidi', 'data-pelajar-sidi','buka-pendaftaran-pembelajaran-sidi') ? 'menu-open' : '' }} ">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -122,8 +121,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item ">
-                    <a href="#" class="nav-link ">
+                <li class="nav-item {{ request()->is('master-data-keuangan','master-data-pendapatan','master-data-pengeluaran','deposit','tambah-data-master-pendapatan','pengeluaran-gereja') ? 'menu-open' : '' }} ">
+                    <a href="#" class="nav-link {{ request()->is('master-data-keuangan','master-data-pendapatan','master-data-pengeluaran','deposit','tambah-data-master-pendapatan','pengeluaran-gereja') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Keuangan
@@ -132,7 +131,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('master-data-keuangan') ? 'active' : '' }}"
+                            <a class="nav-link {{ request()->is('master-data-keuangan','master-data-pendapatan','master-data-pengeluaran') ? 'active' : '' }}"
                                 href="/master-data-keuangan">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Master</p>
@@ -140,22 +139,22 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('data-wijk', 'tambah-data-wijk', 'data-wijk-anggota-wijk-') ? 'active' : '' }} "
-                                href="/data-wijk">
+                            <a class="nav-link {{ request()->is('deposit') ? 'active' : '' }} "
+                                href="/deposit">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Deposit</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('data-sintua', 'tambah-data-sintua') ? 'active' : '' }} "
-                                href="/data-sintua">
+                            <a class="nav-link {{ request()->is('data-sintua', 'tambah-data-sintua','pengeluaran-gereja') ? 'active' : '' }} "
+                                href="/pengeluaran-gereja">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Pengeluaran</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item {{ Route::is('sk.*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -172,7 +171,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('surat-keterangan-Pernikahan') ? 'active' : '' }}"
+                            <a class="nav-link {{ request()->is('surat-keterangan-pernikahan') ? 'active' : '' }}"
                                 href="/surat-keterangan-pernikahan">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>SK Nikah</p>

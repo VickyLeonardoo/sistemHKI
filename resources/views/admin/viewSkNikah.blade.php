@@ -9,8 +9,8 @@
                     <input type="hidden" name="jenissk" value="sknikah">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Nama Pria: </label>
-                        <select required name="pria" id="select-state" placeholder="Ketik NIK...">
-                            <option value="">Pilih Alamat...</option>
+                        <select required name="pria" id="selects-state" class="form-control selectpicker" data-live-search="true" placeholder="Ketik NIK...">
+                            <option value="">Pilih Jemaat...</option>
                             @foreach ($jemaatPria as $data)
                                 <option value="{{ $data->id }}">{{ $data->nik }} - {{ $data->nama }}</option>
                             @endforeach
@@ -18,8 +18,8 @@
                       </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Nama Wanita: </label>
-                        <select required name="wanita" id="select-state" placeholder="Ketik NIK...">
-                            <option value="">Pilih Alamat...</option>
+                        <select required name="wanita" id="selects-state" class="form-control selectpicker" data-live-search="true"  placeholder="Ketik NIK...">
+                            <option value="">Pilih Jemaat...</option>
                             @foreach ($jemaatWanita as $data)
                                 <option value="{{ $data->id }}">{{ $data->nik }} - {{ $data->nama }}</option>
                             @endforeach

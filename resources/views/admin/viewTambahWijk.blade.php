@@ -10,7 +10,10 @@
                 @csrf
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Nama:</label>
-                  <input type="text" name="nama" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nama">
+                  <input type="text" name="nama" class="form-control {{ $errors->has('nama') ? 'is-invalid':'' }}" id="exampleFormControlInput1" placeholder="Masukkan Nama">
+                    @error('nama')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="form-group">

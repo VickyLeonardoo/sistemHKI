@@ -11,6 +11,9 @@
                             <div class="form-group">
                                 <label for="">Nama</label>
                                 <input type="text" name="nama" class="form-control" value="{{ $sintua->nama }}">
+                                @error('nama')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">Wijk</label>
@@ -21,6 +24,9 @@
                                         <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                     @endforeach
                                 </select>
+                                @error('wijk_id')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="simpan" class="btn btn-primary form-control">

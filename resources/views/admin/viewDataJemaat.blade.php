@@ -21,7 +21,7 @@
                                 <th>Pekerjaan</th>
                                 <th>Nomor HP</th>
                                 <th>Sidi</th>
-                                <th>Foto</th>
+                                {{-- <th>Foto</th> --}}
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -39,7 +39,7 @@
                                 <td>{{ $data->pekerjaan }}</td>
                                 <td>{{ $data->nomorHp }}</td>
                                 <td>{{ $data->sidi }}</td>
-                                <td>  <img src="{{ asset($data->foto) }}" alt=""  width="100%" title=""></a></td>
+                                {{-- <td>  <img src="{{ asset($data->foto) }}" alt=""  width="100%"  title=""></a></td> --}}
                                 {{-- <td><img src="{{ url::to($data->foto) }}" height="30px" width="30px"></td> --}}
                                 <td>
                                     {{-- <a href="/edit-anggota-keluarga-{{ $data->id }}-kk-{{ $kk->id }}" class="btn btn-primary">Edit</a> --}}
@@ -60,7 +60,7 @@
                                 <th>Status</th>
                                 <th>Nomor HP</th>
                                 <th>Sidi</th>
-                                <th>Foto</th>
+                                {{-- <th>Foto</th> --}}
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>

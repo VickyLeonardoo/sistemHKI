@@ -8,6 +8,9 @@ use App\Models\Kk;
 use Carbon\Carbon;
 use App\Models\Jemaat;
 use App\Models\Sintua;
+use App\Models\Deposit;
+use App\Models\Pembayaran;
+use Auth;
 class HomeController extends Controller
 {
     public function index(){
@@ -23,19 +26,41 @@ class HomeController extends Controller
                  $query->whereMonth('tglLahir', '=', $weekStartDate->month)
                 ->whereDay('tglLahir', '<=', $weekEndDate->day);
                 })->count();
+        $totalDeposit = Deposit::sum('nominalPendapatan');
+        $totalPembayaran = Pembayaran::sum('nominalPengeluaran');
+        $totalNominal = $totalDeposit - $totalPembayaran;
+        if (Auth::guard('user')->user()->role == 1) {
+            return view('admin.index',[
+                "title" => 'Home',
+                'wijk' => Wijk::all()->count(),
+                'jemaat' => Jemaat::all()->count(),
+                'kk' => Kk::all()->count(),
+                'pria' => Jemaat::where('jenisKelamin','Pria')->count(),
+                'wanita' => Jemaat::where('jenisKelamin','Wanita')->count(),
+                'start' => $weekstart,
+                'end' => $weekend,
+                'ultah' => $ultah,
+                'sintua' => Sintua::first(),
+                'totalNominal' => $totalNominal,
 
-        return view('admin.index',[
-            "title" => 'Home',
-            'wijk' => Wijk::all()->count(),
-            'jemaat' => Jemaat::all()->count(),
-            'kk' => Kk::all()->count(),
-            'pria' => Jemaat::where('jenisKelamin','Pria')->count(),
-            'wanita' => Jemaat::where('jenisKelamin','Wanita')->count(),
-            'start' => $weekstart,
-            'end' => $weekend,
-            'ultah' => $ultah,
-            'sintua' => Sintua::first(),
+            ]);
+        }else{
+            return view('bph.index',[
+                "title" => 'BPH - Home',
+                'wijk' => Wijk::all()->count(),
+                'jemaat' => Jemaat::all()->count(),
+                'kk' => Kk::all()->count(),
+                'pria' => Jemaat::where('jenisKelamin','Pria')->count(),
+                'wanita' => Jemaat::where('jenisKelamin','Wanita')->count(),
+                'start' => $weekstart,
+                'end' => $weekend,
+                'ultah' => $ultah,
+                'sintua' => Sintua::first(),
+                'totalNominal' => $totalNominal,
 
-        ]);
+            ]);
+        }
+
+
     }
 }

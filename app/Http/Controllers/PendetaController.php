@@ -2,36 +2,56 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Pendeta;
-use Illuminate\Support\Facades\Redis;
 use PDO;
 use App\Models\Sintua;
+use App\Models\Pendeta;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
 class PendetaController extends Controller
+
 {
 
     public function index(){
-        return view('admin.viewPendeta',[
-            "title" => "Data Pendeta",
-            "pendeta" => Pendeta::all(),
-
-        ]);
+        if (Auth::guard('user')->user()->role == 1){
+            return view('admin.viewPendeta',[
+                "title" => "Data Pendeta",
+                "pendeta" => Pendeta::all(),
+            ]);
+        }else{
+            return view('bph.viewPendeta',[
+                "title" => "Data Pendeta",
+                "pendeta" => Pendeta::all(),
+            ]);
+        }
     }
 
     public function viewTambah(){
         $data = [
             'slug' => 'REs'
         ];
-
         return view('admin.viewTambahPendeta',[
             "title" => 'Tambah Data Pendeta',
             'pendeta' => Pendeta::first(),
             'data' => ['slug' => 'data'],
-
         ]);
     }
 
     public function simpanPendeta(Request $request){
+        $request->validate([
+            'nama' => 'required',
+            'tempatLahir' => 'required',
+            'tglLahir' => 'required',
+            'tglMasuk' => 'required',
+            'status' => 'required'
+        ],[
+            'nama.required' => 'Nama Wajib Diisi',
+            'tempatLahir.required' => 'Tempat Lahir Wajib Diisi',
+            'tglLahir.required' => 'Tanggal Lahir Wajib Diisi',
+            'tglMasuk.required' => 'Tanggal Masuk Wajib Diisi',
+            'status.required' => 'Status Wajib Diisi',
+        ]);
+
         $str = strtolower(Request()->status.'-'.Request()->nama);
         $data = [
             "nama" => Request()->nama,
@@ -44,7 +64,7 @@ class PendetaController extends Controller
         ];
 
         Pendeta::create($data);
-        return redirect()->route('dataPendeta')->withToastSuccess('Data Pendeta Berhasil Ditambahkan!');
+        return redirect()->route('admin.pendeta.home')->withToastSuccess('Data Pendeta Berhasil Ditambahkan!');
     }
 
     public function viewEdit($slug){
@@ -79,7 +99,7 @@ class PendetaController extends Controller
         ];
 
         Pendeta::where('id',$id)->update($data);
-        return redirect()->route('dataPendeta')->withToastSuccess('Data Pendeta Berhasil Diubah!');
+        return redirect()->route('admin.pendeta.home')->withToastSuccess('Data Pendeta Berhasil Diubah!');
     }
 
     public function hapusPendeta($id){

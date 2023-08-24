@@ -48,7 +48,7 @@
 
 {{-- Modal Tambah --}}
 <div class="modal fade" id="modal-danger">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Tambah Data</h4>
@@ -68,16 +68,27 @@
             </div>
             <div class="form-group">
                 <label for="">Alamat Kegiatan</label>
-                <select name="kk" id="select-state" placeholder="Pilih Alamat...">
+                <select name="kk" id="selects-state" class="form-control selectpicker" placeholder="Pilih Alamat...">
                     <option value="">Pilih Alamat...</option>
                     @foreach ($kk as $kks)
-                        <option value="{{ $kks->id }}">{{ $kks->alamat }}</option>
+                        @php
+                            $kepalaKeluarga = $kks->jemaat->where('statusKeluarga', 'Kepala Keluarga')->first();
+                        @endphp
+                        <option value="{{ $kks->id }}">
+                            {{ $kks->alamat }} |
+                            @if($kepalaKeluarga)
+                                {{ $kepalaKeluarga->nama }} (Kepala Keluarga)
+                            @else
+                                Tidak Ada Kepala Keluarga
+                            @endif
+                        </option>
                     @endforeach
+
                   </select>
             </div>
             <div class="form-group">
                 <label for="">Sintua Bertugas</label>
-                <select name="sintua" id="select-state" placeholder="Pilih Sintua...">
+                <select name="sintua" id="selects-state" class="form-control selectpicker" data-live-search="true" placeholder="Pilih Sintua...">
                     <option value="">Pilih Sintua...</option>
                     @foreach ($sintua as $sintuas)
                         <option value="{{ $sintuas->id }}">{{ $sintuas->nama }}</option>
@@ -100,7 +111,7 @@
 {{-- Modal Ubah --}}
 @foreach ($kegiatan as $data)
 <div class="modal fade" id="modal-ubah{{ $data->id }}">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Ubah Data</h4>
@@ -119,16 +130,26 @@
             </div>
             <div class="form-group">
                 <label for="">Alamat Kegiatan</label>
-                <select name="kk" id="select-state" placeholder="Pilih Alamat...">
+                <select name="kk" id="selects-state" class="form-control selectpicker" placeholder="Pilih Alamat...">
                     <option value="">Pilih Alamat...</option>
                     @foreach ($kk as $kks)
-                        <option value="{{ $kks->id }}">{{ $kks->alamat }}</option>
+                        @php
+                            $kepalaKeluarga = $kks->jemaat->where('statusKeluarga', 'Kepala Keluarga')->first();
+                        @endphp
+                        <option value="{{ $kks->id }}">
+                            {{ $kks->alamat }} |
+                            @if($kepalaKeluarga)
+                                {{ $kepalaKeluarga->nama }} (Kepala Keluarga)
+                            @else
+                                Tidak Ada Kepala Keluarga
+                            @endif
+                        </option>
                     @endforeach
                   </select>
             </div>
             <div class="form-group">
                 <label for="">Sintua Bertugas</label>
-                <select name="sintua" id="select-state" placeholder="Pilih Sintua...">
+                <select name="sintua" id="selects-state" class="form-control selectpicker" placeholder="Pilih Sintua...">
                     <option value="">Pilih Sintua...</option>
                     @foreach ($sintua as $sintuas)
                         <option value="{{ $sintuas->id }}">{{ $sintuas->nama }}</option>

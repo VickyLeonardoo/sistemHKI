@@ -9,8 +9,9 @@
                     <input type="hidden" name="jenissk" value="skjemaat">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Nama: </label>
-                        <select name="nama" id="select-state" placeholder="Ketik NIK...">
-                            <option value="">Pilih Alamat...</option>
+                        <select name="nama" id="selects-state" class="form-control selectpicker"
+                                    data-live-search="true">
+                            <option value="">Pilih Nama...</option>
                             @foreach ($jemaat as $data)
                                 <option value="{{ $data->id }}">{{ $data->nik }} - {{ $data->nama }}</option>
                             @endforeach

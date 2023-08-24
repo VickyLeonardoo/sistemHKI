@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('status_pendaftarans', function (Blueprint $table) {
             $table->id();
             $table->year('tahunSidi');
-            $table->date('tanggalPenutupanPendaftaran');
             $table->enum('status', ['open', 'close'])->default('open');
             $table->timestamps();
         });

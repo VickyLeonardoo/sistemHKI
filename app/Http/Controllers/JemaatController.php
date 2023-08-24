@@ -2,21 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Kk;
-use App\Models\Jemaat;
 use App\Url;
+use App\Models\Kk;
 use Carbon\Carbon;
+use App\Models\Jemaat;
 use App\Models\Sintua;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class JemaatController extends Controller
 {
     public function index(){
-        return view('admin.viewDataJemaat',[
-            "title" => "Data Jemaat",
-            "jemaat" => Jemaat::all(),
-            'sintua' => Sintua::first(),
+        if (Auth::guard('user')->user()->role == 1) {
+            return view('admin.viewDataJemaat',[
+                "title" => "Data Jemaat",
+                "jemaat" => Jemaat::all(),
+                'sintua' => Sintua::first(),
 
-        ]);
+            ]);
+        }else{
+            return view('bph.viewDataJemaat',[
+                "title" => "Data Jemaat",
+                "jemaat" => Jemaat::all(),
+                'sintua' => Sintua::first(),
+
+            ]);
+        }
+
     }
 
     public function viewTambah($id){
@@ -29,8 +40,31 @@ class JemaatController extends Controller
     }
 
     public function simpanJemaat(Request $request, $id){
+        $request->validate([
+            'nik' => 'required',
+            'nama' => 'required',
+            'tempatLahir' => 'required',
+            'tglLahir' => 'required',
+            'jenisKelamin' => 'required',
+            'pekerjaan' => 'required',
+            'statusKeluarga' => 'required',
+            'noHp' => 'required',
+            'sidi' => 'required',
+        ],[
+            'nik.required' => 'NIK Wajib Diisi',
+            'nama.required' => 'Nama Wajib Diisi',
+            'tempatLahir.required' => 'Tempat LahirWajib Diisi',
+            'tglLahir.required' => 'Tanggal Lahir Wajib Diisi',
+            'jenisKelamin.required' => 'Jenis Kelamin Wajib Diisi',
+            'pekerjaan.required' => 'PekerjaanWajib Diisi',
+            'statusKeluarga.required' => 'Status Wajib Diisi',
+            'noHp.required' => 'Nomor HP Wajib Diisi',
+            'sidi.required' => 'Sidi Wajib Diisi',
+        ]);
         $noKk = Kk::where('id',$id)->first();
         $getKk = $noKk->nomorKk;
+
+        $image = null;
 
         if($files = $request->file('image')){
                 $image_name = md5(rand(1000,10000));

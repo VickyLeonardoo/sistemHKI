@@ -77,7 +77,7 @@
                             <td>{{ $data->pekerjaan }}</td>
                             <td>{{ $data->nomorHp }}</td>
                             <td>{{ $data->sidi }}</td>
-                            <td>  <img src="{{ asset($data->foto) }}" alt=""  width="100%" title=""></a></td>
+                            <td>  <img src="{{ asset($data->foto) }}" alt=""  width="100%" height="60px" title=""></a></td>
                             {{-- <td><img src="{{ url::to($data->foto) }}" height="30px" width="30px"></td> --}}
                             <td>
                                 <a href="/edit-anggota-keluarga-{{ $data->id }}-kk-{{ $kk->id }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>

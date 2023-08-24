@@ -22,7 +22,11 @@
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="{{ asset('asset') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
   <link rel="stylesheet" href="{{ asset('asset') }}/dist/css/adminlte.min.css">
+
+
+</head>
 <body class="hold-transition sidebar-mini layout-fixed">
 
 
@@ -100,7 +104,7 @@
 <!-- ./wrapper -->
 <script>
  $(document).ready(function () {
-      $('select').selectize({
+      $('select1').selectize({
           sortField: 'text'
       });
   });
@@ -291,6 +295,8 @@ new Chart(ctx2, {
 <!-- JQVMap -->
 <!-- AdminLTE App -->
 <script src="{{ asset('asset') }}/dist/js/adminlte.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
 <!-- AdminLTE for demo purposes -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 </body>

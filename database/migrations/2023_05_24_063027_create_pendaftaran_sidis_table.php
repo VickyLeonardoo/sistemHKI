@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pendaftaran_sidis', function (Blueprint $table) {
             $table->id();
             $table->string('nik');
-            $table->string('jemaat_id')->nullable();
+            $table->foreignId('jemaat_id')->references('id')->on('jemaats')->nullable();
             $table->foreignId('status_pendaftaran_id');
             $table->integer('status')->default('1');
             $table->timestamps();

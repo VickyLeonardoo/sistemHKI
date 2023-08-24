@@ -13,4 +13,8 @@ class PendaftaranSidi extends Model
     public function status_pendaftaran(){
         return $this->belongsTo(StatusPendaftaran::class);
     }
+
+    public function jemaat(){
+        return $this->belongsTo(Jemaat::class);
+    }
 }

@@ -4,6 +4,26 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+                    <div class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="small-box bg-primary">
+                                        <div class="inner">
+                                            <h3>Total Saldo Akhir Gereja @currency($totalNominal)</h3>
+                                            <p>@currency($totalNominal)</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa-solid fa-rupiah-sign"></i>
+                                        </div>
+                                        <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
                     <section class="content">
                         <div class="container-fluid">
                             <!-- Small boxes (Stat box) -->
@@ -151,7 +171,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="small-box bg-secondary">
+                                    <div class="small-box bg-primary">
                                         <div class="inner">
                                             <h3>Ulang Tahun Jemaat</h3>
                                             <p>Jemaat yang berulang tahun pada minggu tanggal {{ $start }} sampai
@@ -165,7 +185,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="small-box bg-secondary">
+                                    <div class="small-box bg-info">
                                         <div class="inner">
                                             <h3>Ulang Tahun Pernikahan</h3>
                                             <p>Jemaat yang berulang tahun pada minggu tanggal {{ $start }} sampai

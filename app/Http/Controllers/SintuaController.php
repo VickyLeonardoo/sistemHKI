@@ -2,24 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Sintua;
 use App\Models\Wijk;
+use App\Models\Sintua;
 use App\Models\Pendeta;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class SintuaController extends Controller
 {
     public function index(){
-        return view('admin.viewSintua',[
-            "title" => 'Data Sintua',
-            "sintuas" => Sintua::all(),
-            "wijk" => Wijk::all(),
-            'sintua' => Sintua::first(),
-            'pendeta' => Pendeta::first(),
-        ]);
+        if (Auth::guard('user')->user()->role == 1){
+            return view('admin.viewSintua',[
+                "title" => 'Data Sintua',
+                "sintuas" => Sintua::all(),
+                "wijk" => Wijk::all(),
+                'sintua' => Sintua::first(),
+                'pendeta' => Pendeta::first(),
+            ]);
+        }else{
+            return view('bph.viewSintua',[
+                "title" => 'Data Sintua',
+                "sintuas" => Sintua::all(),
+                "wijk" => Wijk::all(),
+                'sintua' => Sintua::first(),
+                'pendeta' => Pendeta::first(),
+            ]);
+        }
+
     }
 
     public function viewTambah(){
-
 
         return view('admin.viewTambahSintua',[
             "title" => 'Tambah Data Sintua',
@@ -28,7 +39,17 @@ class SintuaController extends Controller
         ]);
     }
 
-    public function simpanSintua(){
+    public function simpanSintua(Request $request){
+        $request->validate([
+            'nama' => 'required',
+            'wijk' => 'required',
+            'tglMulai' => 'required',
+        ],[
+            'nama.required' => 'Nama Wajib Diisi',
+            'wijk.required' => 'Wijk Wajib Diisi',
+            'tglMulai.required' => 'Tanggal Wajib Diisi'
+        ]);
+
         $wijkName = Wijk::where('id',Request()->wijk)->first();
         $str = strtolower(Request()->nama.'-'.'wijk'.'-'.$wijkName->nama);
         $data = [
@@ -40,7 +61,7 @@ class SintuaController extends Controller
         ];
 
         Sintua::create($data);
-        return redirect()->route('dataSintua')->withToastSuccess('Data Sintua Berhasil Ditambahkan!');
+        return redirect()->route('admin.sintua.home')->withToastSuccess('Data Sintua Berhasil Ditambahkan!');
     }
 
     public function editSintua($slug){
@@ -56,6 +77,14 @@ class SintuaController extends Controller
     }
 
     public function ubahSintua(Request $request, $id){
+        $request->validate([
+            'nama' => 'required',
+            'wijk' => 'required',
+        ],[
+            'nama.required' => 'Nama Wajib Diisi',
+            'wijk.required' => 'Wijk Wajib Diisi',
+        ]);
+
         $wijkName = Wijk::where('id',Request()->wijk_id)->first();
         $str = strtolower(Request()->nama.'-'.'wijk'.'-'.$wijkName->nama);
 

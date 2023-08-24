@@ -10,19 +10,31 @@
                 @csrf
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Nomor KK</label>
-                  <input type="text" name="nomor" class="form-control" id="exampleFormControlInput1" value="{{ $kk->nomorKk }}">
+                  <input type="text" name="nomor" class="form-control {{ $errors->has('nomor') ? 'is-invalid':'' }}" id="exampleFormControlInput1" value="{{ $kk->nomorKk }}">
+                @error('nomor')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Alamat Lengkap</label>
-                    <input type="text" name="alamat" class="form-control" id="exampleFormControlInput1" value="{{ $kk->alamat }}">
+                    <input type="text" name="alamat" class="form-control {{ $errors->has('alamat') ? 'is-invalid':'' }}" id="exampleFormControlInput1" value="{{ $kk->alamat }}">
+                @error('alamat')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Kelurahan</label>
-                    <input type="text" name="kelurahan" class="form-control" id="exampleFormControlInput1" value="{{ $kk->kelurahan }}">
+                    <input type="text" name="kelurahan" class="form-control {{ $errors->has('kelurahan') ? 'is-invalid':'' }}" id="exampleFormControlInput1" value="{{ $kk->kelurahan }}">
+                @error('kelurahan')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Kecamatan</label>
-                    <input type="text" name="kecamatan" class="form-control" id="exampleFormControlInput1" value="{{ $kk->kecamatan }}">
+                    <input type="text" name="kecamatan" class="form-control {{ $errors->has('kecamatan') ? 'is-invalid':'' }}" id="exampleFormControlInput1" value="{{ $kk->kecamatan }}">
+                @error('kecamatan')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
                 </div>
                   <div class="form-group">
                     <label for="exampleFormControlInput1">Wijk</label>

@@ -9,9 +9,12 @@ use App\Models\PendaftaranSidi;
 use App\Models\Jemaat;
 class SidiController extends Controller
 {
-    public function viewPendaftar(){
+    public function viewPendaftarPelajar(){
         $tahun = Carbon::now()->year;
         $idTahun = StatusPendaftaran::where('tahunSidi', $tahun)->first();
+        if ($idTahun == '') {
+            return redirect()->back()->withToastError('Belum ada data pelajar sidi');
+        }
         $id = $idTahun->id;
         return view('sidi.viewPendaftar',[
             'title' => 'Pendaftar Pelajar Sidi',
@@ -45,9 +48,11 @@ class SidiController extends Controller
             // 'nik.digits' => 'NIK Minimal 16 Digit Angka'
         ]);
 
-
+        $jemaat = Jemaat::where('nik',$request->nik)->first();
+        $idJemaat = $jemaat->id;
         $data = [
             'nik' => Request()->nik,
+            'jemaat_id' => $idJemaat,
             'status_pendaftaran_id' => Request()->idStatus
         ];
 
@@ -92,10 +97,11 @@ class SidiController extends Controller
     public function viewDataSidiTahun($tahun){
         $idTahun = StatusPendaftaran::where('tahunSidi',$tahun)->first();
         $id = $idTahun->id;
+        // return PendaftaranSidi::where('status_pendaftaran_id',$id)->where('status','2')->get();
 
         return view('sidi.viewPelajarSidi',[
             'title' => 'Pelajar Sidi Tahun'.$tahun,
-            'pelajar' => PendaftaranSidi::where('status_pendaftaran_id',$id)->where('status','2'),
+            'pelajar' => PendaftaranSidi::where('status_pendaftaran_id',$id)->where('status','2')->get(),
         ]);
     }
 
@@ -120,6 +126,17 @@ class SidiController extends Controller
             'pendaftaran' => StatusPendaftaran::where('tahunSidi',$tahun)->first(),
             'tahun' => $idTahun,
         ]);
+    }
+
+    public function simpanPendaftaranPelajarSidi(Request $request){
+        $tahun = Carbon::now()->year;
+        $data = [
+            'tahunSidi' => $tahun,
+            'status' => 'open',
+        ];
+        StatusPendaftaran::create($data);
+        return redirect()->back()->withToastSuccess('Pendaftaran Berhasil Dibuka');
+
     }
 
     public function viewStatusPendaftaran(){
