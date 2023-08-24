@@ -2,9 +2,9 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
-        <a href="/tambah-data-sintua" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a><br><br>
         <div class="row">
             <div class="col-md-12">
+                <a href="/tambah-data-sintua" class="btn btn-info">Tambah</a><br><br>
                 <div class="table-responsive p-0">
                     <table id="example" class="display" style="width:100%">
                         <thead>

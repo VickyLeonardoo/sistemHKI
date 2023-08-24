@@ -11,4 +11,8 @@ class Pendapatan extends Model
 
     protected $guarded = ['id'];
 
+    public function deposit(){
+        return $this->hasMany(Deposit::class);
+    }
+
 }

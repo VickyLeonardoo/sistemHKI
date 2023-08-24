@@ -17,8 +17,8 @@
                           </select>
                       </div>
                       <div class="form-group">
-                        <label for="">Keperluan</label>
-                        <input type="text" class="form-control" name="keperluan" placeholder="Masukkan Keperluan...">
+                        <label for="">Tanggal Meninggal:</label>
+                        <input type="date" class="form-control" name="tglMeninggal" placeholder="Masukkan Tanggal...">
                       </div>
                       <input type="submit" class="btn btn-primary form-control" value="Cetak">
                 </form>

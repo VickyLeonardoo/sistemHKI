@@ -14,4 +14,8 @@ class Jemaat extends Model
     public function kk(){
         return $this->belongsTo(Kk::class);
     }
+
+    public function pendaftaran(){
+        return $this->hasOne(PendaftaranSidi::class);
+    }
 }

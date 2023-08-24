@@ -22,7 +22,7 @@
                 <span class="mask bg-gradient-dark"></span>
                 <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
                   <h5 class="text-white font-weight-bolder mb-4 pt-2">Data Pengeluaran</h5>
-                  <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="/cetak-data-wijk">
+                  <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="/master-data-pengeluaran">
                     Cetak
                     <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
                   </a>

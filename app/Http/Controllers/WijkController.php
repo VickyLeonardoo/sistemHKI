@@ -2,19 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kk;
+use App\Models\Wijk;
+use App\Models\Sintua;
 use App\Models\Kegiatan;
 use Illuminate\Http\Request;
-use App\Models\Wijk;
-use App\Models\Kk;
-use App\Models\Sintua;
+use Illuminate\Support\Facades\Auth;
 class WijkController extends Controller
 {
     public function index(){
-        return view('admin.viewWijk',[
-            "title" => 'Data Wijk',
-            "wijk" => Wijk::all(),
+        if (Auth::guard('user')->user()->role == 1){
+            return view('admin.viewWijk',[
+                "title" => 'Data Wijk',
+                "wijk" => Wijk::all(),
 
-        ]);
+            ]);
+        }else{
+            return view('bph.viewWijk',[
+                "title" => 'Data Wijk',
+                "wijk" => Wijk::all(),
+
+            ]);
+        }
+
     }
 
     public function viewTambah(){
@@ -25,6 +35,11 @@ class WijkController extends Controller
     }
 
     public function simpanWijk(Request $request){
+        $request->validate([
+            'nama' => 'required',
+        ],[
+            'nama.required' => 'Nama Wajib Diisi',
+        ]);
         $str = strtolower(Request()->nama);
         $data = [
             'nama' => Request()->nama,
@@ -32,10 +47,16 @@ class WijkController extends Controller
         ];
 
         Wijk::create($data);
-        return redirect()->route('dataWijk')->withToastSuccess('Wijk Berhasil Ditambahkan!');
+        return redirect()->route('admin.wijk.home')->withToastSuccess('Wijk Berhasil Ditambahkan!');
     }
 
     public function ubahWijk(Request $request, $id){
+        $request->validate([
+            'nama' => 'required',
+        ],[
+            'nama' => 'Nama Wajib Diisi'
+        ]);
+
         $str = strtolower(Request()->nama);
 
         $data = [
@@ -44,7 +65,7 @@ class WijkController extends Controller
 
         ];
         Wijk::where('id',$id)->update($data);
-        return redirect()->route('dataWijk')->withToastSuccess('Wijk Berhasil Diubah!');
+        return redirect()->route('admin.wijk.home')->withToastSuccess('Wijk Berhasil Diubah!');
     }
 
     public function viewAnggota($slug){

@@ -2,21 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Kk;
-use App\Models\Jemaat;
 use App\Url;
+use App\Models\Kk;
 use Carbon\Carbon;
+use App\Models\Jemaat;
 use App\Models\Sintua;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class JemaatController extends Controller
 {
     public function index(){
-        return view('admin.viewDataJemaat',[
-            "title" => "Data Jemaat",
-            "jemaat" => Jemaat::all(),
-            'sintua' => Sintua::first(),
+        if (Auth::guard('user')->user()->role == 1) {
+            return view('admin.viewDataJemaat',[
+                "title" => "Data Jemaat",
+                "jemaat" => Jemaat::all(),
+                'sintua' => Sintua::first(),
 
-        ]);
+            ]);
+        }else{
+            return view('bph.viewDataJemaat',[
+                "title" => "Data Jemaat",
+                "jemaat" => Jemaat::all(),
+                'sintua' => Sintua::first(),
+
+            ]);
+        }
+
     }
 
     public function viewTambah($id){
@@ -29,6 +40,31 @@ class JemaatController extends Controller
     }
 
     public function simpanJemaat(Request $request, $id){
+        $request->validate([
+            'nik' => 'required',
+            'nama' => 'required',
+            'tempatLahir' => 'required',
+            'tglLahir' => 'required',
+            'jenisKelamin' => 'required',
+            'pekerjaan' => 'required',
+            'statusKeluarga' => 'required',
+            'noHp' => 'required',
+            'sidi' => 'required',
+        ],[
+            'nik.required' => 'NIK Wajib Diisi',
+            'nama.required' => 'Nama Wajib Diisi',
+            'tempatLahir.required' => 'Tempat LahirWajib Diisi',
+            'tglLahir.required' => 'Tanggal Lahir Wajib Diisi',
+            'jenisKelamin.required' => 'Jenis Kelamin Wajib Diisi',
+            'pekerjaan.required' => 'PekerjaanWajib Diisi',
+            'statusKeluarga.required' => 'Status Wajib Diisi',
+            'noHp.required' => 'Nomor HP Wajib Diisi',
+            'sidi.required' => 'Sidi Wajib Diisi',
+        ]);
+        $noKk = Kk::where('id',$id)->first();
+        $getKk = $noKk->nomorKk;
+
+        $image = null;
 
         if($files = $request->file('image')){
                 $image_name = md5(rand(1000,10000));
@@ -55,7 +91,7 @@ class JemaatController extends Controller
         ];
 
         Jemaat::create($data);
-        return redirect('/anggota-keluarga-'.$id)->withToastSuccess('Anggota Keluarga Berhasil Ditambahkan!');
+        return redirect('/anggota-kartu-keluarga-'.$getKk)->withToastSuccess('Anggota Keluarga Berhasil Ditambahkan!');
     }
 
     public function viewEdit(Request $request, $idk, $id){
@@ -88,26 +124,17 @@ class JemaatController extends Controller
     public function viewUltah(){
         $now = Carbon::now();
 
-        $weekstart = $now->startOfWeek()->format('d-M-y');
-        $weekend = $now->endOfWeek()->format('d-M-y');
-
-        $weekStartDate = $now->startOfWeek();
-        $weekEndDate = $now->endOfWeek();
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d');
+        $weekEndDate = $now->endOfWeek()->format('Y-m-d');
 
 
         return view('admin.viewJemaatUltah',[
             'title' => "Ulang Tahun Jemaat",
-            'jemaat' => Jemaat::whereMonth('tglLahir', $weekStartDate->month)->whereDay('tglLahir', '<-', $weekEndDate->day)
-                         ->orWhere(function ($query) use ($weekStartDate,$weekEndDate) {
-                         $query->whereMonth('tglLahir', '=', $weekStartDate->month)
-                         ->whereDay('tglLahir', '<=', $weekEndDate->day);
-                         })->get(),
+            'jemaat' => Jemaat::whereRaw("MONTH(tglLahir) = MONTH(CURDATE())")
+            ->whereRaw("DAY(tglLahir) BETWEEN DAY('$weekStartDate') AND DAY('$weekEndDate')")
+            ->get(),
             'sintua' => Sintua::first(),
 
         ]);
     }
-
-
-
-
 }

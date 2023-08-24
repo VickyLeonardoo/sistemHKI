@@ -9,7 +9,7 @@ use App\Models\Wijk;
 class BphController extends Controller
 {
     public function index(){
-        return view('index',[
+        return view('bph.index',[
             "title" => 'Home',
             'wijk' => Wijk::all()->count(),
             'jemaat' => Jemaat::all()->count(),

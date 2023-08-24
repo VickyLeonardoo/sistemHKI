@@ -23,7 +23,7 @@
                                 <td>{{ $data->nama }}</td>
                                 <td>{{ $data->tglLahir}}</td>
                                 <td>{{ $data->status}}</td>
-                                <td>{{ $data->tglMasuk}}</td>
+                                <td>{{ \Carbon\Carbon::parse($data->tglMasuk)->isoFormat('D MMMM Y')}}</td>
                                 <td>{{ $data->foto}}</td>
                                 <td>
                                     <a href="edit-data-{{$data->slug}}" class="btn btn-info">Edit</a>

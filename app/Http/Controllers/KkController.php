@@ -2,20 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-Use App\Models\Kk;
 use App\Models\Wijk;
+Use App\Models\Kk;
 use App\Models\Jemaat;
 use App\Models\Sintua;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class KkController extends Controller
 {
     public function index(){
-        return view('admin.viewKk',[
-            "title" => "Data Kartu Keluarga",
-            "kk" => Kk::all(),
-            'sintua' => Sintua::first(),
+        if (Auth::guard('user')->user()->role == 1) {
+            return view('admin.viewKk',[
+                "title" => "Data Kartu Keluarga",
+                "kk" => Kk::all(),
+                'sintua' => Sintua::first(),
 
-        ]);
+            ]);
+        }else{
+            return view('bph.viewKk',[
+                "title" => "Data Kartu Keluarga",
+                "kk" => Kk::all(),
+                'sintua' => Sintua::first(),
+
+            ]);
+        }
+
     }
 
     public function viewTambah(Request $request){
@@ -28,6 +39,21 @@ class KkController extends Controller
     }
 
     public function simpanKk(Request $request){
+        $request->validate([
+            'nomor' => 'required',
+            'alamat' => 'required',
+            'kecamatan' => 'required',
+            'kelurahan' => 'required',
+            'wijk_id' => 'required',
+            'statusRumah' => 'required',
+        ],[
+            'nomor.required' => 'Nomor Kk Wajib Diisi',
+            'alamat.required' => 'AlamatWajib Diisi',
+            'kecamatan.required' => 'KecamatanWajib Diisi',
+            'kelurahan.required' => 'KelurahanWajib Diisi',
+            'wijk_id.required' => 'Wijk Wajib Diisi',
+            'statusRumah.required' => 'Status Wajib Diisi',
+        ]);
         $data = [
             'nomorKk' => Request()->nomor,
             'alamat' => Request()->alamat,
@@ -38,7 +64,7 @@ class KkController extends Controller
         ];
 
         Kk::create($data);
-        return redirect()->route('dataKk')->withToastSuccess('Data KK Berhasil Ditambahkan!');
+        return redirect()->route('admin.kk.home')->withToastSuccess('Data KK Berhasil Ditambahkan!');
     }
 
     public function viewEdit($id){
@@ -52,6 +78,22 @@ class KkController extends Controller
     }
 
     public function ubahKk(Request $request, $id){
+        $request->validate([
+            'nomor' => 'required',
+            'alamat' => 'required',
+            'kecamatan' => 'required',
+            'kelurahan' => 'required',
+            'wijk_id' => 'required',
+            'statusRumah' => 'required',
+        ],[
+            'nomor.required' => 'Nomor Kk Wajib Diisi',
+            'alamat.required' => 'AlamatWajib Diisi',
+            'kecamatan.required' => 'KecamatanWajib Diisi',
+            'kelurahan.required' => 'KelurahanWajib Diisi',
+            'wijk_id.required' => 'Wijk Wajib Diisi',
+            'statusRumah.required' => 'Status Wajib Diisi',
+        ]);
+
         $data = [
             'nomorKk' => Request()->nomor,
             'alamat' => Request()->alamat,
@@ -63,17 +105,33 @@ class KkController extends Controller
 
 
         Kk::where('id',$id)->update($data);
-        return redirect()->route('dataKk')->withToastSuccess('Data KK Berhasil Diubah!');
+        return redirect()->route('admin.kk.home')->withToastSuccess('Data KK Berhasil Diubah!');
     }
 
     public function viewAnggotaKk($noKk){
-        $data = Kk::where('nomorKk', $noKk)->first();
-        return view('admin.viewAnggotaKartuKeluarga',[
-            "title" => "Anggota Keluarga",
-            "kk" => Kk::where('nomorKk',$noKk)->first(),
-            "jemaat" => Jemaat::where('kk_id',$data->id)->get(),
-            'sintua' => Sintua::first(),
 
-        ]);
+        $data = Kk::where('nomorKk', $noKk)->first();
+        if (Auth::guard('user')->user()->role == 1) {
+            return view('admin.viewAnggotaKartuKeluarga',[
+                "title" => "Anggota Keluarga",
+                "kk" => Kk::where('nomorKk',$noKk)->first(),
+                "jemaat" => Jemaat::where('kk_id',$data->id)->get(),
+                'sintua' => Sintua::first(),
+
+            ]);
+        }else{
+            return view('bph.viewAnggotaKartuKeluarga',[
+                "title" => "Anggota Keluarga",
+                "kk" => Kk::where('nomorKk',$noKk)->first(),
+                "jemaat" => Jemaat::where('kk_id',$data->id)->get(),
+                'sintua' => Sintua::first(),
+
+            ]);
+        }
+    }
+
+    public function hapusAnggotaKk($id, $idKk){
+        Jemaat::where('kk_id',$idKk)->where('id',$id)->delete();
+        return redirect()->back()->withToastSuccess('Data Berhasil Dihapus');
     }
 }

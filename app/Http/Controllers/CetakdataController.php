@@ -12,13 +12,20 @@ use App\Exports\SintuaExport;
 use App\Exports\WijkExport;
 use App\Exports\KkExport;
 use Maatwebsite\Excel\Facades\Excel;
-
+use Auth;
 class CetakdataController extends Controller
 {
     public function index(){
-        return view('admin.viewCetakData',[
-            "title" => "Cetak Data",
-        ]);
+        if(Auth::guard('user')->user()->role == 1){
+            return view('admin.viewCetakData',[
+                "title" => "Cetak Data",
+            ]);
+        }else{
+            return view('bph.viewCetakData',[
+                "title" => "Cetak Data",
+            ]);
+        }
+
     }
 
     public function exportJemaat(){

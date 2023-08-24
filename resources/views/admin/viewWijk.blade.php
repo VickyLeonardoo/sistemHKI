@@ -54,8 +54,6 @@
       <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Edit Wijk {{ $data->nama }}</h5>
-          <button type="button" class="btn-close text-dark" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
@@ -63,7 +61,10 @@
                 @csrf
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Nama:</label>
-                  <input type="text" name="nama" class="form-control" id="exampleFormControlInput1" value="{{ $data->nama }}">
+                  <input type="text" name="nama" required class="form-control" id="exampleFormControlInput1" value="{{ $data->nama }}">
+                @error('nama')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
                 </div>
           <input type="submit" class="btn bg-gradient-primary" value="Simpan"></input>
             </form>
@@ -73,6 +74,10 @@
       </div>
     </div>
   </div>
+
 @endforeach
 
+@foreach ($wijk as $data)
+
+@endforeach
 @endsection

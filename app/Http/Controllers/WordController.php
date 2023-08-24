@@ -123,7 +123,53 @@ class WordController extends Controller
             }
         return redirect()->back();
         }elseif(Request()->jenissk == 'skkematian'){
-            return 'skkematian';
+            $id = Request()->nama;
+            $select = Jemaat::where('id',$id)->first();
+            $data = [
+                'jemaat_id' => $id,
+                'jenisSk' => 'Surat Jemaat',
+            ];
+            $wijk = $select->kk->wijk->nama;
+            $nama = $select->nama;
+            $tempatLahir = $select->tempatLahir;
+            $tglLahir = date('d-m-Y', strtotime($select->tglLahir));
+            $alamat = $select->kk->alamat;
+            $jk = $select->jenisKelamin;
+            $currentTime = Carbon::now();
+            $currentTimes = date('d-m-Y', strtotime($currentTime));
+            $year = $currentTime->format('Y');
+            $keperluan = Request()->keperluan;
+            $surat = Surat::create($data);
+            $tglMeninggal = Request()->tglMeninggal;
+
+            $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('skKematian.docx');
+
+            $phpWord->setValues([
+                'id' => $surat->id,
+                'tglSekarang' => $currentTimes,
+                'tahun' => $year,
+                'nama' => $nama,
+                'wijk' => $wijk,
+                'tempatLahir' => $tempatLahir,
+                'tglLahir' => $tglLahir,
+                'alamat' => $alamat,
+                'jenisKelamin' => $jk,
+                'keperluan' => $keperluan,
+                'tglMeninggal' => $tglMeninggal,
+            ]);
+            $phpWord->saveAs('tmp/SKKematian'.' '.$nama.'.docx');
+            $file = 'tmp/SKKematian'.' '.$nama.'.docx';
+            if (file_exists($file)) {
+                header('Content-Description: File Transfer');
+                header('Content-Type: application/octet-stream');
+                header('Content-Disposition: attachment; filename="'.basename($file).'"');
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate');
+                header('Pragma: public');
+                header('Content-Length: ' . filesize($file));
+                readfile($file);
+                exit;
+            }
         }else{
             return 'skpindah';
         }
