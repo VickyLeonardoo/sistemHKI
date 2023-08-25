@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Jenssegers\Date\Date;
-use Illuminate\Http\Request;
 use App\Models\Deposit;
+use Jenssegers\Date\Date;
 use App\Models\Pendapatan;
-use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class DepositController extends Controller
 {
     public function viewDeposit(){
@@ -32,6 +32,7 @@ class DepositController extends Controller
             'nominalPendapatan' => $request->nominal,
             'catatan' => $request->catatan,
             'tglDeposit' => $request->tglDeposit,
+            'user_id' => auth()->user()->id
         ];
         Deposit::create($data);
         return redirect()->back()->withToastSuccess('Data Pendapatan Berhasil di Tambahkan');

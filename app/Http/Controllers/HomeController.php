@@ -106,7 +106,7 @@ class HomeController extends Controller
             ]);
         }else{
             return view('bph.index',[
-                "title" => 'BPH - Home',
+                "title" => 'Home',
                 'wijk' => Wijk::all()->count(),
                 'jemaat' => Jemaat::all()->count(),
                 'kk' => Kk::all()->count(),
@@ -118,6 +118,16 @@ class HomeController extends Controller
                 'sintua' => Sintua::first(),
                 'totalNominal' => $totalNominal,
                 'chartDataJson' => $chartDataJson,
+                'chartData' => $chartData,
+                'kkWijkChart' => $kkWijkChart->build(),
+                'chart' => $keuanganBulananChart->build(),
+                'bulan' => $months,
+                'pendapatan' => $pendapatanData,
+                'pengeluaran' => $pengeluaranData,
+                'total' => $totalData,
+                'pendeta' => $pendetaCount,
+                'jemaatChart' => $jemaatChart->build(),
+                'chartGender' => $genderChart->build(),
 
             ]);
         }

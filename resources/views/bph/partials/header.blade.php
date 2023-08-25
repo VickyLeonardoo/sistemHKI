@@ -108,6 +108,8 @@
         } );
     } );
 </script>
+@yield('chart')
+
 <!-- jQuery -->
 <!-- jQuery UI 1.11.4 -->
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -118,6 +120,7 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('asset') }}/dist/js/adminlte.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 <!-- AdminLTE for demo purposes -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
