@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('nominalPendapatan', 15, 2);
             $table->text('catatan')->nullable();
             $table->date('tglDeposit');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

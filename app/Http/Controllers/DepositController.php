@@ -32,6 +32,7 @@ class DepositController extends Controller
             'nominalPendapatan' => $request->nominal,
             'catatan' => $request->catatan,
             'tglDeposit' => $request->tglDeposit,
+            'user_id' => auth()->user()->id
         ];
         Deposit::create($data);
         return redirect()->back()->withToastSuccess('Data Pendapatan Berhasil di Tambahkan');

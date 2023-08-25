@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Jemaat;
 use App\Models\Pendapatan;
 use Illuminate\Http\Request;
-use App\Models\Jemaat;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 class KeuanganController extends Controller
 {
     public function viewKeuangan(){
