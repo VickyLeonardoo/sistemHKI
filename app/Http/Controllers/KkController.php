@@ -83,17 +83,16 @@ class KkController extends Controller
             'alamat' => 'required',
             'kecamatan' => 'required',
             'kelurahan' => 'required',
-            'wijk_id' => 'required',
-            'statusRumah' => 'required',
+            'wijk' => 'required',
+            'status' => 'required',
         ],[
             'nomor.required' => 'Nomor Kk Wajib Diisi',
             'alamat.required' => 'AlamatWajib Diisi',
             'kecamatan.required' => 'KecamatanWajib Diisi',
             'kelurahan.required' => 'KelurahanWajib Diisi',
-            'wijk_id.required' => 'Wijk Wajib Diisi',
-            'statusRumah.required' => 'Status Wajib Diisi',
+            'wijk.required' => 'Wijk Wajib Diisi',
+            'status.required' => 'Status Wajib Diisi',
         ]);
-
         $data = [
             'nomorKk' => Request()->nomor,
             'alamat' => Request()->alamat,

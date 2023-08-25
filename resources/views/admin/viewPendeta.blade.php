@@ -6,9 +6,10 @@
             <div class="col-md-12">
                 <a href="/tambah-data-pendeta" class="btn btn-primary"><i class="fas fa-plus"></i>Tambah</a><br><br>
                 <div class="table-responsive p-0">
-                    <table id="example" class="display" style="width:100%">
+                    <table id="viewPendeta" class="display" style="width:100%">
                         <thead>
                             <tr>
+                                <th>Nomor</th>
                                 <th>Nama</th>
                                 <th>Tanggal Lahir</th>
                                 <th>Status</th>
@@ -20,8 +21,9 @@
                         <tbody>
                             @foreach ($pendeta as $data)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $data->nama }}</td>
-                                <td>{{ $data->tglLahir}}</td>
+                                <td>{{ \Carbon\Carbon::parse($data->tglLahir)->isoFormat('D MMMM Y')}}</td>
                                 <td>{{ $data->status}}</td>
                                 <td>{{ \Carbon\Carbon::parse($data->tglMasuk)->isoFormat('D MMMM Y')}}</td>
                                 <td>{{ $data->foto}}</td>
@@ -33,20 +35,10 @@
                                 </td>
                             </tr>
                             @endforeach
-
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Status</th>
-                                <th>Tahun Masuk</th>
-                                <th>Foto</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
+                <br>
             </div>
         </div>
     </div>

@@ -134,7 +134,6 @@ class JemaatController extends Controller
             ->whereRaw("DAY(tglLahir) BETWEEN DAY('$weekStartDate') AND DAY('$weekEndDate')")
             ->get(),
             'sintua' => Sintua::first(),
-
         ]);
     }
 }

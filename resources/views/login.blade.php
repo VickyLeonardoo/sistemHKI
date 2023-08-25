@@ -60,11 +60,17 @@
                     @csrf
                     <label>Email</label>
                     <div class="mb-3">
-                      <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                      <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid':'' }}" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                      @error('email')
+                          <small class=text-danger>Email Wajib Diisi</small>
+                      @enderror
                     </div>
                     <label>Password</label>
                     <div class="mb-3">
-                      <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                      <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid':'' }}" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                    @error('password')
+                        <small class="text-danger">Password Wajib Diisi</small>
+                    @enderror
                     </div>
 
                     <div class="text-center">

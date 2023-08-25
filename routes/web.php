@@ -141,7 +141,7 @@ Route::group(['middleware' => ['auth:user']],function(){
         Route::get('/validasi-pendaftar-sidi-{nik}',[SidiController::class,'viewValidasi']);
         Route::get('/konfirmasi-pendaftaran-sidi-{nik}',[SidiController::class,'konfirmasiPendaftaran']);
         Route::get('/tolak-pendaftaran-sidi-{nik}',[SidiController::class,'tolakPendaftaran']);
-        Route::get('/data-pelajar-sidi-tahun-{tahun}',[SidiController::class,'viewDataSidiTahun']);
+        Route::get('/data-pelajar-sidi-tahun-{tahun}',[SidiController::class,'viewDataSidiTahun'])->name('sidi.tahun');
         Route::get('/simpan-pendaftaran-pembelajaran-sidi',[SidiController::class,'simpanPendaftaranPelajarSidi']);
     });
 });
@@ -195,5 +195,7 @@ Route::group(['middleware' => ['auth:user']],function(){
 
         Route::post('/bph/surat-keterangan-jemaat-word',[WordController::class,'wordJemaat']);
         Route::post('/bph/surat-keterangan-pindah-satu-keluarga',[WordController::class,'wordPindahKeluarga']);
+        Route::post('/bph/surat-keterangan-pindah-perorangan',[WordController::class,'wordJemaat']);
+
     });
 });

@@ -110,10 +110,19 @@
                             <input type="submit" value="Daftar" class="form-control bg-primary">
                         </div>
                     </form>
+                    @if (session('message'))
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fas fa-ban"></i> Gagal!</h5>
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
                     @else
                     <h1 style="text-align: center">Maaf Pendaftaran Telah Ditutup, Silahkan Mengikuti Pembelajaran Sidi pada Tahun Berikutnya.</p>
                     @endif
                 </div>
+
             </div>
 
         </div>
