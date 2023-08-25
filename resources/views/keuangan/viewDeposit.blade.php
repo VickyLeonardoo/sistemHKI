@@ -29,7 +29,7 @@
                                         <td>{{ $data->pendapatan->kode }} {{ $data->pendapatan->nama }}</td>
                                         <td>@currency($data->nominalPendapatan) </td>
                                         <td>
-                                            <a href="hapus-data-deposit{{ $data->id }}" class="btn bg-danger" onclick="return confirm('Anda yakin ingin menghapus data ini?')"><i class="fas fa-trash"></i></a>
+                                            <a href="hapus-data-deposit-{{ $data->id }}" class="btn bg-danger" onclick="return confirm('Anda yakin ingin menghapus data ini?')"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

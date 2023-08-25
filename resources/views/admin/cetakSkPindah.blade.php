@@ -20,7 +20,7 @@
         <strong><u>SURAT KETERANGAN PINDAH KEANGGOTAAN</u></strong>
     </p>
     <p align="center" >
-        <strong>No. 001/SKP/HKI/2023</strong>
+        <strong>No. {{ $id }}/SKP/HKI/{{ $tahun }}</strong>
     </p>
     <p>
         <strong></strong>
@@ -50,7 +50,7 @@
         <br/>
         Menerangkan Bahwa:
     </p>
-    <table align="center" border="1" cellspacing="0" cellpadding="0" width="623">
+    <table align="center" border="1" cellspacing="0" cellpadding="0" >
         <tbody>
            <tr>
             <td rowspan="2" style="text-align: center;">NO</td>
@@ -66,7 +66,7 @@
            </tr>
            <?php $i = 1 ?>
            @foreach ($jemaat as $data)
-           <tr>
+           <tr style="border-bottom: 1">
             <td style="text-align: center">{{ $i++ }}</td>
             <td>{{ $data->nama }}</td>
             @if ($data->jenisKelamin == 'Pria')
@@ -75,21 +75,24 @@
             <td style="text-align: center">P</td>
             @endif
             <td style="text-align: center">{{ $data->tempatLahir }}</td>
-            <td style="text-align: center">{{ $data->tglLahir }}</td>
+            <td style="text-align: center">{{ \Carbon\Carbon::parse($data->tglLahir)->isoFormat('D MMMM Y')}}</td>
             <td>{{ $data->statusKeluarga }}</td>
            </tr>
            @endforeach
-           <tr style="text-align: center">
-           </tr>
         </tbody>
     </table>
     <p>
-        Alamat: Bengkong Telaga Indah Blk F/19
+
+        Alamat: {{ $jemaat[0]->kk->alamat }}
     </p>
     <p>
+        @if ($tujuan)
         Adalah benar terdaftar sebagai anggota jemaat di Gereja HKI Resort Mangsang
-        Resort Mangsang dan ingin pindah keanggotaan jemaat ke HKBP Batam Resort
-        Batam
+        Resort Mangsang dan ingin pindah keanggotaan jemaat ke {{$tujuan}}
+        @else
+        Adalah benar terdaftar sebagai anggota jemaat di Gereja HKI Resort Mangsang
+        Resort Mangsang dan ingin pindah keanggotaan jemaat.
+        @endif
     </p>
 
     <p>

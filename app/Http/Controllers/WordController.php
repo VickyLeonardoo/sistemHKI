@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Response;
+use App\Models\Kk;
+use Carbon\Carbon;
+use App\Models\Surat;
 use App\Models\Jemaat;
+use PDF;
 use Illuminate\Http\Request;
 use PhpOffice\PhpWord\Shared\ZipArchive;
-use Carbon\Carbon;
-use App\Models\Kk;
-use PDF;
-use App\Models\Surat;
-use Response;
 class WordController extends Controller
 {
     public function wordJemaat(Request $request){
@@ -129,10 +129,13 @@ class WordController extends Controller
                 'jemaat_id' => $id,
                 'jenisSk' => 'Surat Jemaat',
             ];
+
             $wijk = $select->kk->wijk->nama;
             $nama = $select->nama;
             $tempatLahir = $select->tempatLahir;
             $tglLahir = date('d-m-Y', strtotime($select->tglLahir));
+            $tglLahir = Carbon::parse($tglLahir);
+            $tglLahir = $tglLahir->isoFormat('D MMMM Y');
             $alamat = $select->kk->alamat;
             $jk = $select->jenisKelamin;
             $currentTime = Carbon::now();
@@ -141,6 +144,8 @@ class WordController extends Controller
             $keperluan = Request()->keperluan;
             $surat = Surat::create($data);
             $tglMeninggal = Request()->tglMeninggal;
+            $tglMeninggal = Carbon::parse($tglMeninggal);
+            $tglMeninggal = $tglMeninggal->isoFormat('dddd, D MMMM Y');
 
             $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('skKematian.docx');
 
@@ -171,15 +176,75 @@ class WordController extends Controller
                 exit;
             }
         }else{
-            return 'skpindah';
+            $id = Request()->nama;
+            $select = Jemaat::where('id',$id)->first();
+            $data = [
+                'jemaat_id' => $id,
+                'jenisSk' => 'Surat Pindah',
+            ];
+            $wijk = $select->kk->wijk->nama;
+            $nama = $select->nama;
+            $tempatLahir = $select->tempatLahir;
+            $tglLahir = date('d-m-Y', strtotime($select->tglLahir));
+            $tglLahir = Carbon::parse($tglLahir);
+            $tglLahir = $tglLahir->isoFormat('D MMMM Y');
+            $alamat = $select->kk->alamat;
+            $jk = $select->jenisKelamin;
+            $currentTime = Carbon::now();
+            $currentTimes = date('d-m-Y', strtotime($currentTime));
+            $year = $currentTime->format('Y');
+            $surat = Surat::create($data);
+            $keperluan = NULL;
+            if ($request->gerejaTujuan) {
+                $keperluan = Request()->gerejaTujuan;
+            }else{
+                $keperluan = 'lain';
+            }
+
+            $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('skPindahPerorang.docx');
+
+            $phpWord->setValues([
+                'id' => $surat->id,
+                'tglSekarang' => $currentTimes,
+                'tahun' => $year,
+                'nama' => $nama,
+                'wijk' => $wijk,
+                'tempatLahir' => $tempatLahir,
+                'tglLahir' => $tglLahir,
+                'alamat' => $alamat,
+                'jenisKelamin' => $jk,
+                'keperluan' => $keperluan,
+            ]);
+
+            // Saving the document as Docx file...
+            $phpWord->saveAs('tmp/SKPindah'.' '.$nama.'.docx');
+            $file = 'tmp/SKPindah'.' '.$nama.'.docx';
+            if (file_exists($file)) {
+                header('Content-Description: File Transfer');
+                header('Content-Type: application/octet-stream');
+                header('Content-Disposition: attachment; filename="'.basename($file).'"');
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate');
+                header('Pragma: public');
+                header('Content-Length: ' . filesize($file));
+                readfile($file);
+                exit;
+            }
         }
     }
 
 
     public function wordPindahKeluarga(Request $request){
+        $request->validate([
+            'nomorKk' => 'required'
+        ],[
+            'nomorKk.required' => 'Nomor Kk Wajib Diisi'
+        ]);
         $idKk = Request()->nomorKk;
         $jemaatKk = Jemaat::where('kk_id', $idKk)->orderBy('statusKeluarga','desc')->get();
-
+        $gerejaTujuan = Request()->gerejaTujuan;
+        $currentTime = Carbon::now();
+        $year = $currentTime->format('Y');
         $headers = array(
             'Content-Disposition' => 'attatchement;Filename=mydoc.pdf'
         );
@@ -188,17 +253,21 @@ class WordController extends Controller
         //     'title' => 'Cetak',
         //     'jemaat' => $jemaatKk,
         // ]);
+        $surat = Surat::create([
+            'jemaat_id' => $jemaatKk[0]->id,
+            'jenisSk' => 'Surat Pindah Keluarga',
+        ]);
 
         $data = [
             'title' => 'Cetak',
             'jemaat' => $jemaatKk,
+            'tujuan' => $gerejaTujuan,
+            'id' => $surat->id,
+            'tahun' => $year,
         ];
 
         $pdf = PDF::loadView('admin.cetakSkPindah',$data);
         return $pdf->download('pdf_file.pdf');
-
-
-
 
         return view('admin.cetakSkPindah',[
             'title' => 'Cetak',

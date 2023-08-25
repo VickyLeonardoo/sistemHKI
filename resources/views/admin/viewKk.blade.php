@@ -7,9 +7,10 @@
             <div class="col-md-12">
               <a href="/tambah-data-kartu-keluarga" class="btn btn-info">Tambah Data KK</a><br><br>
                 <div class="table-responsive p-0">
-                    <table id="example" class="display" style="width:100%">
+                    <table id="tableKk" class="display" style="width:100%">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Nomor KK</th>
                                 <th>Alamat</th>
                                 <th>Kelurahan</th>
@@ -23,6 +24,7 @@
                         <tbody>
                             @foreach ($kk as $data)
                                 <tr>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $data->nomorKk }}</td>
                                     <td>{{ $data->alamat }}</td>
                                     <td>{{ $data->kelurahan }}</td>
@@ -39,6 +41,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>No</th>
                                 <th>Nomor</th>
                                 <th>Alamat</th>
                                 <th>Kelurahan</th>

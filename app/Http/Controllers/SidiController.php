@@ -49,15 +49,23 @@ class SidiController extends Controller
         ]);
 
         $jemaat = Jemaat::where('nik',$request->nik)->first();
-        $idJemaat = $jemaat->id;
-        $data = [
-            'nik' => Request()->nik,
-            'jemaat_id' => $idJemaat,
-            'status_pendaftaran_id' => Request()->idStatus
-        ];
+        if ($jemaat) {
+            if ($jemaat->sidi == 'Tidak') {
+                $idJemaat = $jemaat->id;
+                $data = [
+                    'nik' => Request()->nik,
+                    'jemaat_id' => $idJemaat,
+                    'status_pendaftaran_id' => Request()->idStatus
+                ];
+                PendaftaranSidi::create($data);
+            }else{
+                return redirect()->back()->with('message','NIK yang didaftarkan Sudah Melakukan SIDI.');
+            }
 
-        PendaftaranSidi::create($data);
-        return redirect()->back()->withToastSuccess('Kamu Berhasil Mendaftar');
+            return redirect()->back()->withToastSuccess('Kamu Berhasil Mendaftar');
+        }else{
+            return redirect()->back()->with('message','Maaf NIK Tidak Terdaftar, Silahkan Periksa NIK Atau Hubungi Sintua WIJK');
+        }
     }
 
     public function viewValidasi($nik){

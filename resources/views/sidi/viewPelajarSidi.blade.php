@@ -5,12 +5,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive p-0">
-                    <table id="example" class="display" style="width:100%">
+                    <table id="tablePelajarSidi" class="display" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Nomor</th>
-                                <th>Tahun Sidi</th>
-                                <th>Aksi</th>
+                                <th>Nik</th>
+                                <th>Nama</th>
                             </tr>
                         </thead>
                         <?php $i = 1; ?>
@@ -18,18 +18,12 @@
                             @foreach ($pelajar as $data)
                             <tr>
                                 <td>{{  $i++ }}</td>
+                                <td>{{ $data->jemaat->nik }}</td>
                                 <td>{{ $data->jemaat->nama }}</td>
-                                <td><button class="btn btn-info" >Periksa</button></td>
                             </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nomor</th>
-                                <th>NIK</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
+
                     </table>
                 </div>
             </div>
