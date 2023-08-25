@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Jenssegers\Date\Date;
-use Illuminate\Http\Request;
 use App\Models\Deposit;
+use Jenssegers\Date\Date;
 use App\Models\Pendapatan;
-use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class DepositController extends Controller
 {
     public function viewDeposit(){

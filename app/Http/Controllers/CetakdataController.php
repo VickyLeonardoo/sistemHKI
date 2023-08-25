@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use DateTime;
 use Carbon\Carbon;
 use App\Models\Jemaat;
-use DateTime;
-use App\Exports\JemaatExport;
-use App\Exports\PendetaExport;
-use App\Exports\SintuaExport;
-use App\Exports\WijkExport;
 use App\Exports\KkExport;
+use App\Exports\WijkExport;
+use Illuminate\Http\Request;
+use App\Exports\JemaatExport;
+use App\Exports\SintuaExport;
+use App\Exports\PendetaExport;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
-use Auth;
 class CetakdataController extends Controller
 {
     public function index(){

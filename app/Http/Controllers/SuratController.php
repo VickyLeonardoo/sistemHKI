@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Jemaat;
 use App\Models\Kk;
+use App\Models\Jemaat;
 use App\Models\Sintua;
-use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class SuratController extends Controller
 {
     public function viewSKJemaat(){

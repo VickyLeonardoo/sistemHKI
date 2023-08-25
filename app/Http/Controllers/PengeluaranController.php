@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Pengeluaran;
 use App\Models\Pembayaran;
-use Auth;
+use App\Models\Pengeluaran;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PengeluaranController extends Controller
 {
