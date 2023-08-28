@@ -83,8 +83,8 @@ class HomeController extends Controller
             return view('admin.index',[
                 "title" => 'Home',
                 'wijk' => Wijk::all()->count(),
-                'jemaat' => Jemaat::all()->count(),
-                'kk' => Kk::all()->count(),
+                'jemaat' => Jemaat::where('is_alive','0')->where('is_deleted','0')->count(),
+                'kk' => Kk::where('is_deleted','0')->count(),
                 'pria' => Jemaat::where('jenisKelamin','Pria')->count(),
                 'wanita' => Jemaat::where('jenisKelamin','Wanita')->count(),
                 'start' => $weekstart,
@@ -108,7 +108,7 @@ class HomeController extends Controller
             return view('bph.index',[
                 "title" => 'Home',
                 'wijk' => Wijk::all()->count(),
-                'jemaat' => Jemaat::all()->count(),
+                'jemaat' => Jemaat::where('is_alive','0')->count(),
                 'kk' => Kk::all()->count(),
                 'pria' => Jemaat::where('jenisKelamin','Pria')->count(),
                 'wanita' => Jemaat::where('jenisKelamin','Wanita')->count(),

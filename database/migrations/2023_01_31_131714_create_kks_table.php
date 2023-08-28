@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('kelurahan');
             $table->foreignId('wijk_id');
             $table->string('statusRumah');
+            $table->enum('is_deleted',['0','1'])->default('0')->comment('0 = False, 1 = True');
             $table->timestamps();
         });
     }

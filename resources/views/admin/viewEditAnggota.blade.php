@@ -91,6 +91,13 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="">Status</label>
+                        <select name="status" class="form-control form-control-alternative">
+                            <option value="0" {{ $jemaat->is_alive == 0 ? 'selected' : '' }}>Hidup</option>
+                            <option value="1" {{ $jemaat->is_alive == 1 ? 'selected' : ''}}>Meninggal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                     </div>
                     <input type="submit" class="btn-info btn" value="Simpan">
                   </form>

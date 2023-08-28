@@ -23,7 +23,7 @@ class KkWijkChart
         $wijkLabels = []; // Menyimpan nama Wijk
 
         foreach ($wijks as $wijk) {
-            $kkCount = Kk::where('wijk_id', $wijk->id)->count();
+            $kkCount = Kk::where('wijk_id', $wijk->id)->where('is_deleted', '0')->count();
             $kkCounts[] = $kkCount;
             $wijkLabels[] = $wijk->nama;
         }

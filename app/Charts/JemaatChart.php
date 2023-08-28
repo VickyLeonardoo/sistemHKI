@@ -17,7 +17,7 @@ class JemaatChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
-        $jemaat = Jemaat::all();
+        $jemaat = Jemaat::where('is_alive','0')->where('is_deleted','0')->get();
 
         $anakCount = 0;
         $remajaCount = 0;

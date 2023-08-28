@@ -70,7 +70,7 @@ class KeuanganSeeder extends Seeder
             $randomDate = date("Y-m-d H:i:s", mt_rand($startDate, $endDate));
             DB::table('deposits')->insert([
             'pendapatan_id' => rand(1, 4),
-            'nominalPendapatan' => $faker->randomNumber(6), // Contoh: angka 6 digit
+            'nominalPendapatan' => $faker->randomNumber(7), // Contoh: angka 6 digit
             'catatan' => $faker->sentence,
             'tglDeposit' => $randomDate,
             'user_id' => rand(1, 2)]);
@@ -80,11 +80,10 @@ class KeuanganSeeder extends Seeder
             $randomDate = date("Y-m-d H:i:s", mt_rand($startDate, $endDate));
             DB::table('pembayarans')->insert([
             'pengeluaran_id' => rand(1, 4),
-            'nominalPengeluaran' => $faker->randomNumber(5), // Contoh: angka 6 digit
+            'nominalPengeluaran' => $faker->randomNumber(6), // Contoh: angka 6 digit
             'catatan' => $faker->sentence,
             'tglDeposit' => $randomDate,
             'user_id' => rand(1, 2)]);
         }
-
     }
 }
