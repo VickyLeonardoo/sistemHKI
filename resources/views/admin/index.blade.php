@@ -46,7 +46,7 @@
             name: "Pengeluaran",
             data: @json($pengeluaran)
         },{
-            name: "Total Keuangan",
+            name: "Total",
             data: @json($total)
         }],
         chart: {

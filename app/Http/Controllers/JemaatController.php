@@ -104,7 +104,7 @@ class JemaatController extends Controller
         ]);
     }
 
-    public function ubahJemaat($idk,$id, Request $request){
+    public function ubahJemaat($id,$idk, Request $request){
         $data = [
                     'nik' => Request()->nik,
                     'nama' => Request()->nama,
@@ -116,9 +116,11 @@ class JemaatController extends Controller
                     'statusKeluarga' => Request()->statusKeluarga,
                     'nomorHp' => Request()->noHp,
                     'sidi' => Request()->sidi,
+                    'is_alive' => Request()->status,
         ];
-        Jemaat::where('id',$idk)->update($data);
-        return Redirect('/anggota-keluarga-'.$id)->withToastSuccess('Anggota Keluarga'. ' ' .Request()->nama . ' ' .'Berhasil Diubah');
+        Jemaat::where('id',$id)->update($data);
+        return redirect()->back()->withToastSuccess('Sukses Ubah Data');
+        // return Redirect('/anggota-keluarga-'.$idk)->withToastSuccess('Anggota Keluarga'. ' ' .Request()->nama . ' ' .'Berhasil Diubah');
     }
 
     public function viewUltah(){

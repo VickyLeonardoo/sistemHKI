@@ -85,15 +85,15 @@ Route::group(['middleware' => ['auth:user']],function(){
         Route::get('/anggota-keluarga-{id}',[KkController::class,'viewAnggota'])->name('admin.kk.anggota');
         Route::get('/anggota-kartu-keluarga-{noKk}',[KkController::class,'viewAnggotaKk'])->name('admin.kk.home-keluarga');
         Route::get('/hapus-anggota-keluarga-{id}-kk-{idKk}',[KkController::class,'hapusAnggotaKk']);
+        Route::get('/hapus-kartu-keluarga-{id}',[KkController::class,'hapusKk'])->name('hapus-data-kk');
 
         //Anggota Keluarga/Jemaat Gereja
         Route::get('/data-jemaat',[JemaatController::class,'index'])->name('admin.jemaat.home');
         Route::get('/tambah-data-anggota-kartu-keluarga-{id}',[JemaatController::class,'viewTambah'])->name('admin.jemaat.tambah');
         Route::post('/simpan-anggota-kk-{id}',[JemaatController::class,'simpanJemaat']);
         Route::get('/edit-anggota-keluarga-{idk}-kk-{id}',[JemaatController::class,'viewEdit'])->name('admin.jemaat.edit');
-        Route::post('/ubah-anggota-{idk}-kk-{id}',[JemaatController::class,'ubahJemaat']);
+        Route::post('/ubah-anggota-{id}-kk-{idk}',[JemaatController::class,'ubahJemaat']);
         Route::get('/ulang-tahun-jemaat',[JemaatController::class,'viewUltah'])->name('admin.jemaat.ultah');
-
 
         //Cetak Data
         Route::get('/cetak-data',[CetakdataController::class,'index'])->name('cetakData');

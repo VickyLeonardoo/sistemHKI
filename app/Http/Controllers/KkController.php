@@ -14,14 +14,14 @@ class KkController extends Controller
         if (Auth::guard('user')->user()->role == 1) {
             return view('admin.viewKk',[
                 "title" => "Data Kartu Keluarga",
-                "kk" => Kk::all(),
+                "kk" => Kk::where('is_deleted','0')->get(),
                 'sintua' => Sintua::first(),
 
             ]);
         }else{
             return view('bph.viewKk',[
                 "title" => "Data Kartu Keluarga",
-                "kk" => Kk::all(),
+                "kk" => Kk::where('is_deleted','0')->get(),
                 'sintua' => Sintua::first(),
 
             ]);
@@ -105,6 +105,15 @@ class KkController extends Controller
 
         Kk::where('id',$id)->update($data);
         return redirect()->route('admin.kk.home')->withToastSuccess('Data KK Berhasil Diubah!');
+    }
+
+    public function hapusKk($id){
+        $kk = Kk::findOrFail($id);
+        $kk->update(['is_deleted' => '1']);
+
+        Jemaat::where('kk_id', $id)->update(['is_deleted' => '1']);
+
+        return redirect()->back()->withToastSuccess('Data KK Berhasil Dihapus');
     }
 
     public function viewAnggotaKk($noKk){

@@ -35,6 +35,7 @@
                                         <a href="/kartu-keluarga-edit-{{ $data->nomorKk }}" class="btn btn-primary">Edit</a>
                                         {{-- <a href="/anggota-keluarga-{{ $data->id }}" class="btn btn-info">Anggota Keluarga</a> --}}
                                         <a href="/anggota-kartu-keluarga-{{ $data->nomorKk }}" class="btn btn-info">Anggota Keluarga</a>
+                                        <a href="{{ Route('hapus-data-kk',$data->id) }}" onclick="return confirm('Yakin ingin menhapus Data?')" class="btn btn-danger"><i class="fas fa-trash"></i>Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach

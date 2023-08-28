@@ -15,6 +15,7 @@
                                     <th>Tanggal</th>
                                     <th>Kode</th>
                                     <th>Nominal</th>
+                                    <th>Pembuat</th>
                                     <th></th>
 
                                     {{-- <th>Aksi</th> --}}
@@ -29,6 +30,9 @@
                                         <td>{{ $data->pendapatan->kode }} {{ $data->pendapatan->nama }}</td>
                                         <td>@currency($data->nominalPendapatan) </td>
                                         <td>
+                                            <span class="badge badge-success">{{ $data->user->name}}</span>
+                                        </td>
+                                        <td>
                                             <a href="hapus-data-deposit-{{ $data->id }}" class="btn bg-danger" onclick="return confirm('Anda yakin ingin menghapus data ini?')"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
@@ -41,7 +45,7 @@
                                     <th>Total Nominal</th>
                                     <th>@currency($totalNominal)</th>
                                     <th></th>
-
+                                    <th></th>
                                     {{-- <th>Aksi</th> --}}
                                 </tr>
                             </tfoot>
