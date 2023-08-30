@@ -23,7 +23,7 @@ class KkSeeder extends Seeder
         for ($i = 1; $i <= 50; $i++) {
             // insert data ke table pendetas menggunakan Faker
             $kkId = DB::table('kks')->insertGetId([
-                'nomorKk' => $faker->unique()->numerify('################'),
+                'nomorKk' => $faker->unique()->nik(),
                 'alamat' => $faker->address,
                 'kecamatan' => $faker->city,
                 'kelurahan' => $faker->city,
@@ -34,7 +34,7 @@ class KkSeeder extends Seeder
             if (!in_array($kkId, $kkWithHead)) {
                 DB::table('jemaats')->insert([
                     'kk_id' => $kkId,
-                    'nik' => $faker->unique()->numerify('################'),
+                    'nik' => $faker->unique()->nik(),
                     'nama' => $faker->name,
                     'tempatLahir' => $faker->city,
                     'tglLahir' => $faker->date($format = 'Y-m-d', $max = 'now'),
@@ -50,7 +50,7 @@ class KkSeeder extends Seeder
                 // insert data ke table Jemaat untuk ibu rumah tangga
                 DB::table('jemaats')->insert([
                     'kk_id' => $kkId,
-                    'nik' => $faker->unique()->numerify('################'),
+                    'nik' => $faker->unique()->nik(),
                     'nama' => $faker->name,
                     'tempatLahir' => $faker->city,
                     'tglLahir' => $faker->date($format = 'Y-m-d', $max = 'now'),
