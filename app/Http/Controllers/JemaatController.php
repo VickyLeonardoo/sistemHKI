@@ -15,7 +15,7 @@ class JemaatController extends Controller
         if (Auth::guard('user')->user()->role == 1) {
             return view('admin.viewDataJemaat',[
                 "title" => "Data Jemaat",
-                "jemaat" => Jemaat::all(),
+                "jemaat" => Jemaat::where('is_deleted','0')->where('is_alive','0')->get(),
                 'sintua' => Sintua::first(),
 
             ]);
