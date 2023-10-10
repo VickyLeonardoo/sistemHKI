@@ -41,21 +41,22 @@ class JemaatController extends Controller
 
     public function simpanJemaat(Request $request, $id){
         $request->validate([
-            'nik' => 'required',
+            'nik' => 'required|unique:jemaats,nik',
             'nama' => 'required',
             'tempatLahir' => 'required',
             'tglLahir' => 'required',
-            'jenisKelamin' => 'required',
+            'jk' => 'required',
             'pekerjaan' => 'required',
             'statusKeluarga' => 'required',
             'noHp' => 'required',
             'sidi' => 'required',
         ],[
             'nik.required' => 'NIK Wajib Diisi',
+            'nik.unique' => 'NIK Sudah ada, periksa kembali NIK',
             'nama.required' => 'Nama Wajib Diisi',
             'tempatLahir.required' => 'Tempat LahirWajib Diisi',
             'tglLahir.required' => 'Tanggal Lahir Wajib Diisi',
-            'jenisKelamin.required' => 'Jenis Kelamin Wajib Diisi',
+            'jk.required' => 'Jenis Kelamin Wajib Diisi',
             'pekerjaan.required' => 'PekerjaanWajib Diisi',
             'statusKeluarga.required' => 'Status Wajib Diisi',
             'noHp.required' => 'Nomor HP Wajib Diisi',

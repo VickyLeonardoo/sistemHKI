@@ -4,7 +4,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <a href="/tambah-data-pendeta" class="btn btn-primary"><i class="fas fa-plus"></i>Tambah</a><br><br>
+                <div class="text-right">
+                    <a href="/tambah-data-pendeta" class="btn btn-primary"><i class="fas fa-plus"></i>Tambah</a><br><br>
+                </div>
                 <div class="table-responsive p-0">
                     <table id="viewPendeta" class="display" style="width:100%">
                         <thead>

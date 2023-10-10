@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('kks', function (Blueprint $table) {
             $table->id();
-            $table->string('nomorKk');
+            $table->string('nomorKk')->unique();
             $table->text('alamat');
             $table->text('kecamatan');
             $table->text('kelurahan');

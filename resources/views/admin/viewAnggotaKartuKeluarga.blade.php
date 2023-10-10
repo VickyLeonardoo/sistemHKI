@@ -4,7 +4,7 @@
 <div class="container-fluid py-4">
     <div class="row">
       <div class="col-12">
-        {{-- <div class="row">
+        <div class="row">
             <div class="col-md-8">
               <div class="form-group">
                 <h6>Nomor KK: {{ $kk->nomorKk }}</h6>
@@ -41,7 +41,7 @@
                 <h6 class="form-group">Kecamatan: {{ $kk->kecamatan }}</h6>
             <hr color="black">
             </div>
-        </div> --}}
+        </div>
 
         <a href="/tambah-data-anggota-kartu-keluarga-{{ $kk->id }}" class="btn btn-info">Tambah Data KK</a><br><br>
           <div class="card-body px-0 pt-0 pb-2">

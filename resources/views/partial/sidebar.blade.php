@@ -81,14 +81,14 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item ">
+                {{-- <li class="nav-item ">
                     <a href="/cetak-data" class="nav-link {{ request()->is('cetak-data') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Cetak
                         </p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item {{ request()->is('pendaftar-pembelajaran-sidi', 'data-pelajar-sidi','buka-pendaftaran-pembelajaran-sidi') ? 'menu-open' : '' }} ">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>

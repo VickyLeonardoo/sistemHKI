@@ -142,7 +142,7 @@
                             <!-- Small boxes (Stat box) -->
                             <div class="row">
                                 <!-- ./col -->
-                                <div class="col-lg-3 col-6">
+                                <div class="col-lg-6 col-6">
                                     <!-- small box -->
                                     <div class="small-box bg-success">
                                         <div class="inner">
@@ -156,50 +156,28 @@
                                         <a href="/data-kartu-keluarga" class="small-box-footer">More info <i
                                                 class="fas fa-arrow-circle-right"></i></a>
                                     </div>
-                                    <div class="small-box bg-warning">
-                                        <div class="inner">
-                                            <h3>{{ $wijk }}</h3>
-                                            <p>Wijk</p>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="ion ion-person-add"></i>
-                                        </div>
-                                        <a href="/data-wijk" class="small-box-footer">More info <i
-                                                class="fas fa-arrow-circle-right"></i></a>
-                                    </div>
 
-                                </div>
-                                <div class="col-lg-3 col-6">
-                                    <!-- small box -->
-                                    <div class="small-box bg-info">
-                                        <div class="inner">
-                                            <h3>{{ $jemaat }}</h3>
-
-                                            <p>Jemaat</p>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="ion ion-person-add"></i>
-                                        </div>
-                                        <a href="/data-jemaat" class="small-box-footer">More info
-                                            <i class="fas fa-arrow-circle-right"></i></a>
-                                    </div>
-                                    <div class="small-box bg-primary">
-                                        <div class="inner">
-                                            <h3>{{ $kk }}</h3>
-
-                                            <p>KK</p>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="ion ion-person-add"></i>
-                                        </div>
-                                        <a href="/data-kartu-keluarga" class="small-box-footer">More info <i
-                                                class="fas fa-arrow-circle-right"></i></a>
+                                    <div class="card">
+                                        {!! $chartGender->container() !!}
                                     </div>
                                 </div>
+
                                 <div class="col-lg-6 col-6">
                                     <!-- small box -->
                                     <div class="card">
                                         {!! $jemaatChart->container() !!}
+                                    </div>
+                                    <div class="small-box ">
+                                        <div class="inner">
+                                            <h3>Ulang Tahun Jemaat</h3>
+                                            <p>Jemaat yang berulang tahun pada minggu tanggal {{ $start }} sampai
+                                                tanggal {{ $end }}</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="ion ion-person-add"></i>
+                                        </div>
+                                        <a href="/ulang-tahun-jemaat" class="small-box-footer bg-secondary">More
+                                            info <i class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
 
@@ -252,24 +230,11 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="card">
-                                        {!! $chartGender->container() !!}
-                                    </div>
+
                                 </div>
 
                                 <div class="col-lg-6">
-                                    <div class="small-box ">
-                                        <div class="inner">
-                                            <h3>Ulang Tahun Jemaat</h3>
-                                            <p>Jemaat yang berulang tahun pada minggu tanggal {{ $start }} sampai
-                                                tanggal {{ $end }}</p>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="ion ion-person-add"></i>
-                                        </div>
-                                        <a href="/ulang-tahun-jemaat" class="small-box-footer bg-secondary">More
-                                            info <i class="fas fa-arrow-circle-right"></i></a>
-                                    </div>
+
                                 </div>
 
                             </div>
