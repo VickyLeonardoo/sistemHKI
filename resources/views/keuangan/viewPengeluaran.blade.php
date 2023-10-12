@@ -14,6 +14,7 @@
                                     <th>Nomor</th>
                                     <th>Kode</th>
                                     <th>Nominal</th>
+                                    <th>Pembuat</th>
                                     <th></th>
 
                                     {{-- <th>Aksi</th> --}}
@@ -27,6 +28,9 @@
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $data->pengeluaran->kode }} {{ $data->pengeluaran->nama }}</td>
                                         <td>@currency($data->nominalPengeluaran) </td>
+                                        <td>
+                                            <span class="badge badge-success">{{ $data->user->name}}</span>
+                                        </td>
                                         <td><a href="hapus-data-pembayaran-{{ $data->id }}" class="btn bg-danger"
                                                 onclick="return confirm('Anda yakin ingin menghapus data ini?')"><i
                                                     class="fas fa-trash"></i></a></td>

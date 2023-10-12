@@ -12,7 +12,7 @@
                         <label for="exampleFormControlInput1">NIK:</label>
                         <input type="text" name="nik"
                             class="form-control {{ $errors->has('nik') ? 'is-invalid':'' }}"
-                            id="exampleFormControlInput1" placeholder="Masukkan Nik">
+                            id="exampleFormControlInput1" placeholder="Masukkan Nik" value="{{ old('nik') }}">
                         @error('nik')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -21,7 +21,7 @@
                         <label for="exampleFormControlInput1">Nama:</label>
                         <input type="text" name="nama"
                             class="form-control {{ $errors->has('nama') ? 'is-invalid':'' }}"
-                            id="exampleFormControlInput1" placeholder="Masukkan Nama">
+                            id="exampleFormControlInput1" placeholder="Masukkan Nama" value="{{ old('nama') }}">
                         @error('nama')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -32,7 +32,7 @@
                                 <label for="exampleFormControlInput2">Tempat Lahir:</label>
                                 <input type="text" name="tempatLahir"
                                     class="form-control form-control-alternative {{ $errors->has('tempatLahir') ? 'is-invalid':'' }}"
-                                    id="exampleFormControlInput1" placeholder="Masukkan Tempat Lahir">
+                                    id="exampleFormControlInput1" placeholder="Masukkan Tempat Lahir" value="{{ old('tempatLahir') }}">
                                 @error('tempatLahir')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
@@ -44,7 +44,7 @@
                                 <input type="text" name="tglLahir"
                                     class="form-control form-control-alternative {{ $errors->has('tglLahir') ? 'is-invalid':'' }}"
                                     placeholder="Masukkan Tanggal Lahir" onfocus="(this.type='date')"
-                                    onblur="(this.type='text')">
+                                    onblur="(this.type='text')" value="{{ old('tglLahir') }}">
                                 @error('tglLahir')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
@@ -99,7 +99,7 @@
                         <label for="exampleFormControlInput1">Pekerjaan</label>
                         <input type="text" name="pekerjaan"
                             class="form-control {{ $errors->has('pekerjaan') ? 'is-invalid':'' }}"
-                            id="exampleFormControlInput1" placeholder="Masukkan Pekerjaan">
+                            id="exampleFormControlInput1" placeholder="Masukkan Pekerjaan" value="{{ old('pekerjaan') }}">
                         @error('pekerjaan')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -108,7 +108,7 @@
                         <label for="exampleFormControlInput1">Nomor HP</label>
                         <input type="text" name="noHp"
                             class="form-control {{ $errors->has('noHp') ? 'is-invalid':'' }}"
-                            id="exampleFormControlInput1" placeholder="Masukkan Nomor HP">
+                            id="exampleFormControlInput1" placeholder="Masukkan Nomor HP" value="{{ old('noHp') }}">
                         @error('noHp')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror

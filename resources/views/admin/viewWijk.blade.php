@@ -4,7 +4,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <a href="/tambah-data-wijk" class="btn btn-info">Tambah Wijk</a><br><br>
+                <div class="text-right">
+                    <a href="/tambah-data-wijk" class="btn btn-primary">Tambah Wijk</a><br><br>
+                </div>
                 <div class="table-responsive p-0">
                     <table id="example" class="display" style="width:100%">
                         <thead>

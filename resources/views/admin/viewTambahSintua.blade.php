@@ -4,6 +4,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+                <div class="text-right">
+                    <a href="/data-sintua" class="btn btn-primary">Kembali</a>
+                </div>
                 <form method="POST" action="/simpan-sintua">
                     @csrf
                     <div class="form-group">

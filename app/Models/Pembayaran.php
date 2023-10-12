@@ -14,4 +14,8 @@ class Pembayaran extends Model
     public function pengeluaran(){
         return $this->belongsTo(Pengeluaran::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

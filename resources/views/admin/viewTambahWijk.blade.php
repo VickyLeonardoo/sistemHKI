@@ -1,10 +1,11 @@
 @extends('partial.header')
 @section('content')
-<div class="container-fluid py-4">
+<div class="container-fluid">
     <div class="row">
-      <div class="col-12">
-          <div class="card-header pb-0">
-          </div>
+      <div class="col-md-12">
+        <div class="text-right">
+            <a href="/data-wijk" class="btn btn-primary">Kembali</a><br><br>
+        </div>
           <div class="card-body px-0 pt-0 pb-2">
             <form method="POST" action="/simpan-wijk">
                 @csrf

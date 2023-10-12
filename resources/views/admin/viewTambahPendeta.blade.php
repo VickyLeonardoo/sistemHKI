@@ -2,6 +2,9 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
+        <div class="text-right">
+            <a href="{{ route('admin.pendeta.home') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Kembali</a>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card-body px-0 pt-0 pb-2">
