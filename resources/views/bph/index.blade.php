@@ -1,4 +1,4 @@
-@extends('partial.header')
+@extends('bph.partials.header')
 @section('js')
 <script type="text/javascript">
     google.charts.load('current', {
