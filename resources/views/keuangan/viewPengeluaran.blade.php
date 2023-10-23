@@ -8,7 +8,7 @@
                         Tambah
                     </button><br><br>
                     <div class="table-responsive p-0">
-                        <table id="example" class="display" style="width:100%">
+                        <table id="viewPengeluaran" class="display" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Nomor</th>
@@ -43,11 +43,13 @@
                                     <th>Total Nominal</th>
                                     <th>@currency($totalNominal)</th>
                                     <th></th>
+                                    <th></th>
                                     {{-- <th>Aksi</th> --}}
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
+                    <br><br>
                 </div>
             </div>
         </div>

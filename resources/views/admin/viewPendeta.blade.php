@@ -16,7 +16,6 @@
                                 <th>Tanggal Lahir</th>
                                 <th>Status</th>
                                 <th>Tahun Masuk</th>
-                                <th>Foto</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -28,7 +27,6 @@
                                 <td>{{ \Carbon\Carbon::parse($data->tglLahir)->isoFormat('D MMMM Y')}}</td>
                                 <td>{{ $data->status}}</td>
                                 <td>{{ \Carbon\Carbon::parse($data->tglMasuk)->isoFormat('D MMMM Y')}}</td>
-                                <td>{{ $data->foto}}</td>
                                 <td>
                                     <a href="edit-data-{{$data->slug}}" class="btn btn-info">Edit</a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{ $data->id }}">

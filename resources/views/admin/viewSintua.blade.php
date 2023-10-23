@@ -8,7 +8,7 @@
                         <a href="/tambah-data-sintua" class="btn btn-primary">Tambah</a><br><br>
                     </div>
                     <div class="table-responsive p-0">
-                        <table id="example" class="display" style="width:100%">
+                        <table id="viewSintua" class="display" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Nomor</th>
