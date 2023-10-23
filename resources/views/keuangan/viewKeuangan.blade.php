@@ -6,7 +6,7 @@
                 <div class="info-box">
                     <span class="info-box-icon bg-danger"><i class="fas fa-rupiah-sign"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Pendapatan</span>
+                        <span class="info-box-text">Pemasukan</span>
                         <a href="/master-data-pendapatan">Selanjutnya</a>
                     </div>
                 </div>

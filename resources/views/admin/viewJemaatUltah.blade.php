@@ -16,7 +16,6 @@
                                         <th>TGL Lahir</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Status</th>
-                                        <th>Gol Darah</th>
                                         <th>Pekerjaan</th>
                                         <th>Nomor HP</th>
                                         <th>Sidi</th>
@@ -34,7 +33,6 @@
                                             <td>{{ \Carbon\Carbon::parse($data->tglLahir)->isoFormat('D MMMM Y')}}</td>
                                             <td>{{ $data->jenisKelamin }}</td>
                                             <td>{{ $data->statusKeluarga }}</td>
-                                            <td>{{ $data->golDarah }}</td>
                                             <td>{{ $data->pekerjaan }}</td>
                                             <td>{{ $data->nomorHp }}</td>
                                             <td>{{ $data->sidi }}</td>
@@ -51,7 +49,6 @@
                                         <th>Tempat Lahir</th>
                                         <th>TGL Lahir</th>
                                         <th>Jenis Kelamin</th>
-                                        <th>Gol Darah</th>
                                         <th>Pekerjaan</th>
                                         <th>Status</th>
                                         <th>Nomor HP</th>

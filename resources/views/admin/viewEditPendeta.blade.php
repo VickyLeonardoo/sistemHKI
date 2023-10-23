@@ -30,11 +30,8 @@
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Status:</label>
                                 <select name="status" class="form-control form-control-alternative">
-                                    <option value="{{ $data->status }}">{{ $data->status }}</option>
-                                    <option value="{{ $data->status }}" disabled >-------</option>
-
-                                    <option value="Pendeta Resort">Pendeta Resort</option>
-                                    <option value="Diakones">Diakones</option>
+                                    <option value="0" {{ $data->status == 0 ? 'selected':'' }}>Aktif</option>
+                                    <option value="1" {{ $data->status == 1 ? 'selected':'' }}>Tidak Aktif</option>
 
                                 </select>
                               </div>

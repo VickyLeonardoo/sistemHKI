@@ -8,7 +8,7 @@
                 <div class="col-lg-6">
                     <div class="small-box bg-primary">
                         <div class="inner">
-                            <h3>Data Master Pendapatan</h3>
+                            <h3>Data Master Pemasukan</h3>
 
                         </div>
                         <div class="icon">
