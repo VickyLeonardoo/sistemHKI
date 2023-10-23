@@ -39,7 +39,7 @@
                     <a href="#" class="nav-link {{ Route::is('admin.pendeta.*','admin.wijk.*','admin.sintua.*','admin.kk.*','admin.jemaat.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Dashboard
+                            Master Data
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>

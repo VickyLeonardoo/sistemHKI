@@ -20,7 +20,7 @@ class KkSeeder extends Seeder
         $kkWithHead = [];
         $kkWithMother = [];
 
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             // insert data ke table pendetas menggunakan Faker
             $kkId = DB::table('kks')->insertGetId([
                 'nomorKk' => $faker->unique()->nik(),
