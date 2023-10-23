@@ -57,19 +57,6 @@
                             </select>
                           </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="exampleFormControlInput2">Golongan Darah</label>
-                                <select name="golDar" class="form-control form-control-alternative" id="">
-                                    <option value="{{ $jemaat->golDarah }}" selected>{{ $jemaat->golDarah }}</option>
-                                    <option value="" disabled>-----------</option>
-                                    <option value="A">A</option>
-                                    <option value="AB">AB</option>
-                                    <option value="B">B</option>
-                                    <option value="O">O</option>
-                                </select>
-                              </div>
-                        </div>
                     </div>
 
                     <div class="form-group">

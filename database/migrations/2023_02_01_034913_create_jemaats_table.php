@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('tempatLahir');
             $table->string('tglLahir');
             $table->string('jenisKelamin');
-            $table->string('golDarah');
             $table->string('pekerjaan');
             $table->text('statusKeluarga');
             $table->text('nomorHp');

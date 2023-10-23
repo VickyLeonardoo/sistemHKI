@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('nama');
             $table->string('tempatLahir');
             $table->date('tglLahir');
-            $table->string('status');
-            $table->string('tglMasuk');
+            $table->integer('status')->default('0');
+            $table->date('tglMasuk');
+            $table->date('tglKeluar')->nullable();
             $table->text('foto')->nullable();
             $table->string('slug')->unique();
-            $table->integer('is_active')->default('0');
             $table->timestamps();
         });
     }

@@ -76,7 +76,6 @@
             <th>Tempat</th>
             <td>Tanggal Lahir</td>
             <td>Jenis Kelamin</td>
-            <td>Golongan Darah</td>
             <td>Pekerjaan</td>
             <td>Status</td>
             <td>Nomor HP</td>
@@ -91,7 +90,6 @@
                 <td>{{ $data->tempatLahir }}</td>
                 <td>{{ $data->tglLahir }}</td>
                 <td>{{ $data->jenisKelamin }}</td>
-                <td>{{ $data->golDarah }}</td>
                 <td>{{ $data->pekerjaan }}</td>
                 <td>{{ $data->statusKeluarga }}</td>
                 <td>{{ $data->nomorHp }}</td>

@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Redis;
 class PendetaController extends Controller
 
 {
-
     public function index(){
         if (Auth::guard('user')->user()->role == 1){
             return view('admin.viewPendeta',[
@@ -43,13 +42,11 @@ class PendetaController extends Controller
             'tempatLahir' => 'required',
             'tglLahir' => 'required',
             'tglMasuk' => 'required',
-            'status' => 'required'
         ],[
             'nama.required' => 'Nama Wajib Diisi',
             'tempatLahir.required' => 'Tempat Lahir Wajib Diisi',
             'tglLahir.required' => 'Tanggal Lahir Wajib Diisi',
             'tglMasuk.required' => 'Tanggal Masuk Wajib Diisi',
-            'status.required' => 'Status Wajib Diisi',
         ]);
 
         $str = strtolower(Request()->status.'-'.Request()->nama);
@@ -57,10 +54,8 @@ class PendetaController extends Controller
             "nama" => Request()->nama,
             'tempatLahir' => Request()->tempatLahir,
             'tglLahir' => Request()->tglLahir,
-            'status' => Request()-> status,
             'tglMasuk' => Request()->tglMasuk,
             'slug' => preg_replace('/\s+/', '-', $str),
-
         ];
 
         Pendeta::create($data);

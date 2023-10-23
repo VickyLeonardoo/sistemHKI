@@ -79,10 +79,10 @@ class SintuaController extends Controller
     public function ubahSintua(Request $request, $id){
         $request->validate([
             'nama' => 'required',
-            'wijk' => 'required',
+            'wijk_id' => 'required',
         ],[
             'nama.required' => 'Nama Wajib Diisi',
-            'wijk.required' => 'Wijk Wajib Diisi',
+            'wijk_id.required' => 'Wijk Wajib Diisi',
         ]);
 
         $wijkName = Wijk::where('id',Request()->wijk_id)->first();

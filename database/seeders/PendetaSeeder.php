@@ -25,7 +25,6 @@ class PendetaSeeder extends Seeder
                 'nama' => $faker->name,
                 'tempatLahir' => $faker->city,
                 'tglLahir' => $faker->date($format = 'Y-m-d', $max = 'now'), // Menggunakan date() untuk tanggal
-                'status' => 'Pendeta Resort',
                 'tglMasuk' => $faker->date($format = 'Y-m-d', $max = 'now'), // Menggunakan date() untuk tanggal
                 'slug' => Str::slug($faker->name) // Menggunakan Str::slug untuk membuat slug dari nama
             ]);

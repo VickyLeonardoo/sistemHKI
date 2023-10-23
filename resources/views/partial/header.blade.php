@@ -205,9 +205,7 @@
                     [10, 25, 50, -1],
                     [10, 25, 50, "All"]
                 ],
-                "order": [
-                    [5, "des"]
-                ],
+
                 dom: 'B<"top"fl><"clear">rtip',
                 buttons: [{
                         extend: 'excelHtml5',

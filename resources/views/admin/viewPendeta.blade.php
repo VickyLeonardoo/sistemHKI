@@ -25,7 +25,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $data->nama }}</td>
                                 <td>{{ \Carbon\Carbon::parse($data->tglLahir)->isoFormat('D MMMM Y')}}</td>
-                                <td>{{ $data->status}}</td>
+                                <td>{{ $data->status == 0 ? 'Aktif':'Tidak Aktif'}}</td>
                                 <td>{{ \Carbon\Carbon::parse($data->tglMasuk)->isoFormat('D MMMM Y')}}</td>
                                 <td>
                                     <a href="edit-data-{{$data->slug}}" class="btn btn-info">Edit</a>

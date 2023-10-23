@@ -142,7 +142,7 @@
                             <a class="nav-link {{ request()->is('bph/deposit') ? 'active' : '' }} "
                                 href="/bph/deposit">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Deposit</p>
+                                <p>Pemasukan</p>
                             </a>
                         </li>
                         <li class="nav-item">
