@@ -8,7 +8,7 @@
                         Tambah
                     </button><br><br>
                     <div class="table-responsive p-0">
-                        <table id="example" class="display" style="width:100%">
+                        <table id="viewDeposit" class="display" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Nomor</th>
@@ -51,6 +51,7 @@
                             </tfoot>
                         </table>
                     </div>
+                    <br><br>
                 </div>
             </div>
         </div>

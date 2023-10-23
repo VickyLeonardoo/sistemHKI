@@ -8,7 +8,7 @@
 
               <div class="card-body px-0 pt-0 pb-2">
                 <div class="table-responsive p-0">
-                    <table id="example" class="display" style="width:100%">
+                    <table id="viewDataJemaat" class="display" style="width:100%">
                         <thead>
                             <tr>
                                 <th>NIK</th>

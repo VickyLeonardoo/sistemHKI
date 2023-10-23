@@ -8,7 +8,7 @@
                     <a href="/tambah-data-wijk" class="btn btn-primary">Tambah Wijk</a><br><br>
                 </div>
                 <div class="table-responsive p-0">
-                    <table id="example" class="display" style="width:100%">
+                    <table id="viewWijk" class="display" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Nomor</th>
