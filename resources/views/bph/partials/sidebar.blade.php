@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a href="/bph" class="brand-link">
         <span class="brand-text font-weight-light">SIM HKI</span>
     </a>
 
