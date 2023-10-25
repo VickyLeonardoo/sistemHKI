@@ -11,7 +11,7 @@ class SintuaController extends Controller
 {
     public function index(){
         if (Auth::guard('user')->user()->role == 1){
-            return view('admin.viewSintua',[
+            return view('admin.sintua.viewSintua',[
                 "title" => 'Data Sintua',
                 "sintuas" => Sintua::all(),
                 "wijk" => Wijk::all(),
@@ -32,7 +32,7 @@ class SintuaController extends Controller
 
     public function viewTambah(){
 
-        return view('admin.viewTambahSintua',[
+        return view('admin.sintua.viewTambahSintua',[
             "title" => 'Tambah Data Sintua',
             "wijk" => Wijk::all(),
 
@@ -43,11 +43,9 @@ class SintuaController extends Controller
         $request->validate([
             'nama' => 'required',
             'wijk' => 'required',
-            'tglMulai' => 'required',
         ],[
             'nama.required' => 'Nama Wajib Diisi',
             'wijk.required' => 'Wijk Wajib Diisi',
-            'tglMulai.required' => 'Tanggal Wajib Diisi'
         ]);
 
         $wijkName = Wijk::where('id',Request()->wijk)->first();
@@ -55,9 +53,7 @@ class SintuaController extends Controller
         $data = [
             'nama' => Request()->nama,
             'wijk_id' => Request()->wijk,
-            'tglMulai' => Request()->tglMulai,
             'slug' => preg_replace('/\s+/', '-', $str),
-
         ];
 
         Sintua::create($data);
@@ -67,7 +63,7 @@ class SintuaController extends Controller
     public function editSintua($slug){
         $sin =  Sintua::where('slug',$slug)->first();
 
-        return view('admin.viewEditSintua',[
+        return view('admin.sintua.viewEditSintua',[
             'title' => 'Edit Sintua'.' '.$sin->nama,
             'sintua' => Sintua::where('slug',$slug)->first(),
             'wijk' => Wijk::all(),

@@ -12,7 +12,7 @@ class KkController extends Controller
 {
     public function index(){
         if (Auth::guard('user')->user()->role == 1) {
-            return view('admin.viewKk',[
+            return view('admin.kk.viewKk',[
                 "title" => "Data Kartu Keluarga",
                 "kk" => Kk::where('is_deleted','0')->get(),
                 'sintua' => Sintua::first(),
@@ -30,7 +30,7 @@ class KkController extends Controller
     }
 
     public function viewTambah(Request $request){
-        return view('admin.viewTambahKk',[
+        return view('admin.kk.viewTambahKk',[
             "title" => "Tambah Data KK",
             "wijk" => Wijk::all(),
             'sintua' => Sintua::first(),
@@ -69,7 +69,7 @@ class KkController extends Controller
     }
 
     public function viewEdit($id){
-        return view('admin.viewEditKk',[
+        return view('admin.kk.viewEditKk',[
             "title" => "Edit Data KK",
             "wijk" => Wijk::all(),
             "kk" => Kk::where('nomorKk',$id)->first(),
@@ -121,7 +121,7 @@ class KkController extends Controller
 
         $data = Kk::where('nomorKk', $noKk)->first();
         if (Auth::guard('user')->user()->role == 1) {
-            return view('admin.viewAnggotaKartuKeluarga',[
+            return view('admin.kk.viewAnggotaKartuKeluarga',[
                 "title" => "Anggota Keluarga",
                 "kk" => Kk::where('nomorKk',$noKk)->first(),
                 "jemaat" => Jemaat::where('kk_id',$data->id)->get(),

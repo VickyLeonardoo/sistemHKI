@@ -13,7 +13,7 @@ class JemaatController extends Controller
 {
     public function index(){
         if (Auth::guard('user')->user()->role == 1) {
-            return view('admin.viewDataJemaat',[
+            return view('admin.jemaat.viewDataJemaat',[
                 "title" => "Data Jemaat",
                 "jemaat" => Jemaat::where('is_deleted','0')->where('is_alive','0')->get(),
                 'sintua' => Sintua::first(),
@@ -31,7 +31,7 @@ class JemaatController extends Controller
     }
 
     public function viewTambah($id){
-        return view('admin.viewTambahAnggotaKk',[
+        return view('admin.jemaat.viewTambahAnggotaKk',[
             "title" => "Tambah Anggota KK",
             "kk" => KK::where('id',$id)->first(),
             'sintua' => Sintua::first(),
@@ -64,18 +64,6 @@ class JemaatController extends Controller
         ]);
         $noKk = Kk::where('id',$id)->first();
         $getKk = $noKk->nomorKk;
-
-        $image = null;
-
-        if($files = $request->file('image')){
-                $image_name = md5(rand(1000,10000));
-                $ext = strtolower($files->GetClientOriginalExtension());
-                $image_full_name = $image_name.'.'.$ext;
-                $upload_path = 'fotoJemaat/';
-                $image_url = $upload_path.$image_full_name;
-                $files->move($upload_path, $image_full_name);
-                $image = $image_url;
-        }
         $data = [
             'kk_id' => $id,
             'nik' => Request()->nik,
@@ -87,15 +75,13 @@ class JemaatController extends Controller
             'statusKeluarga' => Request()->statusKeluarga,
             'nomorHp' => Request()->noHp,
             'sidi' => Request()->sidi,
-            'foto' => $image,
         ];
-
         Jemaat::create($data);
         return redirect('/anggota-kartu-keluarga-'.$getKk)->withToastSuccess('Anggota Keluarga Berhasil Ditambahkan!');
     }
 
     public function viewEdit(Request $request, $idk, $id){
-        return view('admin.viewEditAnggota',[
+        return view('admin.jemaat.viewEditAnggota',[
             "title" => "Edit Anggota Keluarga",
             "id" => $id,
             "jemaat" => Jemaat::where('id', $idk)->first(),
@@ -118,17 +104,16 @@ class JemaatController extends Controller
                     'is_alive' => Request()->status,
         ];
         Jemaat::where('id',$id)->update($data);
-        return redirect()->back()->withToastSuccess('Sukses Ubah Data');
+        $jemaat = Jemaat::findOrFail($id);
+        $noKk = $jemaat->kk->nomorKk;
+        return redirect()->route('admin.kk.home-keluarga',$noKk)->withToastSuccess('Sukses Ubah Data');
         // return Redirect('/anggota-keluarga-'.$idk)->withToastSuccess('Anggota Keluarga'. ' ' .Request()->nama . ' ' .'Berhasil Diubah');
     }
 
     public function viewUltah(){
         $now = Carbon::now();
-
         $weekStartDate = $now->startOfWeek()->format('Y-m-d');
         $weekEndDate = $now->endOfWeek()->format('Y-m-d');
-
-
         return view('admin.viewJemaatUltah',[
             'title' => "Ulang Tahun Jemaat",
             'jemaat' => Jemaat::whereRaw("MONTH(tglLahir) = MONTH(CURDATE())")
