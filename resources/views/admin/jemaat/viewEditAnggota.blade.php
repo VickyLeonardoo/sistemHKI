@@ -38,10 +38,8 @@
                           <div class="form-group">
                             <label for="exampleFormControlInput2">Jenis Kelamin</label>
                             <select name="jk" class="form-control form-control-alternative" id="">
-                                <option value="{{ $jemaat->jenisKelamin }}" selected >{{$jemaat->jenisKelamin}}</option>
-                                <option value="" disabled>------------</option>
-                                <option value="Pria">Pria</option>
-                                <option value="Wanita">Wanita</option>
+                                <option value="Laki-Laki" {{ $jemaat->jenisKelamin == 'Laki-Laki' ? 'selected':'' }}>Laki-Laki</option>
+                                <option value="Perempuan" {{ $jemaat->jenisKelamin == 'Perempuan' ? 'selected':'' }}>Perempuan</option>
                             </select>
                           </div>
                         </div>

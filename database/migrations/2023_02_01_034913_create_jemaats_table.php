@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('tempatLahir');
             $table->string('tglLahir');
-            $table->string('jenisKelamin');
+            $table->enum('jenisKelamin',['Laki-Laki', 'Perempuan']);
             $table->string('pekerjaan');
             $table->text('statusKeluarga');
             $table->text('nomorHp');
