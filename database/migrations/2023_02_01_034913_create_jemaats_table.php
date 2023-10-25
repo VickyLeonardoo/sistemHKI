@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('pekerjaan');
             $table->text('statusKeluarga');
             $table->text('nomorHp');
-            $table->text('foto')->nullable();
             $table->text('sidi');
             $table->enum('is_alive', ['0', '1'])->default('0')->comment('0 = Alive, 1 = Passed');
             $table->enum('is_deleted',['0','1'])->default('0')->comment('0 = False, 1 = True');

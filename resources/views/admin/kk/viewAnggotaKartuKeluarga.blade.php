@@ -85,22 +85,6 @@
                         </tr>
                         @endforeach
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>NIK</th>
-                            <th>Nama</th>
-                            <th>Tempat Lahir</th>
-                            <th>TGL Lahir</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Gol Darah</th>
-                            <th>Pekerjaan</th>
-                            <th>Status</th>
-                            <th>Nomor HP</th>
-                            <th>Sidi</th>
-                            {{-- <th>Foto</th> --}}
-                            <th>Aksi</th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
           </div>

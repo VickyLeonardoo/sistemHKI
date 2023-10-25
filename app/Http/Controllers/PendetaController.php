@@ -13,7 +13,7 @@ class PendetaController extends Controller
 {
     public function index(){
         if (Auth::guard('user')->user()->role == 1){
-            return view('admin.viewPendeta',[
+            return view('admin.pendeta.viewPendeta',[
                 "title" => "Data Pendeta",
                 "pendeta" => Pendeta::all(),
             ]);
@@ -29,7 +29,7 @@ class PendetaController extends Controller
         $data = [
             'slug' => 'REs'
         ];
-        return view('admin.viewTambahPendeta',[
+        return view('admin.pendeta.viewTambahPendeta',[
             "title" => 'Tambah Data Pendeta',
             'pendeta' => Pendeta::first(),
             'data' => ['slug' => 'data'],
@@ -73,8 +73,7 @@ class PendetaController extends Controller
     }
 
     public function viewEditPendeta($slug){
-
-        return view('admin.viewEditPendeta',[
+        return view('admin.pendeta.viewEditPendeta',[
             'title' => 'Edit Data Pendeta',
             'data' => Pendeta::where('slug',$slug)->first(),
             'pendeta' => Pendeta::first(),

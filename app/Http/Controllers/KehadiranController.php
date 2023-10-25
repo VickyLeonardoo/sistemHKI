@@ -12,7 +12,7 @@ class KehadiranController extends Controller
         $id = $kegiatan->id;
         // return $kegiatan->id;
 
-        return view('admin.viewKehadiran',[
+        return view('admin.wijk.viewKehadiran',[
             'title' => "Rekap Kehadiran",
             'kehadiran' => Kehadiran::where('kegiatan_id',$id)->get(),
             'id' => $id,

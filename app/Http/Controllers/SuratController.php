@@ -11,7 +11,7 @@ class SuratController extends Controller
 {
     public function viewSKJemaat(){
         if (Auth::guard('user')->user()->role == 1) {
-            return view('admin.viewSkJemaat',[
+            return view('admin.surat.viewSkJemaat',[
                 'title' => "Surat Keterangan Jemaat",
                 'jemaat' => Jemaat::get(),
             ]);
@@ -25,7 +25,7 @@ class SuratController extends Controller
     }
     public function viewSKPindah(){
         if (Auth::guard('user')->user()->role == 1) {
-            return view('admin.viewSkPindah',[
+            return view('admin.surat.viewSkPindah',[
                 'title' => "Surat Keterangan Pindah Gereja",
                 'jemaat' => Jemaat::get(),
                 'kk' => Kk::get(),
@@ -43,7 +43,7 @@ class SuratController extends Controller
     }
     public function viewSKKematian(){
         if (Auth::guard('user')->user()->role == 1) {
-            return view('admin.viewSkKematian',[
+            return view('admin.surat.viewSkKematian',[
                 'title' => "Surat Keterangan Kematian",
                 'jemaat' => Jemaat::get(),
             ]);
@@ -57,7 +57,7 @@ class SuratController extends Controller
     }
     public function viewSKNikah(){
         if (Auth::guard('user')->user()->role == 1) {
-            return view('admin.viewSkNikah',[
+            return view('admin.surat.viewSkNikah',[
                 'title' => "Surat Keterangan Pernikahan",
                 'jemaatPria' => Jemaat::where('jenisKelamin','Pria')->get(),
                 'jemaatWanita' => Jemaat::where('jenisKelamin','Wanita')->get(),

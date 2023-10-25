@@ -12,7 +12,7 @@ class WijkController extends Controller
 {
     public function index(){
         if (Auth::guard('user')->user()->role == 1){
-            return view('admin.viewWijk',[
+            return view('admin.wijk.viewWijk',[
                 "title" => 'Data Wijk',
                 "wijk" => Wijk::all(),
 
@@ -73,7 +73,7 @@ class WijkController extends Controller
         // $kk = Kk::first()->wijk->nama;
         // echo($wijk);
 
-        return view('admin.viewAnggotaWijk',[
+        return view('admin.wijk.viewAnggotaWijk',[
             "slug" => $slug,
             "title" => "Anggota Wijk",
             "kk"    =>  Wijk::where('slug',$slug)->first()->kk,
@@ -85,7 +85,7 @@ class WijkController extends Controller
     public function viewKegiatan(Request $request, $slug){
         $wijk = Wijk::where('slug',$slug)->first();
         $wijkId = $wijk->id;
-        return view('admin.viewKegiatanWijk',[
+        return view('admin.wijk.viewKegiatanWijk',[
             'title' => "Kegiatan Wijk",
             'sintua' => Sintua::all(),
             'kk' => Kk::where('wijk_id',$wijkId)->get(),

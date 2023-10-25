@@ -17,16 +17,24 @@ class WijkSeeder extends Seeder
     {
         $wijk = [
             [
-                'nama' => 'Bengkong',
-                'slug' => 'bengkong'
+                'nama' => 'Wijk I',
+                'slug' => 'wijk-i'
             ],
             [
-                'nama' => 'Sei Panas',
-                'slug' => 'sei-panas'
+                'nama' => 'Wijk II',
+                'slug' => 'wijk-ii'
             ],
             [
-                'nama' => 'Mangsang',
-                'slug' => 'mangsang'
+                'nama' => 'Wijk III',
+                'slug' => 'wijk-iii'
+            ],
+            [
+                'nama' => 'Wijk IV',
+                'slug' => 'wijk-iv'
+            ],
+            [
+                'nama' => 'Wijk V',
+                'slug' => 'wijk-v'
             ]
         ];
         DB::table('wijks')->insert($wijk);

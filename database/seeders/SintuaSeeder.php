@@ -21,19 +21,16 @@ class SintuaSeeder extends Seeder
                 'nama' => 'Robertson Malau',
                 'slug' => 'robertson-malau',
                 'wijk_id' => '1',
-                'tglMulai' => Carbon::now(),
             ],
             [
                 'nama' => 'Pantor Sibagariang',
                 'slug' => 'pantor-sibagariang',
                 'wijk_id' => '2',
-                'tglMulai' => Carbon::now(),
             ],
             [
                 'nama' => 'Rinto Mandailing',
                 'slug' => 'rinto-mandailing',
                 'wijk_id' => '3',
-                'tglMulai' => Carbon::now(),
             ]
         ];
         DB::table('sintuas')->insert($sintua);

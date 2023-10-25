@@ -16,67 +16,74 @@ class KkSeeder extends Seeder
      */
     public function run()
     {
-        $faker = \Faker\Factory::create('id_ID'); // Menggunakan namespace penuh untuk instansiasi Faker
+        $faker = \Faker\Factory::create('id_ID');
         $kkWithHead = [];
         $kkWithMother = [];
 
-        for ($i = 1; $i <= 20; $i++) {
-            // insert data ke table pendetas menggunakan Faker
-            $kkId = DB::table('kks')->insertGetId([
-                'nomorKk' => $faker->unique()->nik(),
-                'alamat' => $faker->address,
-                'kecamatan' => $faker->city,
-                'kelurahan' => $faker->city,
-                'wijk_id' => random_int(1, 3), // Menggunakan random_int() untuk angka acak
-                'statusRumah' => 'Rumah Sendiri'
-            ]);
+        // Loop through each wijk_id (1 to 5)
+        for ($wijkId = 1; $wijkId <= 5; $wijkId++) {
+            $kkPerWijk = 0;
 
-            if (!in_array($kkId, $kkWithHead)) {
-                DB::table('jemaats')->insert([
-                    'kk_id' => $kkId,
-                    'nik' => $faker->unique()->nik(),
-                    'nama' => $faker->name,
-                    'tempatLahir' => $faker->city,
-                    'tglLahir' => $faker->date($format = 'Y-m-d', $max = 'now'),
-                    'jenisKelamin' => 'Pria',
-                    'pekerjaan' => $faker->jobTitle,
-                    'statusKeluarga' => 'Kepala Keluarga',
-                    'nomorHp'=> $faker->phoneNumber,
-                    'sidi' => 'Ya'
+            while ($kkPerWijk < 10) { // Generate exactly 10 records for each wijk_id
+                // Insert data into the kks table using Faker
+                $kkId = DB::table('kks')->insertGetId([
+                    'nomorKk' => $faker->unique()->nik(),
+                    'alamat' => $faker->address,
+                    'kecamatan' => $faker->city,
+                    'kelurahan' => $faker->city,
+                    'wijk_id' => $wijkId,
+                    'statusRumah' => 'Rumah Sendiri'
                 ]);
-            }
-            if (!in_array($kkId, $kkWithMother)) {
-                // insert data ke table Jemaat untuk ibu rumah tangga
-                DB::table('jemaats')->insert([
-                    'kk_id' => $kkId,
-                    'nik' => $faker->unique()->nik(),
-                    'nama' => $faker->name,
-                    'tempatLahir' => $faker->city,
-                    'tglLahir' => $faker->date($format = 'Y-m-d', $max = 'now'),
-                    'jenisKelamin' => 'Wanita',
-                    'pekerjaan' => $faker->jobTitle,
-                    'statusKeluarga' => 'Ibu Rumah Tangga',
-                    'nomorHp'=> $faker->phoneNumber,
-                    'sidi' => 'Ya'
-                ]);
-                $kkWithMother[] = $kkId;
-            }
 
-             // Menambahkan anak secara acak
-            $jumlahAnak = $faker->numberBetween(1, 5); // Ubah jumlah anak sesuai kebutuhan
-            for ($j = 1; $j <= $jumlahAnak; $j++) {
-                DB::table('jemaats')->insert([
-                    'kk_id' => $kkId,
-                    'nik' => $faker->unique()->numerify('################'),
-                    'nama' => $faker->name,
-                    'tempatLahir' => $faker->city,
-                    'tglLahir' => $faker->date($format = 'Y-m-d', $max = 'now'),
-                    'jenisKelamin' => (random_int(0, 1) === 0) ? 'Pria' : 'Wanita',
-                    'pekerjaan' => $faker->jobTitle,
-                    'statusKeluarga' => 'Anak',
-                    'nomorHp'=> $faker->phoneNumber,
-                    'sidi' => (random_int(0, 1) === 0) ? 'Ya' : 'Tidak',
-                ]);
+                $kkPerWijk++;
+
+                if (!in_array($kkId, $kkWithHead)) {
+                    DB::table('jemaats')->insert([
+                        'kk_id' => $kkId,
+                        'nik' => $faker->unique()->nik(),
+                        'nama' => $faker->name,
+                        'tempatLahir' => $faker->city,
+                        'tglLahir' => $faker->date($format = 'Y-m-d', $max = '1990-01-01'),
+                        'jenisKelamin' => 'Pria',
+                        'pekerjaan' => $faker->jobTitle,
+                        'statusKeluarga' => 'Kepala Keluarga',
+                        'nomorHp' => $faker->phoneNumber,
+                        'sidi' => 'Ya'
+                    ]);
+                }
+
+                if (!in_array($kkId, $kkWithMother)) {
+                    DB::table('jemaats')->insert([
+                        'kk_id' => $kkId,
+                        'nik' => $faker->unique()->nik(),
+                        'nama' => $faker->name,
+                        'tempatLahir' => $faker->city,
+                        'tglLahir' => $faker->date($format = 'Y-m-d', $max = '1990-01-01'),
+                        'jenisKelamin' => 'Wanita',
+                        'pekerjaan' => $faker->jobTitle,
+                        'statusKeluarga' => 'Ibu Rumah Tangga',
+                        'nomorHp' => $faker->phoneNumber,
+                        'sidi' => 'Ya'
+                    ]);
+                    $kkWithMother[] = $kkId;
+                }
+
+                // Add random children
+                $jumlahAnak = $faker->numberBetween(1, 5); // Modify as needed
+                for ($j = 1; $j <= $jumlahAnak; $j++) {
+                    DB::table('jemaats')->insert([
+                        'kk_id' => $kkId,
+                        'nik' => $faker->unique()->numerify('################'),
+                        'nama' => $faker->name,
+                        'tempatLahir' => $faker->city,
+                        'tglLahir' => $faker->date($format = 'Y-m-d', $min = '2001-01-01', $max = '2003-12-31'),
+                        'jenisKelamin' => (random_int(0, 1) === 0) ? 'Pria' : 'Wanita',
+                        'pekerjaan' => $faker->jobTitle,
+                        'statusKeluarga' => 'Anak',
+                        'nomorHp' => $faker->phoneNumber,
+                        'sidi' => (random_int(0, 1) === 0) ? 'Ya' : 'Tidak',
+                    ]);
+                }
             }
         }
     }
