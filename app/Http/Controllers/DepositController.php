@@ -10,7 +10,7 @@ class DepositController extends Controller
 {
     public function viewDeposit(){
         if (Auth::guard('user')->user()->role == 1) {
-            return view('keuangan.viewDeposit',[
+            return view('admin.keuangan.viewDeposit',[
                 'title' => 'Deposit',
                 'deposit' => Deposit::all(),
                 'pendapatan' => Pendapatan::all(),

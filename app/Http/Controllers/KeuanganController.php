@@ -9,7 +9,7 @@ class KeuanganController extends Controller
 {
     public function viewKeuangan(){
         if (Auth::guard('user')->user()->role == 1) {
-            return view('keuangan.viewKeuangan',[
+            return view('admin.keuangan.viewKeuangan',[
                 'title' => "Master Data"
             ]);
         }else{
@@ -21,7 +21,7 @@ class KeuanganController extends Controller
 
     public function viewMasterPendapatan(){
         if (Auth::guard('user')->user()->role == 1) {
-            return view('keuangan.viewMasterPendapatans',[
+            return view('admin.keuangan.viewMasterPendapatans',[
                 'title' => "Master Data Pendapatan",
                 'pend' => Pendapatan::all(),
             ]);
@@ -35,7 +35,7 @@ class KeuanganController extends Controller
 
     public function viewTambahMasterPendapatan(){
         if (Auth::guard('user')->user()->role == 1) {
-            return view('keuangan.viewTambahMasterPenapatan',[
+            return view('admin.keuangan.viewTambahMasterPenapatan',[
                 'title' => "Tambah Data Master Pendapatan",
             ]);
         }else{
@@ -62,7 +62,7 @@ class KeuanganController extends Controller
 
     public function editPendapatan($slug){
         if (Auth::guard('user')->user()->role == 1) {
-            return view('keuangan.viewEditPendapatan',[
+            return view('admin.keuangan.viewEditPendapatan',[
                 'title' => "Edit Data Pendapatan",
                 'pend' => Pendapatan::where('slug',$slug)->first(),
             ]);
@@ -97,7 +97,7 @@ class KeuanganController extends Controller
     }
 
     public function viewPendapatanGereja(){
-        return view('keuangan.viewPendapatanGereja',[
+        return view('admin.keuangan.viewPendapatanGereja',[
             'title' => 'Pendapatan Gereja',
         ]);
     }

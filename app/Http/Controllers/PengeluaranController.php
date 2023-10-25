@@ -54,7 +54,7 @@ class PengeluaranController extends Controller
 
     public function viewPembayaran(){
         if (Auth::guard('user')->user()->role == 1) {
-            return view('keuangan.viewPengeluaran',[
+            return view('admin.keuangan.viewPengeluaran',[
                 'title' => 'Pengeluaran',
                 'pengeluaran' => Pengeluaran::all(),
                 'pembayaran' => Pembayaran::all(),
