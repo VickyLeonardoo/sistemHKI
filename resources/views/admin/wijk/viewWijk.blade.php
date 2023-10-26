@@ -30,17 +30,11 @@
                                         Edit
                                       </button>
                                     <a href="/data-wijk-kegiatan-wijk-{{ $data->slug }}" class="btn btn-success">Kegiatan</a>
+                                    <a href="/hapus-data-wijk-{{ $data->id }}" onclick="return confirm('Kamu Yakin Ingin Menghapus Data {{ $data->nama }}?');" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nomor</th>
-                                <th>Nama Wijk</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div><br><br>
             </div>

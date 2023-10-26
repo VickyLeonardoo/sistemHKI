@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth:user']],function(){
         route::get('/data-wijk',[WijkController::class,'index'])->name('admin.wijk.home');
         Route::get('/tambah-data-wijk',[WijkController::class,'viewTambah'])->name('admin.wijk.tambah');
         Route::post('/simpan-wijk',[WijkController::class,'simpanWijk']);
+        Route::get('/hapus-data-wijk-{id}',[WijkController::class,'hapusWijk'])->name('admin.wijk.hapus');
         Route::post('/ubah-wijk-{id}',[WijkController::class,'ubahWijk'])->name('admin.wijk.edit');
         Route::get('/data-wijk-anggota-wijk-{slug}',[WijkController::class,'viewAnggota'])->name('admin.wijk.anggota-wijk');
         Route::get('/data-wijk-kegiatan-wijk-{slug}',[WijkController::class,'viewKegiatan'])->name('admin.wijk.kegiatan');

@@ -68,6 +68,18 @@ class WijkController extends Controller
         return redirect()->route('admin.wijk.home')->withToastSuccess('Wijk Berhasil Diubah!');
     }
 
+    public function hapusWijk($id){
+        $wijk = Wijk::findOrFail($id);
+        $kkCheck = Kk::where('wijk_id',$wijk->id)->first();
+        if($kkCheck){
+            return redirect()->back()->withToastError('Data Wijk Tidak Berhasil Dihapus, Data Telah Ada');
+        }else{
+            $wijk->delete();
+            return redirect()->back()->withToastSuccess('Data Wijk Berhasil Dihapus');
+        }
+
+    }
+
     public function viewAnggota($slug){
         // $wijk = Wijk::where('slug',$slug)->first()->kk;
         // $kk = Kk::first()->wijk->nama;
