@@ -266,10 +266,10 @@ class WordController extends Controller
             'tahun' => $year,
         ];
 
-        $pdf = PDF::loadView('admin.cetakSkPindah',$data);
+        $pdf = PDF::loadView('admin.surat.cetakSkPindah',$data);
         return $pdf->download('pdf_file.pdf');
 
-        return view('admin.cetakSkPindah',[
+        return view('admin.surat.cetakSkPindah',[
             'title' => 'Cetak',
             'jemaat' => $jemaatKk,
         ]);
