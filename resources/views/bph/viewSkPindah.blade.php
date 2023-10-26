@@ -59,7 +59,6 @@
                                     </select>
                                 </div>
                                 <input type="submit" class="btn btn-primary form-control" value="Cetak">
-
                             </form>
                         </div>
                 </div>

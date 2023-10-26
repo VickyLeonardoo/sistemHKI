@@ -35,10 +35,6 @@
                                  onfocus="(this.type='date')"
                                  onblur="(this.type='text')">
                             </div>
-                              <div class="form-group">
-                                <label for="">Keperluan</label>
-                                <input type="text" class="form-control" name="keperluan" placeholder="Masukkan Keperluan...">
-                              </div>
                               <input type="submit" class="btn btn-primary form-control" value="Cetak">
                         </form>
                     </div>

@@ -28,14 +28,14 @@ class SuratController extends Controller
             return view('admin.surat.viewSkPindah',[
                 'title' => "Surat Keterangan Pindah Gereja",
                 'jemaat' => Jemaat::get(),
-                'kk' => Kk::get(),
+                'kk' => Kk::where('is_deleted','0')->get(),
                 'sintua' => Sintua::get(),
             ]);
         }else{
             return view('bph.viewSkPindah',[
                 'title' => "Surat Keterangan Pindah Gereja",
                 'jemaat' => Jemaat::get(),
-                'kk' => Kk::get(),
+                'kk' => Kk::where('is_deleted','0')->get(),
                 'sintua' => Sintua::get(),
             ]);
         }
