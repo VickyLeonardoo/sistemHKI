@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-md-6">
                             <h5 style="text-align:center">Pindah Perorangan</h5>
-                        <form action="/surat-keterangan-pindah-perorangan" method="post">
+                        <form action="/bph/surat-keterangan-jemaat-word" method="post">
                             @csrf
                             <input type="hidden" name="jenissk" value="skpindah">
                             <div class="form-group">

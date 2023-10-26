@@ -55,12 +55,12 @@ class PengeluaranController extends Controller
     public function editPengeluaran($slug){
         if (Auth::guard('user')->user()->role == 1) {
             return view('admin.keuangan.viewEditPengeluaran',[
-                'title' => "Edit Data Pendapatan",
+                'title' => "Edit Data Pengeluaran",
                 'peng' => Pengeluaran::where('slug',$slug)->first(),
             ]);
         }else{
             return view('keuanganBph.viewEditPengeluaran',[
-                'title' => "Edit Data Pendapatan",
+                'title' => "Edit Data Pengeluaran",
                 'peng' => Pengeluaran::where('slug',$slug)->first(),
             ]);
         }
@@ -116,5 +116,10 @@ class PengeluaranController extends Controller
             return redirect('/bph/master-data-pengeluaran')->withToastSuccess('Data Berhasil Diubah!');
 
         }
+    }
+
+    public function hapusPengeluaran($id){
+        Pengeluaran::where('id',$id)->delete();
+        return redirect()->back()->withToastSuccess('Data Berhasil Dihapus!');
     }
 }

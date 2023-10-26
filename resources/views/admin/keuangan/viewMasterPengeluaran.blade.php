@@ -26,7 +26,7 @@
                             <td>{{ $data->nama }}</td>
                             <td>
                                 <a href="/edit/pengeluaran/{{ $data->slug }}" class="btn btn-warning">Edit</a>
-                                <a href="/hapus-pendapatan-{{ $data->id }}" onclick="return confirm('Kamu Yakin Ingin Menghapus Data {{ $data->nama }}?');" class="btn btn-danger">Hapus</a>
+                                <a href="/hapus-pengeluaran-{{ $data->id }}" onclick="return confirm('Kamu Yakin Ingin Menghapus Data {{ $data->nama }}?');" class="btn btn-danger">Hapus</a>
                             </td>
                         </tr>
                         @endforeach

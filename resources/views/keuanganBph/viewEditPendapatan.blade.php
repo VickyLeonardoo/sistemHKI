@@ -6,7 +6,7 @@
           <div class="card-header pb-0">
           </div>
           <div class="card-body px-0 pt-0 pb-2">
-            <form method="POST" action="/ubah-pendapatan-{{ $pend->id }}" enctype="multipart/form-data">
+            <form method="POST" action="/bph/ubah-pendapatan-{{ $pend->id }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                   <label for="exampleFormControlInput1">KODE:</label>

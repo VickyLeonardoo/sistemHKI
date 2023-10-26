@@ -6,22 +6,21 @@
           <div class="card-header pb-0">
           </div>
           <div class="card-body px-0 pt-0 pb-2">
-            <form method="POST" action="{{ route('bph.simpan.master.pengeluaran') }}">
+            <form method="POST" action="{{ route('bph.update.master.pengeluaran',$peng->id) }}" enctype="multipart/form-data">
                 @csrf
-
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Kode:</label>
-                  <input type="text" name="kode" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Kode">
+                  <label for="exampleFormControlInput1">KODE:</label>
+                  <input type="text" name="kode" class="form-control" id="exampleFormControlInput1" value="{{ $peng->kode }}">
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Nama:</label>
-                    <input type="text" name="nama" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nama">
-                  </div>
+                  <label for="exampleFormControlInput1">Nama:</label>
+                  <input type="text" name="nama" class="form-control" id="exampleFormControlInput1"value="{{ $peng->nama }}">
+                </div>
                 <div class="form-group">
                 </div>
                 <input type="submit" class="btn-info btn" value="Simpan">
               </form>
           </div>
       </div>
-    </div>
+</div>
 @endsection

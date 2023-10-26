@@ -96,6 +96,7 @@ class KeuanganController extends Controller
         return redirect()->back()->withToastSuccess('Data Berhasil Dihapus!');
     }
 
+
     public function viewPendapatanGereja(){
         return view('admin.keuangan.viewPendapatanGereja',[
             'title' => 'Pendapatan Gereja',

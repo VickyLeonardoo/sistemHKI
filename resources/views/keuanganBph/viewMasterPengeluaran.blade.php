@@ -12,7 +12,7 @@
                     <thead>
                         <tr>
                             <th>Nomor</th>
-                            <th>Kode Pendapatan</th>
+                            <th>Kode Pengeluaran</th>
                             <th>Nama</th>
                             <th>Aksi</th>
                         </tr>
@@ -25,8 +25,8 @@
                             <td>{{ $data->kode }}</td>
                             <td>{{ $data->nama }}</td>
                             <td>
-                                <a href="/edit/pengeluaran/{{ $data->slug }}" class="btn btn-warning">Edit</a>
-                                <a href="/hapus-pendapatan-{{ $data->id }}" onclick="return confirm('Kamu Yakin Ingin Menghapus Data {{ $data->nama }}?');" class="btn btn-danger">Hapus</a>
+                                <a href="{{ route('bph.edit.master.pengeluaran',$data->slug) }}" class="btn btn-warning">Edit</a>
+                                <a href="/bph/hapus-pengeluaran-{{ $data->id }}" onclick="return confirm('Kamu Yakin Ingin Menghapus Data {{ $data->nama }}?');" class="btn btn-danger">Hapus</a>
                             </td>
                         </tr>
                         @endforeach
