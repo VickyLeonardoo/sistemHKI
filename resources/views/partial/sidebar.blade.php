@@ -121,7 +121,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item {{ request()->is('master-data-keuangan','master-data-pendapatan','master-data-pengeluaran','deposit','tambah-data-master-pendapatan','pengeluaran-gereja') ? 'menu-open' : '' }} ">
+                <li class="nav-item {{ request()->is('master-data-keuangan','master-data-pendapatan','master-data-pengeluaran','deposit','tambah-data-master-pendapatan','pengeluaran-gereja','tambah-data-master-pengeluaran') ? 'menu-open' : '' }} ">
                     <a href="#" class="nav-link {{ request()->is('master-data-keuangan','master-data-pendapatan','master-data-pengeluaran','deposit','tambah-data-master-pendapatan','pengeluaran-gereja') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -131,7 +131,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('master-data-keuangan','master-data-pendapatan','master-data-pengeluaran') ? 'active' : '' }}"
+                            <a class="nav-link {{ request()->is('master-data-keuangan','master-data-pendapatan','master-data-pengeluaran','tambah-data-master-pengeluaran','tambah-data-master-pendapatan') ? 'active' : '' }}"
                                 href="/master-data-keuangan">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Master</p>

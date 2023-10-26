@@ -59,14 +59,14 @@ class SuratController extends Controller
         if (Auth::guard('user')->user()->role == 1) {
             return view('admin.surat.viewSkNikah',[
                 'title' => "Surat Keterangan Pernikahan",
-                'jemaatPria' => Jemaat::where('jenisKelamin','Pria')->get(),
-                'jemaatWanita' => Jemaat::where('jenisKelamin','Wanita')->get(),
+                'jemaatPria' => Jemaat::where('jenisKelamin','Laki-Laki')->get(),
+                'jemaatWanita' => Jemaat::where('jenisKelamin','Perempuan')->get(),
             ]);
         }else{
             return view('bph.viewSkNikah',[
                 'title' => "Surat Keterangan Pernikahan",
-                'jemaatPria' => Jemaat::where('jenisKelamin','Pria')->get(),
-                'jemaatWanita' => Jemaat::where('jenisKelamin','Wanita')->get(),
+                'jemaatPria' => Jemaat::where('jenisKelamin','Laki-Laki')->get(),
+                'jemaatWanita' => Jemaat::where('jenisKelamin','Perempuan')->get(),
             ]);
         }
 

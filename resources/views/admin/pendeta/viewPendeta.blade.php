@@ -13,6 +13,7 @@
                             <tr>
                                 <th>Nomor</th>
                                 <th>Nama</th>
+                                <th>Tempat Lahir</th>
                                 <th>Tanggal Lahir</th>
                                 <th>Status</th>
                                 <th>Tahun Masuk</th>
@@ -24,6 +25,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $data->nama }}</td>
+                                <td>{{ $data->tempatLahir }}</td>
                                 <td>{{ \Carbon\Carbon::parse($data->tglLahir)->isoFormat('D MMMM Y')}}</td>
                                 <td>{{ $data->status == 0 ? 'Aktif':'Tidak Aktif'}}</td>
                                 <td>{{ \Carbon\Carbon::parse($data->tglMasuk)->isoFormat('D MMMM Y')}}</td>

@@ -11,7 +11,7 @@ class PengeluaranController extends Controller
 {
     public function viewPengeluaran(){
         if (Auth::guard('user')->user()->role == 1) {
-            return view('keuangan.viewMasterPengeluaran',[
+            return view('admin.keuangan.viewMasterPengeluaran',[
                 'title' => 'Master Data Pengeluaran',
                 'pengeluaran' => Pengeluaran::all(),
             ]);
@@ -26,7 +26,7 @@ class PengeluaranController extends Controller
 
     public function viewTambahMasterPengeluaran(){
         if (Auth::guard('user')->user()->role == 1) {
-            return view('keuangan.viewTambahMasterPengeluaran',[
+            return view('admin.keuangan.viewTambahMasterPengeluaran',[
                 'title' => "Tambah Data Master Pengeluaran",
             ]);
         }else{
@@ -76,6 +76,7 @@ class PengeluaranController extends Controller
             'nominalPengeluaran' => $request->nominal,
             'catatan' => $request->catatan,
             'tglDeposit' => $request->tglDeposit,
+            'user_id' => auth()->user()->id,
         ];
         Pembayaran::create($data);
         return redirect()->back()->withToastSuccess('Data Pengeluaran Berhasil di Tambahkan');

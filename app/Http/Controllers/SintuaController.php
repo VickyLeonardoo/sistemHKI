@@ -55,7 +55,6 @@ class SintuaController extends Controller
             'wijk_id' => Request()->wijk,
             'slug' => preg_replace('/\s+/', '-', $str),
         ];
-
         Sintua::create($data);
         return redirect()->route('admin.sintua.home')->withToastSuccess('Data Sintua Berhasil Ditambahkan!');
     }

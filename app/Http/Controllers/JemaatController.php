@@ -31,7 +31,7 @@ class JemaatController extends Controller
     }
 
     public function viewTambah($id){
-        return view('admin.jemaat.viewTambahAnggotaKk',[
+        return view('admin.kk.viewTambahAnggotaKk',[
             "title" => "Tambah Anggota KK",
             "kk" => KK::where('id',$id)->first(),
             'sintua' => Sintua::first(),
