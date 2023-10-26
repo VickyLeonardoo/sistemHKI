@@ -7,7 +7,7 @@
                     <span class="info-box-icon bg-danger"><i class="fas fa-rupiah-sign"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">Pemasukan</span>
-                        <a href="/master-data-pendapatan">Selanjutnya</a>
+                        <a href="/bph/master-data-pendapatan">Selanjutnya</a>
                     </div>
                 </div>
             </div>
@@ -16,7 +16,7 @@
                     <span class="info-box-icon bg-info"><i class="fas fa-rupiah-sign"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">Pengeluaran</span>
-                        <a href="/master-data-pengeluaran">Selanjutnya</a>
+                        <a href="/bph/master-data-pengeluaran">Selanjutnya</a>
                     </div>
                 </div>
             </div>

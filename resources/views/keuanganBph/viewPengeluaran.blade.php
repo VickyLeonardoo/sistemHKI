@@ -65,7 +65,7 @@
                     </button>
                 </div>
                 <div class="card card-primary">
-                    <form method="post" action="/simpan-pembayaran">
+                    <form method="post" action="/bph/simpan-pembayaran">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
