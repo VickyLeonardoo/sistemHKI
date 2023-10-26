@@ -28,7 +28,7 @@ class WijkController extends Controller
     }
 
     public function viewTambah(){
-        return view('admin.viewTambahWijk',[
+        return view('admin.wijk.viewTambahWijk',[
             "title" => 'Tambah Data Wijk',
             'sintua' => Sintua::first(),
         ]);
