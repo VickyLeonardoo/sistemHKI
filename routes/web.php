@@ -115,6 +115,7 @@ Route::group(['middleware' => ['auth:user']],function(){
         Route::get('/edit-{slug}',[KeuanganController::class,'editPendapatan']);
         Route::get('/edit/pengeluaran/{slug}',[PengeluaranController::class,'editPengeluaran']);
         Route::post('/ubah-pendapatan-{id}',[KeuanganController::class,'updatePendapatan']);
+        Route::post('/ubah-pengeluaran-{id}',[PengeluaranController::class,'updatePengeluaran']);
         Route::get('/hapus-pendapatan-{id}',[KeuanganController::class,'hapusPendapatan']);
         Route::get('/pendapatan-gereja',[KeuanganController::class,'viewPendapatanGereja']);
         Route::get('/deposit',[DepositController::class,'viewDeposit']);
@@ -178,6 +179,7 @@ Route::group(['middleware' => ['auth:user']],function(){
 
         Route::get('/bph/edit-{slug}',[KeuanganController::class,'editPendapatan']);
         Route::post('/bph/ubah-pendapatan-{id}',[KeuanganController::class,'updatePendapatan']);
+        Route::post('/bph/ubah-pengeluaran-{id}',[PengeluaranController::class,'updatePengeluaran']);
         Route::get('/bph/hapus-pendapatan-{id}',[KeuanganController::class,'hapusPendapatan']);
         Route::get('/bph/deposit',[DepositController::class,'viewDeposit']);
         Route::post('/bph/simpan-deposit',[DepositController::class,'simpanDeposit']);

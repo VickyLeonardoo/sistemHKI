@@ -52,8 +52,18 @@ class PengeluaranController extends Controller
         }
     }
 
-    public function editPengeluaran(){
-
+    public function editPengeluaran($slug){
+        if (Auth::guard('user')->user()->role == 1) {
+            return view('admin.keuangan.viewEditPengeluaran',[
+                'title' => "Edit Data Pendapatan",
+                'peng' => Pengeluaran::where('slug',$slug)->first(),
+            ]);
+        }else{
+            return view('keuanganBph.viewEditPengeluaran',[
+                'title' => "Edit Data Pendapatan",
+                'peng' => Pengeluaran::where('slug',$slug)->first(),
+            ]);
+        }
     }
 
     public function viewPembayaran(){
@@ -89,5 +99,22 @@ class PengeluaranController extends Controller
     public function hapusPembayaran($id){
         Pembayaran::where('id',$id)->delete();
         return redirect()->back()->withToastSuccess('Data Pengeluaran Berhasil Dihapus');
+    }
+
+    public function updatePengeluaran($id){
+        $str = strtolower(Request()->nama);
+        $data = [
+            'kode' => Request()->kode,
+            'nama' => Request()->nama,
+            'slug' => preg_replace('/\s+/', '-', $str),
+        ];
+
+        Pengeluaran::where('id',$id)->update($data);
+        if (Auth::guard('user')->user()->role == 1) {
+            return redirect('master-data-pengeluaran')->withToastSuccess('Data Berhasil Diubah!');
+        }else{
+            return redirect('/bph/master-data-pengeluaran')->withToastSuccess('Data Berhasil Diubah!');
+
+        }
     }
 }
