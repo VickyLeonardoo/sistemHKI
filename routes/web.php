@@ -106,7 +106,7 @@ Route::group(['middleware' => ['auth:user']],function(){
 
         //Keuangan
         Route::get('/master-data-keuangan',[KeuanganController::class,'viewKeuangan']);
-        Route::get('/master-data-pengeluaran',[PengeluaranController::class,'viewPengeluaran']);
+        Route::get('/master-data-pengeluaran',[PengeluaranController::class,'viewPengeluaran'])->name('viewPengeluaran');
         Route::get('/master-data-pendapatan',[KeuanganController::class,'viewMasterPendapatan'])->name('viewPendapatan');
         Route::get('/tambah-data-master-pendapatan',[KeuanganController::class,'viewTambahMasterPendapatan']);
         Route::get('/tambah-data-master-pengeluaran',[PengeluaranController::class,'viewTambahMasterPengeluaran']);
@@ -170,7 +170,7 @@ Route::group(['middleware' => ['auth:user']],function(){
         // Keuangan
         Route::get('/bph/master-data-keuangan',[KeuanganController::class,'viewKeuangan']);
         Route::get('/bph/master-data-pendapatan',[KeuanganController::class,'viewMasterPendapatan'])->name('bphViewPendapatan');
-        Route::get('/bph/master-data-pengeluaran',[PengeluaranController::class,'viewPengeluaran']);
+        Route::get('/bph/master-data-pengeluaran',[PengeluaranController::class,'viewPengeluaran'])->name('bphViewPengeluaran');
         Route::get('/bph/tambah-data-master-pendapatan',[KeuanganController::class,'viewTambahMasterPendapatan']);
         Route::get('/bph/tambah-data-master-pengeluaran',[PengeluaranController::class,'viewTambahMasterPengeluaran']);
         Route::post('/bph/simpan-master-pendapatan',[KeuanganController::class,'simpanMasterPendapatan']);

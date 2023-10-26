@@ -45,7 +45,11 @@ class PengeluaranController extends Controller
             'slug' => preg_replace('/\s+/', '-', $str),
         ];
         Pengeluaran::create($data);
-        return redirect()->back()->withToastSuccess('Data Berhasil DItambahkan');
+        if (Auth::guard('user')->user()->role == 1) {
+            return redirect()->route('viewPengeluaran')->withToastSuccess('Data Berhasil DItambahkan');
+        }else{
+            return redirect()->route('bphViewPengeluaran')->withToastSuccess('Data Berhasil DItambahkan');
+        }
     }
 
     public function editPengeluaran(){
