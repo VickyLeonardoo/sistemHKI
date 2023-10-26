@@ -16,6 +16,7 @@
                                     <th>Kode</th>
                                     <th>Nominal</th>
                                     <th>Pembuat</th>
+                                    <th>Catatan</th>
                                     <th></th>
 
                                     {{-- <th>Aksi</th> --}}
@@ -30,10 +31,18 @@
                                         <td>{{ $data->pendapatan->kode }} {{ $data->pendapatan->nama }}</td>
                                         <td>@currency($data->nominalPendapatan) </td>
                                         <td>
-                                            <span class="badge badge-success">{{ $data->user->name}}</span>
+                                            <span class="badge badge-success">{{ $data->user->name }}</span>
                                         </td>
                                         <td>
-                                            <a href="hapus-data-deposit-{{ $data->id }}" class="btn bg-danger" onclick="return confirm('Anda yakin ingin menghapus data ini?')"><i class="fas fa-trash"></i></a>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#modal-lg-catatan{{ $data->id }}">
+                                                Lihat Catatan
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <a href="hapus-data-deposit-{{ $data->id }}" class="btn bg-danger"
+                                                onclick="return confirm('Anda yakin ingin menghapus data ini?')"><i
+                                                    class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -44,6 +53,7 @@
                                     <th></th>
                                     <th>Total Nominal</th>
                                     <th>@currency($totalNominal)</th>
+                                    <th></th>
                                     <th></th>
                                     <th></th>
                                     {{-- <th>Aksi</th> --}}
@@ -59,7 +69,7 @@
 
     <div class="modal fade" id="modal-lg">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+            <Pdiv class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Tambah Data Pendapatan</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -98,6 +108,35 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </Pdiv>
         </div>
+    </div>
+
+    @foreach ($deposit as $data)
+    <div class="modal fade" id="modal-lg-catatan{{ $data->id }}">
+        <div class="modal-dialog modal-lg">
+            <Pdiv class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tambah Data Pendapatan</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="card card-primary">
+                    <form method="post" action="/bph/simpan-deposit">
+                        @csrf
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Catatan</label>
+                                <textarea name="" id=""rows="3" class="form-control" readonly>{{ $data->catatan }}</textarea>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </Pdiv>
+        </div>
+    </div>
+    @endforeach
     @endsection
