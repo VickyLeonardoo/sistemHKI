@@ -12,7 +12,6 @@
                                 <th>Tanggal Lahir</th>
                                 <th>Status</th>
                                 <th>Tahun Masuk</th>
-                                <th>Foto</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -22,20 +21,9 @@
                                 <td>{{ $data->tglLahir}}</td>
                                 <td>{{ $data->status}}</td>
                                 <td>{{ $data->tglMasuk}}</td>
-                                <td>{{ $data->foto}}</td>
                             </tr>
                             @endforeach
-
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Status</th>
-                                <th>Tahun Masuk</th>
-                                <th>Foto</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>

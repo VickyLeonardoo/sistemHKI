@@ -10,7 +10,7 @@
                             <tr>
                                 <th>Nomor</th>
                                 <th>Nama Wijk</th>
-                                <th></th>
+                                {{-- <th></th> --}}
                             </tr>
                         </thead>
                         <?php $i = 1 ?>
@@ -19,21 +19,14 @@
                             <tr>
                                 <td>{{ $data->id}}</td>
                                 <td>{{ $data->nama }}</td>
-                                <td>
+                                {{-- <td> --}}
                                     {{-- <a href="ubah-data-wijk-{{ $data->id }}" class="btn btn-primary"></a> --}}
                                     <!-- Button trigger modal -->
-                                    <a href="/data-wijk-anggota-wijk-{{ $data->slug }}" class="btn btn-info" >Lihat Anggota Wijk</a>
-                                </td>
+                                    {{-- <a href="/data-wijk-anggota-wijk-{{ $data->slug }}" class="btn btn-info" >Lihat Anggota Wijk</a> --}}
+                                {{-- </td> --}}
                             </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nomor</th>
-                                <th>Nama Wijk</th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>

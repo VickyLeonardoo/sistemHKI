@@ -16,7 +16,7 @@ class SidiController extends Controller
             return redirect()->back()->withToastError('Belum ada data pelajar sidi');
         }
         $id = $idTahun->id;
-        return view('sidi.viewPendaftar',[
+        return view('admin.sidi.viewPendaftar',[
             'title' => 'Pendaftar Pelajar Sidi',
             'pendaftar' => PendaftaranSidi::where('status_pendaftaran_id', $id)->where('status','1')->get(),
 
@@ -30,7 +30,7 @@ class SidiController extends Controller
         if ($pendaftaran == '') {
             return 'Anda Belum Membuat Data';
         }else{
-            return view('sidi.viewPendaftaran',[
+            return view('admin.sidi.viewPendaftaran',[
                 'title' => 'Pendaftaran Pelajar Sidi',
                 'pendaftaran' => StatusPendaftaran::where('tahunSidi',$tahun)->first(),
                 'tglSekarang' => $tglSekarang,
@@ -95,7 +95,7 @@ class SidiController extends Controller
         $tahun = Carbon::now()->year;
         $idTahun = StatusPendaftaran::all();
 
-        return view('sidi.viewSemuaPendaftaranSidi',[
+        return view('admin.sidi.viewSemuaPendaftaranSidi',[
             'title' => 'Pendaftar Pelajar Sidi',
             'pendaftar' => $idTahun,
         ]);
@@ -107,7 +107,7 @@ class SidiController extends Controller
         $id = $idTahun->id;
         // return PendaftaranSidi::where('status_pendaftaran_id',$id)->where('status','2')->get();
 
-        return view('sidi.viewPelajarSidi',[
+        return view('admin.sidi.viewPelajarSidi',[
             'title' => 'Pelajar Sidi Tahun'.$tahun,
             'pelajar' => PendaftaranSidi::where('status_pendaftaran_id',$id)->where('status','2')->get(),
         ]);
@@ -129,7 +129,7 @@ class SidiController extends Controller
         $tahun = Carbon::now()->year;
         $idTahun = StatusPendaftaran::where('tahunSidi', $tahun)->count();
 
-        return view('sidi.viewBukaPendaftaran',[
+        return view('admin.sidi.viewBukaPendaftaran',[
             'title' => 'Buka Pendaftaran Sidi',
             'pendaftaran' => StatusPendaftaran::where('tahunSidi',$tahun)->first(),
             'tahun' => $idTahun,
@@ -151,7 +151,7 @@ class SidiController extends Controller
         $tahun = Carbon::now()->year;
         $idTahun = StatusPendaftaran::where('tahunSidi', $tahun)->first();
 
-        return view('sidi.statusPendaftaran',[
+        return view('admin.sidi.statusPendaftaran',[
             'title' => 'Status Pendaftaran Pembelajaran Sidi Tahun'.$tahun,
             'pendaftaran' => $idTahun,
         ]);

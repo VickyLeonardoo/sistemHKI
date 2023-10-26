@@ -6,7 +6,7 @@
           <div class="card-header pb-0">
           </div>
           <div class="card-body px-0 pt-0 pb-2">
-            <form method="POST" action="/bph/simpan-master-pengeluaran">
+            <form method="POST" action="/simpan-master-pengeluaran">
                 @csrf
 
                 <div class="form-group">

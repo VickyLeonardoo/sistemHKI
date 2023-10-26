@@ -8,12 +8,13 @@
                         Tambah
                     </button><br><br>
                     <div class="table-responsive p-0">
-                        <table id="example" class="display" style="width:100%">
+                        <table id="viewPengeluaran" class="display" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Nomor</th>
                                     <th>Kode</th>
                                     <th>Nominal</th>
+                                    <th>Pembuat</th>
                                     <th></th>
 
                                     {{-- <th>Aksi</th> --}}
@@ -27,7 +28,10 @@
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $data->pengeluaran->kode }} {{ $data->pengeluaran->nama }}</td>
                                         <td>@currency($data->nominalPengeluaran) </td>
-                                        <td><a href="/bph/hapus-data-pembayaran-{{ $data->id }}" class="btn bg-danger"
+                                        <td>
+                                            <span class="badge badge-success">{{ $data->user->name}}</span>
+                                        </td>
+                                        <td><a href="hapus-data-pembayaran-{{ $data->id }}" class="btn bg-danger"
                                                 onclick="return confirm('Anda yakin ingin menghapus data ini?')"><i
                                                     class="fas fa-trash"></i></a></td>
                                 @endforeach
@@ -39,11 +43,13 @@
                                     <th>Total Nominal</th>
                                     <th>@currency($totalNominal)</th>
                                     <th></th>
+                                    <th></th>
                                     {{-- <th>Aksi</th> --}}
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
+                    <br><br>
                 </div>
             </div>
         </div>
@@ -59,7 +65,7 @@
                     </button>
                 </div>
                 <div class="card card-primary">
-                    <form method="post" action="/bph/simpan-pembayaran">
+                    <form method="post" action="/simpan-pembayaran">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">

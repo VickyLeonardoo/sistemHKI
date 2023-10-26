@@ -1,37 +1,37 @@
 @extends('bph.partials.header')
-
 @section('content')
-<div class="col-md-12">
-    <div class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="small-box bg-primary">
-                        <div class="inner">
-                            <h3>Data Master Pemasukan</h3>
-
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-person-add"></i>
-                        </div>
-                        <a href="/bph/master-data-pendapatan" class="small-box-footer">More
-                            info <i class="fas fa-arrow-circle-right"></i></a>
+    <div class="container-fluid py-4">
+        <div class="row mt-4">
+            <div class="col-lg-6">
+                <div class="info-box">
+                    <span class="info-box-icon bg-danger"><i class="fas fa-rupiah-sign"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Pemasukan</span>
+                        <a href="/master-data-pendapatan">Selanjutnya</a>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3>Data Master Pengeluaran</h3>
-
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-person-add"></i>
-                        </div>
-                        <a href="/bph/master-data-pengeluaran" class="small-box-footer">More
-                            info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+            <div class="col-lg-6">
+                <div class="info-box">
+                    <span class="info-box-icon bg-info"><i class="fas fa-rupiah-sign"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Pengeluaran</span>
+                        <a href="/master-data-pengeluaran">Selanjutnya</a>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
-</div>
-@endsection
+    @endsection
+    {{-- <div class="card h-100 p-3">
+        <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('soft/assets/img/ivancik.jpg');">
+          <span class="mask bg-gradient-dark"></span>
+          <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
+            <h5 class="text-white font-weight-bolder mb-4 pt-2">Data Pendapatan</h5>
+            <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="/master-data-pendapatan">
+              Cetak
+              <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div> --}}

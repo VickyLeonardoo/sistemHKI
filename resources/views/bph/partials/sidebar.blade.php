@@ -81,14 +81,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item {{ request()->is('bph/cetak-data') ? 'active' : '' }}">
-                    <a href="/bph/cetak-data" class="nav-link {{ request()->is('bph/cetak-data') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Cetak
-                        </p>
-                    </a>
-                </li>
                 {{-- <li class="nav-item {{ request()->is('pendaftar-pembelajaran-sidi', 'data-pelajar-sidi','buka-pendaftaran-pembelajaran-sidi') ? 'menu-open' : '' }} ">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -146,7 +138,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('bph/pengeluaran-gerejabph/') ? 'active' : '' }} "
+                            <a class="nav-link {{ request()->is('bph/pengeluaran-gereja') ? 'active' : '' }} "
                                 href="/bph/pengeluaran-gereja">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Pengeluaran</p>

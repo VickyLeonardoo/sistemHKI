@@ -3,7 +3,7 @@
 <div class="container-fluid py-4">
     <div class="row">
       <div class="col-12">
-        <a href="/bph/tambah-data-master-pendapatan" class="btn btn-info">Tambah Data Pendapatan</a>
+        <a href="/tambah-data-master-pendapatan" class="btn btn-info">Tambah Data Pendapatan</a>
           <div class="card-header pb-0">
           </div>
           <div class="card-body px-0 pt-0 pb-2">
@@ -25,8 +25,8 @@
                             <td>{{ $data->kode }}</td>
                             <td>{{ $data->nama }}</td>
                             <td>
-                                <a href="/bph/edit-{{ $data->slug }}" class="btn btn-warning">Edit</a>
-                                <a href="/bph/hapus-pendapatan-{{ $data->id }}" onclick="return confirm('Kamu Yakin Ingin Menghapus Data {{ $data->nama }}?');" class="btn btn-danger">Hapus</a>
+                                <a href="/edit-{{ $data->slug }}" class="btn btn-warning">Edit</a>
+                                <a href="/hapus-pendapatan-{{ $data->id }}" onclick="return confirm('Kamu Yakin Ingin Menghapus Data {{ $data->nama }}?');" class="btn btn-danger">Hapus</a>
                             </td>
                         </tr>
                         @endforeach

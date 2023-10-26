@@ -3,7 +3,7 @@
 <div class="container-fluid py-4">
     <div class="row">
       <div class="col-12">
-        <a href="/bph/tambah-data-master-pengeluaran" class="btn btn-info">Tambah Data</a>
+        <a href="/tambah-data-master-pengeluaran" class="btn btn-info">Tambah Data</a>
           <div class="card-header pb-0">
           </div>
           <div class="card-body px-0 pt-0 pb-2">

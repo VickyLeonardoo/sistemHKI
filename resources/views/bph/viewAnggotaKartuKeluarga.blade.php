@@ -1,4 +1,4 @@
-@extends('partial.header')
+@extends('bph.partials.header')
 @section('content')
 
 <div class="container-fluid py-4">

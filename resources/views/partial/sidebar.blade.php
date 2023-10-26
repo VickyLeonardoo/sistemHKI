@@ -89,7 +89,7 @@
                         </p>
                     </a>
                 </li> --}}
-                <li class="nav-item {{ request()->is('pendaftar-pembelajaran-sidi', 'data-pelajar-sidi','buka-pendaftaran-pembelajaran-sidi') ? 'menu-open' : '' }} ">
+                <li class="nav-item {{ request()->is('pendaftar-pembelajaran-sidi', 'data-pelajar-sidi','buka-pendaftaran-pembelajaran-sidi','periksa-status-pendaftaran-pelajar-sidi') ? 'menu-open' : '' }} ">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -99,7 +99,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item active">
-                            <a class="nav-link {{ request()->is('buka-pendaftaran-pembelajaran-sidi') ? 'active' : '' }}"
+                            <a class="nav-link {{ request()->is('buka-pendaftaran-pembelajaran-sidi','periksa-status-pendaftaran-pelajar-sidi') ? 'active' : '' }}"
                                 href="/buka-pendaftaran-pembelajaran-sidi">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Buka Pendaftaran</p>

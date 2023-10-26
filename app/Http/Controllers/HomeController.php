@@ -128,7 +128,6 @@ class HomeController extends Controller
                 'pendeta' => $pendetaCount,
                 'jemaatChart' => $jemaatChart->build(),
                 'chartGender' => $genderChart->build(),
-
             ]);
         }
     }
