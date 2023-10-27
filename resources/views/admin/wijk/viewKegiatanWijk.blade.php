@@ -124,7 +124,7 @@
             @csrf
             <div class="form-group">
                 <label for="exampleFormControlInput2">Tanggal Kegiatan</label>
-                <input type="text" name="tglKegiatan" value="{{ \Carbon\Carbon::parse($data->tglKegiatan)->isoFormat('D MMMM Y') }}" class="form-control form-control-alternative" placeholder="Masukkan Tanggal Kegiatan"
+                <input type="text" name="tglKegiatan" value="{{ $data->tglKegiatan }}" class="form-control form-control-alternative" placeholder="Masukkan Tanggal Kegiatan"
                  onfocus="(this.type='date')"
                  onblur="(this.type='text')">
             </div>
