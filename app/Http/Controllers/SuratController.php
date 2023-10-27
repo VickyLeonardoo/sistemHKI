@@ -13,12 +13,12 @@ class SuratController extends Controller
         if (Auth::guard('user')->user()->role == 1) {
             return view('admin.surat.viewSkJemaat',[
                 'title' => "Surat Keterangan Jemaat",
-                'jemaat' => Jemaat::get(),
+                'jemaat' => Jemaat::where('is_deleted','0')->get(),
             ]);
         }else{
             return view('bph.viewSkJemaat',[
                 'title' => "Surat Keterangan Jemaat",
-                'jemaat' => Jemaat::get(),
+                'jemaat' => Jemaat::where('is_deleted','0')->get(),
             ]);
         }
 
@@ -27,14 +27,14 @@ class SuratController extends Controller
         if (Auth::guard('user')->user()->role == 1) {
             return view('admin.surat.viewSkPindah',[
                 'title' => "Surat Keterangan Pindah Gereja",
-                'jemaat' => Jemaat::get(),
+                'jemaat' => Jemaat::where('is_deleted','0')->get(),
                 'kk' => Kk::where('is_deleted','0')->get(),
                 'sintua' => Sintua::get(),
             ]);
         }else{
             return view('bph.viewSkPindah',[
                 'title' => "Surat Keterangan Pindah Gereja",
-                'jemaat' => Jemaat::get(),
+                'jemaat' => Jemaat::where('is_deleted','0')->get(),
                 'kk' => Kk::where('is_deleted','0')->get(),
                 'sintua' => Sintua::get(),
             ]);

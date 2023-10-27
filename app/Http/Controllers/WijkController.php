@@ -100,7 +100,7 @@ class WijkController extends Controller
         return view('admin.wijk.viewKegiatanWijk',[
             'title' => "Kegiatan Wijk",
             'sintua' => Sintua::all(),
-            'kk' => Kk::where('wijk_id',$wijkId)->get(),
+            'kk' => Kk::where('wijk_id',$wijkId)->where('is_deleted','0')->get(),
             'wijk_id' => $wijkId,
             'kegiatan' => Kegiatan::where('wijk_id',$wijkId)->get(),
         ]);
