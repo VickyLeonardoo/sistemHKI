@@ -11,14 +11,14 @@ class DepositController extends Controller
     public function viewDeposit(){
         if (Auth::guard('user')->user()->role == 1) {
             return view('admin.keuangan.viewDeposit',[
-                'title' => 'Deposit',
+                'title' => 'Pemasukan',
                 'deposit' => Deposit::all(),
                 'pendapatan' => Pendapatan::all(),
                 'totalNominal' => Deposit::sum('nominalPendapatan'),
             ]);
         }else{
             return view('keuanganBph.viewDeposit',[
-                'title' => 'Deposit',
+                'title' => 'Pemasukan',
                 'deposit' => Deposit::all(),
                 'pendapatan' => Pendapatan::all(),
                 'totalNominal' => Deposit::sum('nominalPendapatan'),

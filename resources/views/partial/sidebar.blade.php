@@ -35,8 +35,8 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item {{ Route::is('admin.pendeta.*','admin.wijk.*','admin.sintua.*','admin.kk.*','admin.jemaat.*') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ Route::is('admin.pendeta.*','admin.wijk.*','admin.sintua.*','admin.kk.*','admin.jemaat.*') ? 'active' : '' }}">
+                <li class="nav-item {{ Route::is('admin.pendeta.*','admin.wijk.*','admin.sintua.*','admin.kk.*','admin.jemaat.*','admin.user.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ Route::is('admin.pendeta.*','admin.wijk.*','admin.sintua.*','admin.kk.*','admin.jemaat.*','admin.user.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Master Data
@@ -77,6 +77,13 @@
                             <a class="nav-link {{ Route::is('admin.jemaat.*') ? 'active' : '' }} " href="/data-jemaat">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Jemaat</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            {{-- <a class="nav-link " href="/data-jemaat"> --}}
+                            <a class="nav-link {{ Route::is('admin.user.*') ? 'active' : '' }} " href="{{ route('admin.user.home') }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>User</p>
                             </a>
                         </li>
                     </ul>
