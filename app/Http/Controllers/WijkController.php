@@ -84,11 +84,11 @@ class WijkController extends Controller
         // $wijk = Wijk::where('slug',$slug)->first()->kk;
         // $kk = Kk::first()->wijk->nama;
         // echo($wijk);
-
+        $kk =   Wijk::where('slug',$slug)->first()->kk;
         return view('admin.wijk.viewAnggotaWijk',[
             "slug" => $slug,
             "title" => "Anggota Wijk",
-            "kk"    =>  Wijk::where('slug',$slug)->first()->kk,
+            "kk"    =>  Wijk::where('slug',$slug)->first()->kk->where('is_deleted','0'),
             'sintua' => Sintua::first(),
 
         ]);
