@@ -124,10 +124,11 @@
             @csrf
             <div class="form-group">
                 <label for="exampleFormControlInput2">Tanggal Kegiatan</label>
-                <input type="text" name="tglKegiatan" class="form-control form-control-alternative" placeholder="Masukkan Tanggal Kegiatan"
+                <input type="text" name="tglKegiatan" value="{{ $data->tglKegiatan }}" class="form-control form-control-alternative" placeholder="Masukkan Tanggal Kegiatan"
                  onfocus="(this.type='date')"
                  onblur="(this.type='text')">
             </div>
+
             <div class="form-group">
                 <label for="">Alamat Kegiatan</label>
                 <select name="kk" id="selects-state" class="form-control selectpicker" placeholder="Pilih Alamat...">
@@ -136,7 +137,7 @@
                         @php
                             $kepalaKeluarga = $kks->jemaat->where('statusKeluarga', 'Kepala Keluarga')->first();
                         @endphp
-                        <option value="{{ $kks->id }}">
+                        <option value="{{ $kks->id }}" {{ $data->kk_id == $kks->id ? 'selected':'' }}>
                             {{ $kks->alamat }} |
                             @if($kepalaKeluarga)
                                 {{ $kepalaKeluarga->nama }} (Kepala Keluarga)
@@ -152,7 +153,7 @@
                 <select name="sintua" id="selects-state" class="form-control selectpicker" placeholder="Pilih Sintua...">
                     <option value="">Pilih Sintua...</option>
                     @foreach ($sintua as $sintuas)
-                        <option value="{{ $sintuas->id }}">{{ $sintuas->nama }}</option>
+                        <option value="{{ $sintuas->id }}" {{ $data->sintua_id == $sintuas->id ? 'selected':'' }}>{{ $sintuas->nama }}</option>
                     @endforeach
                   </select>
             </div>

@@ -84,11 +84,11 @@ class WijkController extends Controller
         // $wijk = Wijk::where('slug',$slug)->first()->kk;
         // $kk = Kk::first()->wijk->nama;
         // echo($wijk);
-
+        $kk =   Wijk::where('slug',$slug)->first()->kk;
         return view('admin.wijk.viewAnggotaWijk',[
             "slug" => $slug,
             "title" => "Anggota Wijk",
-            "kk"    =>  Wijk::where('slug',$slug)->first()->kk,
+            "kk"    =>  Wijk::where('slug',$slug)->first()->kk->where('is_deleted','0'),
             'sintua' => Sintua::first(),
 
         ]);
@@ -100,7 +100,7 @@ class WijkController extends Controller
         return view('admin.wijk.viewKegiatanWijk',[
             'title' => "Kegiatan Wijk",
             'sintua' => Sintua::all(),
-            'kk' => Kk::where('wijk_id',$wijkId)->get(),
+            'kk' => Kk::where('wijk_id',$wijkId)->where('is_deleted','0')->get(),
             'wijk_id' => $wijkId,
             'kegiatan' => Kegiatan::where('wijk_id',$wijkId)->get(),
         ]);

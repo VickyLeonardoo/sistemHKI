@@ -1,26 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\JemaatController;
-use App\Http\Controllers\PendetaController;
-use App\Http\Controllers\SintuaController;
-use App\Http\Controllers\WijkController;
 use App\Http\Controllers\KkController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BphController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CetakdataController;
-use App\Http\Controllers\KeuanganController;
-use App\Http\Controllers\KegiatanController;
-use App\Http\Controllers\KehadiranController;
-use App\Http\Controllers\SuratController;
-use App\Http\Controllers\WordController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SidiController;
-use App\Http\Controllers\PengeluaranController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WijkController;
+use App\Http\Controllers\WordController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SuratController;
+use App\Http\Controllers\JemaatController;
+use App\Http\Controllers\SintuaController;
 use App\Http\Controllers\DepositController;
+<<<<<<< HEAD
 use App\Http\Controllers\ProfileController;
 
+=======
+use App\Http\Controllers\PendetaController;
+use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\CetakdataController;
+use App\Http\Controllers\KehadiranController;
+use App\Http\Controllers\PengeluaranController;
+>>>>>>> 976630182181a075f33b750b2ef8accdf87ed61a
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -149,9 +153,16 @@ Route::group(['middleware' => ['auth:user']],function(){
         Route::get('/data-pelajar-sidi-tahun-{tahun}',[SidiController::class,'viewDataSidiTahun'])->name('sidi.tahun');
         Route::get('/simpan-pendaftaran-pembelajaran-sidi',[SidiController::class,'simpanPendaftaranPelajarSidi']);
 
+<<<<<<< HEAD
         Route::get('/admin/profile',[ProfileController::class,'index'])->name('admin.profile');
         Route::post('/admin/update/profile',[ProfileController::class,'updateProfile']);
         Route::post('/admin/update/password',[ProfileController::class,'updatePassword']);
+=======
+        //User
+        Route::get('/user',[UserController::class,'viewUser'])->name('admin.user.home');
+        Route::get('/tambah-data-user',[UserController::class,'viewTambahData'])->name('admin.user.tambah');
+
+>>>>>>> 976630182181a075f33b750b2ef8accdf87ed61a
     });
 });
 
