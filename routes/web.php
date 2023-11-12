@@ -19,6 +19,8 @@ use App\Http\Controllers\WordController;
 use App\Http\Controllers\SidiController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\DepositController;
+use App\Http\Controllers\ProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -146,6 +148,10 @@ Route::group(['middleware' => ['auth:user']],function(){
         Route::get('/tolak-pendaftaran-sidi-{nik}',[SidiController::class,'tolakPendaftaran']);
         Route::get('/data-pelajar-sidi-tahun-{tahun}',[SidiController::class,'viewDataSidiTahun'])->name('sidi.tahun');
         Route::get('/simpan-pendaftaran-pembelajaran-sidi',[SidiController::class,'simpanPendaftaranPelajarSidi']);
+
+        Route::get('/admin/profile',[ProfileController::class,'index'])->name('admin.profile');
+        Route::post('/admin/update/profile',[ProfileController::class,'updateProfile']);
+        Route::post('/admin/update/password',[ProfileController::class,'updatePassword']);
     });
 });
 
