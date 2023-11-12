@@ -7,9 +7,16 @@ Use App\Models\User;
 class ProfileController extends Controller
 {
     public function index(){
-        return view('admin.profile.viewProfile',[
-            'title' => 'Edit Profile'
-        ]);
+        if (auth()->user()->role == 1 ){
+            return view('admin.profile.viewProfile',[
+                'title' => 'Edit Profile'
+            ]);
+        }else{
+            return view('bph.profile.viewProfile',[
+                'title' => 'Edit Profile'
+            ]);
+        }
+
     }
 
     public function updateProfile(Request $request){

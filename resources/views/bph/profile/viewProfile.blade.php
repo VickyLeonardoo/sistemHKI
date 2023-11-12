@@ -1,4 +1,4 @@
-@extends('partial.header')
+@extends('bph.partials.header')
 @section('content')
 <div class="content">
     <div class="container-fluid">
@@ -11,7 +11,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form action="{{ url('admin/update/profile') }}" method="POST">
+                                    <form action="{{ url('bph/update/profile') }}" method="POST">
                                     @csrf
                                         <div class="form-group">
                                             <label for="">Nama:</label>
@@ -29,7 +29,7 @@
                                     {{-- <div id="piechart" style="width:auto; height: 400px;"></div> --}}
                                 </div>
                                 <div class="col-lg-6">
-                                    <form action="{{ url('admin/update/password') }}" method="POST">
+                                    <form action="{{ url('bph/update/password') }}" method="POST">
                                         @csrf
                                         <div class="form-group">
                                             <label for="">Password:</label>
@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="">Konfirmasi Password:</label>
-                                            <input type="password" name="password_confirmation" class="form-control" placeholder="Masukkan Password">
+                                            <input type="password" name="password_confirmatin" class="form-control" placeholder="Masukkan Password">
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" value="Update" class="btn btn-primary">

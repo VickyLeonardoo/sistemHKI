@@ -208,5 +208,9 @@ Route::group(['middleware' => ['auth:user']],function(){
         Route::post('/bph/surat-keterangan-pindah-satu-keluarga',[WordController::class,'wordPindahKeluarga']);
         Route::post('/bph/surat-keterangan-pindah-perorangan',[WordController::class,'wordJemaat']);
 
+        Route::get('/bph/profile',[ProfileController::class,'index'])->name('bph.profile');
+        Route::post('/bph/update/profile',[ProfileController::class,'updateProfile']);
+        Route::post('/bph/update/password',[ProfileController::class,'updatePassword']);
+
     });
 });
